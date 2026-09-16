@@ -5,19 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CPP | Web, software y automatización para negocios</title>
   <meta name="description" content="CPP diseña y programa páginas web, tiendas online, sistemas a medida y automatizaciones para negocios que quieren vender y operar mejor." />
-  <meta name="theme-color" content="#06231B" />
+  <meta name="theme-color" content="#f7f8f8" />
   <meta property="og:title" content="CPP | Creative Programming Partners" />
   <meta property="og:description" content="Menos fricción. Más negocio. Web, software y automatización hechos a medida." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/brand/png/cpp-social-cover-1200x630.png" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <script>
+    // Tema e idioma antes de pintar, para evitar parpadeos
+    (function () {
+      var d = document.documentElement, theme, lang;
+      try { theme = localStorage.getItem('cpp-theme'); lang = localStorage.getItem('cpp-lang'); } catch (e) {}
+      if (!theme) theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (!lang) lang = (navigator.language || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
+      d.dataset.theme = theme;
+      d.lang = lang;
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip" href="#main">Saltar al contenido</a>
+  <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
 
   <!-- Arranque -->
   <div class="boot" data-boot aria-hidden="true">
@@ -28,7 +39,7 @@
   <div class="grain" aria-hidden="true"></div>
 
   <header class="top" data-top>
-    <a class="brand" href="#inicio" aria-label="CPP, ir al inicio">
+    <a class="brand" href="#inicio" data-i18n-attr="aria-label:brand.home" aria-label="CPP, ir al inicio">
       <svg class="brand-mark" viewBox="0 0 128 128" aria-hidden="true">
         <path class="m1" d="M64 8 112 36 90 49 64 34 42 47 20 34Z"/>
         <path class="m2" d="M20 34 42 47v36l22 13v25L20 95Z"/>
@@ -36,31 +47,40 @@
       </svg>
       <span class="brand-text">cpp<span class="brand-caret">_</span></span>
     </a>
-    <nav class="nav" aria-label="Principal">
-      <a href="#servicios" data-scramble>servicios</a>
-      <a href="#proceso" data-scramble>proceso</a>
-      <a href="#proyectos" data-scramble>proyectos</a>
-      <a href="#equipo" data-scramble>equipo</a>
-      <a href="#preguntas" data-scramble>preguntas</a>
+    <nav class="nav" data-i18n-attr="aria-label:nav.label" aria-label="Principal">
+      <a href="#servicios" data-scramble data-i18n="nav.services">servicios</a>
+      <a href="#proceso" data-scramble data-i18n="nav.process">proceso</a>
+      <a href="#proyectos" data-scramble data-i18n="nav.work">proyectos</a>
+      <a href="#equipo" data-scramble data-i18n="nav.team">equipo</a>
+      <a href="#preguntas" data-scramble data-i18n="nav.faq">preguntas</a>
     </nav>
     <div class="top-actions">
-      <button class="kbd-hint" type="button" data-palette-open aria-label="Abrir paleta de comandos">
+      <button class="kbd-hint" type="button" data-palette-open data-i18n-attr="aria-label:palette.open" aria-label="Abrir paleta de comandos">
         <kbd>Ctrl</kbd><kbd>K</kbd>
       </button>
-      <a class="btn btn-gold btn-sm" href="#contacto" data-magnetic><span>Pedir cotización</span></a>
-      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+      <div class="toggles">
+        <button class="toggle lang-toggle" type="button" data-lang-toggle data-i18n-attr="aria-label:lang.switch" aria-label="Cambiar idioma a inglés">
+          <span data-lang-opt="es">ES</span><span data-lang-opt="en">EN</span>
+        </button>
+        <button class="toggle theme-toggle" type="button" data-theme-toggle data-i18n-attr="aria-label:theme.switch" aria-label="Cambiar tema">
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8Z"/></svg>
+        </button>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#contacto" data-magnetic><span data-i18n="cta.quote">Pedir cotización</span></a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" data-i18n-attr="aria-label:menu.open" aria-label="Abrir menú">
         <span></span><span></span>
       </button>
     </div>
   </header>
 
   <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
-    <a href="#servicios">servicios</a>
-    <a href="#proceso">proceso</a>
-    <a href="#proyectos">proyectos</a>
-    <a href="#equipo">equipo</a>
-    <a href="#preguntas">preguntas</a>
-    <a href="#contacto" class="btn btn-gold">Pedir cotización</a>
+    <a href="#servicios" data-i18n="nav.services">servicios</a>
+    <a href="#proceso" data-i18n="nav.process">proceso</a>
+    <a href="#proyectos" data-i18n="nav.work">proyectos</a>
+    <a href="#equipo" data-i18n="nav.team">equipo</a>
+    <a href="#preguntas" data-i18n="nav.faq">preguntas</a>
+    <a href="#contacto" class="btn btn-primary"><span data-i18n="cta.quote">Pedir cotización</span></a>
   </div>
 
   <!-- Riel de señal -->
@@ -73,20 +93,20 @@
     <!-- HERO -->
     <section class="hero" id="inicio" data-section="inicio.tsx">
       <div class="hero-copy">
-        <p class="hero-prompt" data-hero-item><span class="p-sign">$</span> cpp build <span class="p-flag">--para</span> <span class="p-str">"tu negocio"</span></p>
-        <h1 class="hero-title" aria-label="Menos fricción. Más negocio.">
-          <span class="ht-line" data-hero-line>Menos fricción.</span>
-          <span class="ht-line" data-hero-line>Más negocio.</span>
+        <p class="hero-prompt" data-hero-item><span class="p-sign">$</span> cpp build <span class="p-flag" data-i18n="hero.flag">--para</span> <span class="p-str" data-i18n="hero.prompt">"tu negocio"</span></p>
+        <h1 class="hero-title" data-i18n-attr="aria-label:hero.title" aria-label="Menos fricción. Más negocio.">
+          <span class="ht-line" data-hero-line data-i18n="hero.line1">Menos fricción.</span>
+          <span class="ht-line" data-hero-line data-i18n="hero.line2">Más negocio.</span>
         </h1>
-        <p class="hero-sub" data-hero-item>Diseñamos y programamos páginas, tiendas y sistemas a medida para ayudarte a vender, ordenar tu operación y dejar atrás las tareas repetitivas.</p>
+        <p class="hero-sub" data-hero-item data-i18n="hero.sub">Diseñamos y programamos páginas, tiendas y sistemas a medida para ayudarte a vender, ordenar tu operación y dejar atrás las tareas repetitivas.</p>
         <div class="hero-cta" data-hero-item>
-          <a class="btn btn-gold" href="#contacto" data-magnetic><span>Cuéntanos tu proyecto</span></a>
-          <a class="btn btn-ghost" href="#servicios" data-magnetic><span>Ver servicios y precios</span></a>
+          <a class="btn btn-primary" href="#contacto" data-magnetic><span data-i18n="hero.cta1">Cuéntanos tu proyecto</span></a>
+          <a class="btn btn-ghost" href="#servicios" data-magnetic><span data-i18n="hero.cta2">Ver servicios y precios</span></a>
         </div>
         <ul class="hero-checks" data-hero-item>
-          <li><span class="ok" aria-hidden="true">✓</span> Diseño y desarrollo en un mismo equipo</li>
-          <li><span class="ok" aria-hidden="true">✓</span> Alcance y precios explicados con claridad</li>
-          <li><span class="ok" aria-hidden="true">✓</span> Acompañamiento después del lanzamiento</li>
+          <li><span class="ok" aria-hidden="true">✓</span> <span data-i18n="hero.check1">Diseño y desarrollo en un mismo equipo</span></li>
+          <li><span class="ok" aria-hidden="true">✓</span> <span data-i18n="hero.check2">Alcance y precios explicados con claridad</span></li>
+          <li><span class="ok" aria-hidden="true">✓</span> <span data-i18n="hero.check3">Acompañamiento después del lanzamiento</span></li>
         </ul>
       </div>
 
@@ -97,10 +117,10 @@
           <div class="chip-head" aria-hidden="true">
             <span>U1</span><span data-fps>ascii · 00 fps</span>
           </div>
-          <canvas class="ascii" data-ascii role="img" aria-label="El símbolo de CPP, tres módulos que se ensamblan, dibujado con caracteres de texto en 3D"></canvas>
+          <canvas class="ascii" data-ascii role="img" data-i18n-attr="aria-label:hero.canvas" aria-label="El símbolo de CPP, tres módulos que se ensamblan, dibujado con caracteres de texto en 3D"></canvas>
           <figcaption class="chip-foot">
-            <span>Tres módulos. Un mismo sistema.</span>
-            <span class="chip-drag" aria-hidden="true">arrastra para girar</span>
+            <span data-i18n="hero.caption">Tres módulos. Un mismo sistema.</span>
+            <span class="chip-drag" aria-hidden="true" data-i18n="hero.drag">arrastra para girar</span>
           </figcaption>
         </div>
       </figure>
@@ -109,38 +129,38 @@
     <!-- Cinta de código -->
     <div class="tape" aria-hidden="true">
       <div class="tape-track" data-tape>
-        <span><i class="k">import</i> { diseñoWeb } <i class="k">from</i> <i class="s">"cpp"</i>;</span>
-        <span><i class="k">await</i> tienda.<i class="f">vender</i>();</span>
-        <span>reservas.<i class="f">confirmar</i>({ <i class="n">24</i>/<i class="n">7</i> });</span>
-        <span><i class="k">const</i> tareasManuales = <i class="n">0</i>;</span>
-        <span>sistema.<i class="f">escalar</i>(<i class="s">"contigo"</i>);</span>
-        <span><i class="c">// menos fricción, más negocio</i></span>
+        <span><i class="k">import</i> { webDesign } <i class="k">from</i> <i class="s">"cpp"</i>;</span>
+        <span><i class="k">await</i> store.<i class="f">sell</i>();</span>
+        <span>bookings.<i class="f">confirm</i>({ <i class="n">24</i>/<i class="n">7</i> });</span>
+        <span><i class="k">const</i> manualTasks = <i class="n">0</i>;</span>
+        <span>system.<i class="f">scale</i>(<i class="s">"withYou"</i>);</span>
+        <span><i class="c" data-i18n="tape.comment">// menos fricción, más negocio</i></span>
       </div>
     </div>
 
     <!-- MANIFIESTO -->
     <section class="manifesto" data-section="principio.md">
-      <p class="manifesto-text" data-words>La tecnología más valiosa no presume su complejidad. Hace que vender, atender y operar se sienta más simple.</p>
+      <p class="manifesto-text" data-words data-i18n="manifesto">La tecnología más valiosa no presume su complejidad. Hace que vender, atender y operar se sienta más simple.</p>
     </section>
 
     <!-- DIFF -->
     <section class="diff-sec section" data-section="lo-que-cambia.diff" aria-labelledby="diff-title">
       <div class="sec-head">
-        <h2 id="diff-title" data-scramble-in>No hacemos páginas para decorar. Construimos herramientas para avanzar.</h2>
-        <p>Cada decisión tiene una función: explicar mejor, convertir más visitas, reducir trabajo manual o simplificar la operación.</p>
+        <h2 id="diff-title" data-scramble-in data-i18n="diff.title">No hacemos páginas para decorar. Construimos herramientas para avanzar.</h2>
+        <p data-i18n="diff.sub">Cada decisión tiene una función: explicar mejor, convertir más visitas, reducir trabajo manual o simplificar la operación.</p>
       </div>
       <div class="diff" data-diff>
         <div class="diff-bar" aria-hidden="true">
-          <span>tu-negocio / web.diff</span><span class="diff-stat"><b class="add">+6</b> <b class="del">−1</b></span>
+          <span data-i18n="diff.file">tu-negocio / web.diff</span><span class="diff-stat"><b class="add">+6</b> <b class="del">−1</b></span>
         </div>
         <ol class="diff-lines">
-          <li class="del"><span class="g" aria-hidden="true">−</span><span class="sr-only">Quitamos:</span> Una página bonita que no convierte ni ahorra trabajo</li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><strong>Diseño adaptable.</strong> Una experiencia clara en computadoras, tabletas y celulares.</li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><strong>Soluciones propias.</strong> Cada decisión responde a tus objetivos, procesos y clientes.</li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><strong>Código optimizado.</strong> Ligero, rápido y preparado para crecer contigo.</li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><strong>Menos tareas manuales.</strong> Automatizamos pasos repetitivos para ahorrar tiempo y errores.</li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><strong>Comunicación cercana.</strong> Avances claros y revisiones contigo durante todo el proyecto.</li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><strong>Soporte posterior.</strong> Seguimos disponibles después de publicar.</li>
+          <li class="del"><span class="g" aria-hidden="true">−</span><span data-i18n-html="diff.del"><span class="sr-only">Quitamos:</span> Una página bonita que no convierte ni ahorra trabajo</span></li>
+          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a1"><strong>Diseño adaptable.</strong> Una experiencia clara en computadoras, tabletas y celulares.</span></li>
+          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a2"><strong>Soluciones propias.</strong> Cada decisión responde a tus objetivos, procesos y clientes.</span></li>
+          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a3"><strong>Código optimizado.</strong> Ligero, rápido y preparado para crecer contigo.</span></li>
+          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a4"><strong>Menos tareas manuales.</strong> Automatizamos pasos repetitivos para ahorrar tiempo y errores.</span></li>
+          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a5"><strong>Comunicación cercana.</strong> Avances claros y revisiones contigo durante todo el proyecto.</span></li>
+          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a6"><strong>Soporte posterior.</strong> Seguimos disponibles después de publicar.</span></li>
         </ol>
       </div>
     </section>
@@ -148,13 +168,13 @@
     <!-- SERVICIOS -->
     <section class="services section" id="servicios" data-section="servicios.ts" aria-labelledby="services-title">
       <div class="sec-head">
-        <h2 id="services-title" data-scramble-in>La solución correcta para el momento de tu negocio.</h2>
-        <p>Elige una necesidad concreta. Nosotros definimos el alcance, la tecnología y el camino más eficiente.</p>
+        <h2 id="services-title" data-scramble-in data-i18n="services.title">La solución correcta para el momento de tu negocio.</h2>
+        <p data-i18n="services.sub">Elige una necesidad concreta. Nosotros definimos el alcance, la tecnología y el camino más eficiente.</p>
       </div>
 
       <div class="ide" data-ide>
         <div class="ide-explorer">
-          <p class="ide-label" id="explorer-label">servicios/</p>
+          <p class="ide-label" id="explorer-label" data-i18n="services.folder">servicios/</p>
           <div class="ide-files" role="tablist" aria-labelledby="explorer-label" aria-orientation="vertical" data-files></div>
         </div>
         <div class="ide-main">
@@ -165,8 +185,8 @@
               <h3 data-s-title></h3>
               <p data-s-desc></p>
               <ul data-s-list></ul>
-              <p class="price"><span>desde</span> <strong>USD <span data-s-price>0</span></strong></p>
-              <a class="btn btn-gold" href="#contacto" data-s-cta data-magnetic><span>Cotizar esta solución</span></a>
+              <p class="price"><span data-i18n="services.from">desde</span> <strong>USD <b data-s-price>0</b></strong></p>
+              <a class="btn btn-primary" href="#contacto" data-s-cta data-magnetic><span data-i18n="services.cta">Cotizar esta solución</span></a>
             </div>
           </div>
         </div>
@@ -174,46 +194,46 @@
 
       <div class="services-foot">
         <div class="unsure">
-          <h3>¿No sabes cuál elegir?</h3>
-          <p>Cuéntanos cómo trabajas hoy. Revisamos tu operación y te proponemos el punto de partida con mejor retorno.</p>
-          <a class="link" href="#contacto" data-service-pick="No estoy seguro">Hablemos de tu caso</a>
+          <h3 data-i18n="services.unsureTitle">¿No sabes cuál elegir?</h3>
+          <p data-i18n="services.unsureText">Cuéntanos cómo trabajas hoy. Revisamos tu operación y te proponemos el punto de partida con mejor retorno.</p>
+          <a class="link" href="#contacto" data-service-pick="unsure" data-i18n="services.unsureLink">Hablemos de tu caso</a>
         </div>
-        <p class="note">Los precios son referenciales y pueden variar según las funcionalidades y el alcance de cada proyecto.</p>
+        <p class="note" data-i18n="services.note">Los precios son referenciales y pueden variar según las funcionalidades y el alcance de cada proyecto.</p>
       </div>
     </section>
 
     <!-- PROCESO -->
     <section class="process section" id="proceso" data-section="proceso.git" aria-labelledby="process-title">
       <div class="sec-head">
-        <h2 id="process-title" data-scramble-in>Un proceso claro de principio a fin.</h2>
-        <p>Siempre sabrás qué estamos haciendo, qué necesitamos de ti y cuál es el siguiente avance.</p>
+        <h2 id="process-title" data-scramble-in data-i18n="process.title">Un proceso claro de principio a fin.</h2>
+        <p data-i18n="process.sub">Siempre sabrás qué estamos haciendo, qué necesitamos de ti y cuál es el siguiente avance.</p>
       </div>
       <div class="gitlog" data-gitlog>
         <svg class="git-graph" aria-hidden="true" preserveAspectRatio="none"><path data-git-path /></svg>
         <ol>
           <li class="commit" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash">paso 1 · <code>a1f3c9e</code></p>
-            <h3>Conversamos y entendemos el negocio</h3>
-            <p>Conocemos tus necesidades, tus usuarios y tus prioridades.</p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 1 · <code>a1f3c9e</code></p>
+            <h3 data-i18n="process.s1t">Conversamos y entendemos el negocio</h3>
+            <p data-i18n="process.s1d">Conocemos tus necesidades, tus usuarios y tus prioridades.</p>
           </li>
           <li class="commit" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash">paso 2 · <code>7c02be4</code></p>
-            <h3>Preparamos la propuesta</h3>
-            <p>Acordamos alcance, diseño, tiempos y entregables antes de empezar.</p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 2 · <code>7c02be4</code></p>
+            <h3 data-i18n="process.s2t">Preparamos la propuesta</h3>
+            <p data-i18n="process.s2d">Acordamos alcance, diseño, tiempos y entregables antes de empezar.</p>
           </li>
           <li class="commit" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash">paso 3 · <code>e94d1a0</code></p>
-            <h3>Desarrollamos y revisamos contigo</h3>
-            <p>Avanzamos por entregas para que valides cada parte.</p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 3 · <code>e94d1a0</code></p>
+            <h3 data-i18n="process.s3t">Desarrollamos y revisamos contigo</h3>
+            <p data-i18n="process.s3d">Avanzamos por entregas para que valides cada parte.</p>
           </li>
           <li class="commit commit-head" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash">paso 4 · <code>HEAD → main</code></p>
-            <h3>Publicamos y te acompañamos</h3>
-            <p>Ponemos todo en marcha y seguimos disponibles para soporte.</p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 4 · <code>HEAD → main</code></p>
+            <h3 data-i18n="process.s4t">Publicamos y te acompañamos</h3>
+            <p data-i18n="process.s4d">Ponemos todo en marcha y seguimos disponibles para soporte.</p>
           </li>
         </ol>
       </div>
@@ -222,40 +242,40 @@
     <!-- PROYECTOS -->
     <section class="work section" id="proyectos" data-section="proyectos/" aria-labelledby="work-title">
       <div class="sec-head">
-        <h2 id="work-title" data-scramble-in>No mostramos humo. Mostramos lo que sabemos construir.</h2>
-        <p>Conceptos demostrativos de nuestras capacidades mientras documentamos los primeros casos públicos de CPP. Sin clientes ni resultados inventados.</p>
+        <h2 id="work-title" data-scramble-in data-i18n="work.title">No mostramos humo. Mostramos lo que sabemos construir.</h2>
+        <p data-i18n="work.sub">Conceptos demostrativos de nuestras capacidades mientras documentamos los primeros casos públicos de CPP. Sin clientes ni resultados inventados.</p>
       </div>
 
       <div class="work-grid">
         <article class="win win-wide" data-tilt>
-          <div class="win-bar"><span>panel-operativo</span><span class="win-tag">concepto · aplicación web</span></div>
+          <div class="win-bar"><span data-i18n="work.bar1">panel-operativo</span><span class="win-tag" data-i18n="work.tag1">concepto · aplicación web</span></div>
           <div class="mock mock-dash" aria-hidden="true">
             <div class="md-side"><i></i><i></i><i></i><i></i></div>
             <div class="md-main">
               <div class="md-kpis">
-                <div><small>pedidos hoy</small><b data-count="128">0</b></div>
-                <div><small>pendientes</small><b data-count="9">0</b></div>
-                <div><small>automatizados</small><b data-count="87" data-suffix="%">0</b></div>
+                <div><small data-i18n="work.kpi1">pedidos hoy</small><b data-count="128">0</b></div>
+                <div><small data-i18n="work.kpi2">pendientes</small><b data-count="9">0</b></div>
+                <div><small data-i18n="work.kpi3">automatizados</small><b data-count="87" data-suffix="%">0</b></div>
               </div>
               <div class="md-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               <div class="md-rows">
-                <p><span>#1042 · Inventario</span><em class="st">listo</em></p>
-                <p><span>#1043 · Despacho</span><em class="st">en curso</em></p>
-                <p><span>#1044 · Facturación</span><em class="st">auto</em></p>
+                <p><span data-i18n="work.row1">#1042 · Inventario</span><em class="st"></em></p>
+                <p><span data-i18n="work.row2">#1043 · Despacho</span><em class="st"></em></p>
+                <p><span data-i18n="work.row3">#1044 · Facturación</span><em class="st"></em></p>
               </div>
             </div>
           </div>
           <div class="win-body">
-            <h3>Panel operativo modular</h3>
-            <p>Una interfaz central que convierte procesos dispersos en un flujo visible, ordenado y fácil de gestionar. Incluye panel, roles y automatizaciones.</p>
-            <a class="link" href="#contacto" data-service-pick="Aplicación web a medida">Quiero explorar algo así</a>
+            <h3 data-i18n="work.p1t">Panel operativo modular</h3>
+            <p data-i18n="work.p1d">Una interfaz central que convierte procesos dispersos en un flujo visible, ordenado y fácil de gestionar. Incluye panel, roles y automatizaciones.</p>
+            <a class="link" href="#contacto" data-service-pick="app" data-i18n="work.p1l">Quiero explorar algo así</a>
           </div>
         </article>
 
         <article class="win" data-tilt>
-          <div class="win-bar"><span>tienda</span><span class="win-tag">concepto · e-commerce</span></div>
+          <div class="win-bar"><span data-i18n="work.bar2">tienda</span><span class="win-tag" data-i18n="work.tag2">concepto · e-commerce</span></div>
           <div class="mock mock-shop" aria-hidden="true">
-            <div class="ms-head"><span>catálogo</span><span class="ms-cart">carrito <b data-cart>0</b></span></div>
+            <div class="ms-head"><span data-i18n="work.catalog">catálogo</span><span class="ms-cart"><span data-i18n="work.cart">carrito</span> <b data-cart>0</b></span></div>
             <div class="ms-grid">
               <div class="ms-item"><i></i><span></span><b>S/ 89</b></div>
               <div class="ms-item"><i></i><span></span><b>S/ 145</b></div>
@@ -264,22 +284,22 @@
             <div class="ms-fly" data-fly></div>
           </div>
           <div class="win-body">
-            <h3>Una tienda que guía la compra</h3>
-            <p>Catálogo claro, decisiones simples y un recorrido pensado para convertir interés en pedidos.</p>
-            <a class="link" href="#contacto" data-service-pick="Tienda e-commerce">Explorar e-commerce</a>
+            <h3 data-i18n="work.p2t">Una tienda que guía la compra</h3>
+            <p data-i18n="work.p2d">Catálogo claro, decisiones simples y un recorrido pensado para convertir interés en pedidos.</p>
+            <a class="link" href="#contacto" data-service-pick="store" data-i18n="work.p2l">Explorar e-commerce</a>
           </div>
         </article>
 
         <article class="win" data-tilt>
-          <div class="win-bar"><span>reservas</span><span class="win-tag">concepto · reservas + automatización</span></div>
+          <div class="win-bar"><span data-i18n="work.bar3">reservas</span><span class="win-tag" data-i18n="work.tag3">concepto · reservas + automatización</span></div>
           <div class="mock mock-cal" aria-hidden="true">
             <div class="mc-grid" data-cal></div>
-            <div class="mc-toast" data-toast><span class="ok">✓</span> Reserva confirmada · 18:30</div>
+            <div class="mc-toast" data-toast></div>
           </div>
           <div class="win-body">
-            <h3>Disponibilidad sin idas y vueltas</h3>
-            <p>Reservas, confirmaciones y gestión en un solo flujo, incluso cuando el negocio está cerrado.</p>
-            <a class="link" href="#contacto" data-service-pick="Sistema de reservas">Explorar reservas</a>
+            <h3 data-i18n="work.p3t">Disponibilidad sin idas y vueltas</h3>
+            <p data-i18n="work.p3d">Reservas, confirmaciones y gestión en un solo flujo, incluso cuando el negocio está cerrado.</p>
+            <a class="link" href="#contacto" data-service-pick="bookings" data-i18n="work.p3l">Explorar reservas</a>
           </div>
         </article>
       </div>
@@ -288,107 +308,121 @@
     <!-- EQUIPO -->
     <section class="team section" id="equipo" data-section="equipo.json" aria-labelledby="team-title">
       <div class="sec-head">
-        <h2 id="team-title" data-scramble-in>Creatividad, estrategia y programación en el mismo equipo.</h2>
-        <p>Somos tres socios con una misma visión: entender bien el problema antes de escribir una sola línea de código.</p>
+        <h2 id="team-title" data-scramble-in data-i18n="team.title">Creatividad, estrategia y programación en el mismo equipo.</h2>
+        <p data-i18n="team.sub">Somos tres socios con una misma visión: entender bien el problema antes de escribir una sola línea de código. Toca una tarjeta para conocernos.</p>
       </div>
-      <ul class="team-grid">
-        <li class="member" data-tilt>
-          <a href="https://www.linkedin.com/in/jose-santana-sl-2005-pc/" target="_blank" rel="noopener noreferrer">
-            <span class="portrait"><img src="assets/team/jose-480.webp" srcset="assets/team/jose-480.webp 480w, assets/team/jose-960.webp 960w" sizes="(max-width: 700px) 90vw, 30vw" width="480" height="640" alt="Retrato de José Santana" loading="lazy" decoding="async" /></span>
-            <span class="member-info"><strong>José Santana</strong><span>Ingeniero de software</span><span class="member-link">Ver LinkedIn</span></span>
-          </a>
-        </li>
-        <li class="member" data-tilt>
-          <a href="https://www.linkedin.com/in/darnell-cuba-vega-a7b91b377/" target="_blank" rel="noopener noreferrer">
-            <span class="portrait"><img src="assets/team/darnell-480.webp" srcset="assets/team/darnell-480.webp 480w, assets/team/darnell-960.webp 960w" sizes="(max-width: 700px) 90vw, 30vw" width="480" height="640" alt="Retrato de Darnell Cuba" loading="lazy" decoding="async" /></span>
-            <span class="member-info"><strong>Darnell Cuba</strong><span>Ingeniero de software</span><span class="member-link">Ver LinkedIn</span></span>
-          </a>
-        </li>
-        <li class="member" data-tilt>
-          <a href="https://www.linkedin.com/in/juan-diego-flores-rios-425340311/" target="_blank" rel="noopener noreferrer">
-            <span class="portrait"><img src="assets/team/juan-480.webp" srcset="assets/team/juan-480.webp 480w, assets/team/juan-960.webp 960w" sizes="(max-width: 700px) 90vw, 30vw" width="480" height="640" alt="Retrato de Juan Flores" loading="lazy" decoding="async" /></span>
-            <span class="member-info"><strong>Juan Flores</strong><span>Ingeniero de software</span><span class="member-link">Ver LinkedIn</span></span>
-          </a>
-        </li>
-      </ul>
+      <ul class="team-grid" data-team-grid></ul>
+
+      <dialog class="profile" data-profile aria-labelledby="profile-name">
+        <div class="profile-card" data-profile-card>
+          <div class="profile-media">
+            <img data-p-photo src="assets/team/jose-480.webp" alt="" width="480" height="640" decoding="async" />
+            <span class="profile-module" data-p-module aria-hidden="true"></span>
+          </div>
+          <div class="profile-body">
+            <div class="profile-top">
+              <p class="profile-kicker" data-p-kicker></p>
+              <button class="profile-close" type="button" data-profile-close data-i18n-attr="aria-label:team.close" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              </button>
+            </div>
+            <h3 id="profile-name" data-p-name></h3>
+            <p class="profile-role" data-p-role></p>
+            <p class="profile-bio" data-p-bio></p>
+
+            <div class="profile-tabs" role="tablist" data-i18n-attr="aria-label:team.tabs" aria-label="Información del socio" data-p-tabs></div>
+            <div class="profile-panel" role="tabpanel" id="profile-panel" data-p-panel></div>
+
+            <div class="profile-actions">
+              <a class="btn btn-primary btn-sm" data-p-linkedin href="#" target="_blank" rel="noopener noreferrer"><span data-i18n="team.linkedin">Ver perfil en LinkedIn</span></a>
+              <a class="link" href="#contacto" data-profile-close data-i18n="team.work">Trabajar con el equipo</a>
+            </div>
+            <div class="profile-nav">
+              <button type="button" data-p-prev data-i18n-attr="aria-label:team.prev" aria-label="Socio anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <span data-p-count>1 / 3</span>
+              <button type="button" data-p-next data-i18n-attr="aria-label:team.next" aria-label="Socio siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </section>
 
     <!-- CONTACTO -->
     <section class="contact section" id="contacto" data-section="contacto.form" aria-labelledby="contact-title">
       <div class="contact-copy">
-        <h2 id="contact-title" data-scramble-in>El mejor proyecto empieza con una conversación clara.</h2>
-        <p>Cuéntanos lo esencial. Con ese contexto entendemos el alcance y te proponemos el siguiente paso.</p>
+        <h2 id="contact-title" data-scramble-in data-i18n="contact.title">El mejor proyecto empieza con una conversación clara.</h2>
+        <p data-i18n="contact.sub">Cuéntanos lo esencial. Con ese contexto entendemos el alcance y te proponemos el siguiente paso.</p>
         <ol class="next-steps">
-          <li>Revisamos qué necesita resolver tu negocio.</li>
-          <li>Te proponemos la solución con más sentido.</li>
-          <li>Acordamos alcance, inversión y próximos pasos.</li>
+          <li data-i18n="contact.n1">Revisamos qué necesita resolver tu negocio.</li>
+          <li data-i18n="contact.n2">Te proponemos la solución con más sentido.</li>
+          <li data-i18n="contact.n3">Acordamos alcance, inversión y próximos pasos.</li>
         </ol>
-        <p class="reply"><span class="led" aria-hidden="true"></span> Respondemos en menos de 24 horas hábiles.</p>
+        <p class="reply"><span class="led" aria-hidden="true"></span> <span data-i18n="contact.reply">Respondemos en menos de 24 horas hábiles.</span></p>
       </div>
 
       <form class="editor-form" id="quote-form" novalidate data-form>
-        <div class="ef-bar" aria-hidden="true"><span>nueva-solicitud.json</span><span data-form-state>vacío</span></div>
+        <div class="ef-bar" aria-hidden="true"><span data-i18n="form.file">nueva-solicitud.json</span><span data-form-state data-i18n="form.empty">vacío</span></div>
         <div class="ef-body">
           <div class="hp" aria-hidden="true">
-            <label for="website">Sitio web</label>
+            <label for="website">Website</label>
             <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
           </div>
           <div class="field">
-            <label for="name">Nombre</label>
+            <label for="name" data-i18n="form.name">Nombre</label>
             <input id="name" name="name" type="text" autocomplete="name" required />
             <p class="err" id="name-error"></p>
           </div>
           <div class="field">
-            <label for="company">Empresa <span class="opt">(opcional)</span></label>
+            <label for="company"><span data-i18n="form.company">Empresa</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
             <input id="company" name="company" type="text" autocomplete="organization" />
           </div>
           <div class="field">
-            <label for="email">Correo electrónico</label>
+            <label for="email" data-i18n="form.email">Correo electrónico</label>
             <input id="email" name="email" type="email" autocomplete="email" required />
             <p class="err" id="email-error"></p>
           </div>
           <div class="field">
-            <label for="phone">WhatsApp o teléfono</label>
+            <label for="phone" data-i18n="form.phone">WhatsApp o teléfono</label>
             <input id="phone" name="phone" type="tel" autocomplete="tel" required />
             <p class="err" id="phone-error"></p>
           </div>
           <div class="field">
-            <label for="service">Servicio</label>
+            <label for="service" data-i18n="form.service">Servicio</label>
             <select id="service" name="service" required>
-              <option value="">Selecciona una opción</option>
-              <option>Landing page</option>
-              <option>Página web corporativa</option>
-              <option>Tienda e-commerce</option>
-              <option>Aplicación web a medida</option>
-              <option>Sistema de reservas</option>
-              <option>Catálogo digital</option>
-              <option>Automatización de procesos</option>
-              <option>No estoy seguro</option>
+              <option value="" data-i18n="form.choose">Selecciona una opción</option>
+              <option value="landing" data-i18n="svc.landing">Landing page</option>
+              <option value="corporate" data-i18n="svc.corporate">Página web corporativa</option>
+              <option value="store" data-i18n="svc.store">Tienda e-commerce</option>
+              <option value="app" data-i18n="svc.app">Aplicación web a medida</option>
+              <option value="bookings" data-i18n="svc.bookings">Sistema de reservas</option>
+              <option value="catalog" data-i18n="svc.catalog">Catálogo digital</option>
+              <option value="automation" data-i18n="svc.automation">Automatización de procesos</option>
+              <option value="unsure" data-i18n="svc.unsure">No estoy seguro</option>
             </select>
             <p class="err" id="service-error"></p>
           </div>
           <div class="field">
-            <label for="budget">Presupuesto aproximado <span class="opt">(opcional)</span></label>
+            <label for="budget"><span data-i18n="form.budget">Presupuesto aproximado</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
             <select id="budget" name="budget">
-              <option>Prefiero conversarlo</option>
-              <option>Menos de USD 500</option>
-              <option>USD 500 a USD 1,000</option>
-              <option>USD 1,000 a USD 2,500</option>
-              <option>Más de USD 2,500</option>
+              <option value="talk" data-i18n="budget.talk">Prefiero conversarlo</option>
+              <option value="lt-500" data-i18n="budget.b1">Menos de USD 500</option>
+              <option value="500-1000" data-i18n="budget.b2">USD 500 a USD 1,000</option>
+              <option value="1000-2500" data-i18n="budget.b3">USD 1,000 a USD 2,500</option>
+              <option value="gt-2500" data-i18n="budget.b4">Más de USD 2,500</option>
             </select>
           </div>
           <div class="field field-full">
-            <label for="message">Descripción del proyecto</label>
-            <textarea id="message" name="message" rows="5" minlength="20" required placeholder="Qué vendes u ofreces, qué quieres lograr y cómo lo resuelves hoy."></textarea>
+            <label for="message" data-i18n="form.message">Descripción del proyecto</label>
+            <textarea id="message" name="message" rows="5" minlength="20" required data-i18n-attr="placeholder:form.placeholder" placeholder="Qué vendes u ofreces, qué quieres lograr y cómo lo resuelves hoy."></textarea>
             <p class="err" id="message-error"></p>
           </div>
           <div class="field field-full check">
             <input id="privacy" name="privacy" type="checkbox" required />
-            <label for="privacy">Acepto la <a class="link" href="privacy.html">política de privacidad</a> y el uso de mis datos para responder esta solicitud.</label>
+            <label for="privacy" data-i18n-html="form.privacy">Acepto la <a class="link" href="privacy.html">política de privacidad</a> y el uso de mis datos para responder esta solicitud.</label>
             <p class="err" id="privacy-error"></p>
           </div>
           <div class="field-full form-end">
-            <button class="btn btn-gold" type="submit" data-magnetic><span>Enviar solicitud</span></button>
+            <button class="btn btn-primary" type="submit" data-magnetic><span data-i18n="form.submit">Enviar solicitud</span></button>
             <p class="form-status" role="status" data-status></p>
           </div>
         </div>
@@ -398,24 +432,24 @@
     <!-- FAQ -->
     <section class="faq section" id="preguntas" data-section="preguntas.sh" aria-labelledby="faq-title">
       <div class="sec-head">
-        <h2 id="faq-title" data-scramble-in>Preguntas antes de empezar.</h2>
+        <h2 id="faq-title" data-scramble-in data-i18n="faq.title">Preguntas antes de empezar.</h2>
       </div>
       <div class="term">
         <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> ¿Cuánto cuesta desarrollar mi proyecto?</summary>
-          <p>Depende del tipo de solución, el diseño, las funcionalidades y el alcance. Cuando conozcamos tus necesidades te enviamos una cotización personalizada. Los precios "desde" de cada servicio te dan una referencia.</p>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q1">¿Cuánto cuesta desarrollar mi proyecto?</span></summary>
+          <p data-i18n="faq.a1">Depende del tipo de solución, el diseño, las funcionalidades y el alcance. Cuando conozcamos tus necesidades te enviamos una cotización personalizada. Los precios "desde" de cada servicio te dan una referencia.</p>
         </details>
         <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> ¿Cuánto tiempo tarda el desarrollo?</summary>
-          <p>Varía según la complejidad. Antes de comenzar acordamos contigo un cronograma claro de trabajo y entregas.</p>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q2">¿Cuánto tiempo tarda el desarrollo?</span></summary>
+          <p data-i18n="faq.a2">Varía según la complejidad. Antes de comenzar acordamos contigo un cronograma claro de trabajo y entregas.</p>
         </details>
         <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> ¿Funcionará bien en celulares?</summary>
-          <p>Sí. Todos nuestros proyectos se diseñan y prueban para computadoras, tabletas y celulares.</p>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q3">¿Funcionará bien en celulares?</span></summary>
+          <p data-i18n="faq.a3">Sí. Todos nuestros proyectos se diseñan y prueban para computadoras, tabletas y celulares.</p>
         </details>
         <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> ¿Dan soporte después de entregar?</summary>
-          <p>Sí. Ofrecemos soporte, mantenimiento y mejoras posteriores según lo que necesite tu proyecto.</p>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q4">¿Dan soporte después de entregar?</span></summary>
+          <p data-i18n="faq.a4">Sí. Ofrecemos soporte, mantenimiento y mejoras posteriores según lo que necesite tu proyecto.</p>
         </details>
       </div>
     </section>
@@ -423,16 +457,16 @@
 
   <footer class="foot" data-section="EOF">
     <div class="foot-cta">
-      <p>¿Tienes una idea o necesitas digitalizar tu negocio?</p>
-      <a class="btn btn-gold" href="#contacto" data-magnetic><span>Pedir cotización</span></a>
+      <p data-i18n="foot.cta">¿Tienes una idea o necesitas digitalizar tu negocio?</p>
+      <a class="btn btn-primary" href="#contacto" data-magnetic><span data-i18n="cta.quote">Pedir cotización</span></a>
     </div>
     <p class="foot-word" data-foot-word aria-hidden="true">cpp</p>
     <div class="foot-row">
       <span>Creative Programming Partners © <span data-year>2026</span></span>
-      <nav aria-label="Pie de página">
-        <a href="#servicios">Servicios</a>
-        <a href="#equipo">Equipo</a>
-        <a href="privacy.html">Privacidad</a>
+      <nav data-i18n-attr="aria-label:foot.nav" aria-label="Pie de página">
+        <a href="#servicios" data-i18n="foot.services">Servicios</a>
+        <a href="#equipo" data-i18n="foot.team">Equipo</a>
+        <a href="privacy.html" data-i18n="foot.privacy">Privacidad</a>
       </nav>
       <span class="eof" aria-hidden="true">// EOF</span>
     </div>
@@ -444,19 +478,20 @@
     <span data-status-file>inicio.tsx</span>
     <span class="st-grow"></span>
     <span data-status-ln>Ln 1, Col 1</span>
+    <span class="st-hide" data-status-lang>ES</span>
     <span class="st-hide">UTF-8</span>
-    <span class="st-hide">cpp v2</span>
   </div>
 
   <!-- Paleta de comandos -->
   <div class="palette" data-palette hidden>
-    <div class="palette-box" role="dialog" aria-modal="true" aria-label="Paleta de comandos">
-      <input type="text" data-palette-input placeholder="Escribe a dónde quieres ir…" aria-label="Buscar comando" autocomplete="off" />
+    <div class="palette-box" role="dialog" aria-modal="true" data-i18n-attr="aria-label:palette.label" aria-label="Paleta de comandos">
+      <input type="text" data-palette-input data-i18n-attr="placeholder:palette.placeholder;aria-label:palette.search" placeholder="Escribe a dónde quieres ir…" aria-label="Buscar comando" autocomplete="off" />
       <ul data-palette-list role="listbox"></ul>
-      <p class="palette-hint"><kbd>↑</kbd><kbd>↓</kbd> elegir <kbd>Enter</kbd> ir <kbd>Esc</kbd> cerrar</p>
+      <p class="palette-hint"><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="palette.choose">elegir</span> <kbd>Enter</kbd> <span data-i18n="palette.go">ir</span> <kbd>Esc</kbd> <span data-i18n="palette.close">cerrar</span></p>
     </div>
   </div>
 
+  <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

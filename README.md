@@ -2,18 +2,33 @@
 
 Versión 2 de la landing de Creative Programming Partners. Sitio estático sin dependencias ni compilación: `index.html`, `styles.css`, `script.js` y `assets/`.
 
-## Dirección visual: "la placa que ejecuta código"
+## Dirección visual
 
-| Token | HEX | Uso |
-|---|---|---|
-| Solder | `#06231B` | Fondo (máscara de soldadura) |
-| Mask | `#0B3528` | Superficies |
-| Trace | `#145443` | Bordes, pistas |
-| Gold | `#E8C15A` | Acción principal, pads |
-| Signal | `#72F2D2` | Señal viva, foco (menta de la marca) |
-| Silk | `#EEF2E6` | Texto (serigrafía) |
+Colores originales de CPP, con tema claro y oscuro (se respeta la preferencia del sistema y se recuerda la elección):
+
+| Token | Claro | Oscuro | Uso |
+|---|---|---|---|
+| `--bg` | `#F7F8F8` | `#050F17` | Fondo |
+| `--surface` | `#FFFFFF` | `#0B1A26` | Tarjetas y paneles |
+| `--text` | `#071521` | `#F4F7F5` | Texto principal |
+| `--text-2` | `#3E545F` | `#9AAFB9` | Texto secundario |
+| `--accent` | `#1D5AE0` | `#5B8CFF` | Acción principal (cobalto) |
+| `--steel` | `#607985` | `#9AAFB9` | Tercer módulo de la marca |
+| `--live` | `#0D7A63` | `#72F2D2` | Confirmaciones y foco |
 
 Tipografía: **Martian Mono** (titulares y código, con eje de ancho animado) + **Instrument Sans** (lectura).
+
+## Idiomas
+
+Español e inglés. El idioma inicial sale del navegador y se recuerda la elección.
+
+- Textos estáticos: el español vive en `index.html` (atributos `data-i18n`, `data-i18n-html`, `data-i18n-attr`); el inglés, en `i18n.js` → `en`.
+- Textos generados por JavaScript, servicios y equipo: `i18n.js` → `strings`, `services`, `team`.
+- Para agregar un idioma, añade su bloque en esos objetos y una opción en el botón de idioma.
+
+## Equipo
+
+Cada socio abre una tarjeta con foto, rol, bio y pestañas (perfil, enfoque, habilidades), navegación entre socios con flechas o deslizando, y el enlace a LinkedIn dentro de la tarjeta. Los datos están en `i18n.js` → `team`; los campos vacíos (por ejemplo `skills: []`) no se muestran.
 
 ## Movimiento y efectos
 
@@ -25,7 +40,8 @@ Tipografía: **Martian Mono** (titulares y código, con eje de ancho animado) + 
 - Beneficios como un `diff`, servicios como un editor con código que se escribe solo, proceso como un `git log` que se dibuja.
 - Proyectos con mini interfaces vivas (panel, tienda con carrito, calendario de reservas).
 - Retratos con trama de puntos que pasan a color al pasar el cursor.
-- Paleta de comandos (`Ctrl/⌘ + K` o `/`), barra de estado tipo IDE, cursor caret, botones magnéticos, tarjetas con inclinación y luz.
+- Paleta de comandos (`Ctrl/⌘ + K` o `/`), que también cambia tema e idioma; barra de estado tipo IDE, cursor caret, botones magnéticos, tarjetas con inclinación y luz.
+- Cambio de tema con revelado circular desde el botón (View Transitions).
 - Todo respeta `prefers-reduced-motion`.
 
 ## Vista local
