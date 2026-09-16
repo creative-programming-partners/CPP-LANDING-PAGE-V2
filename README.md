@@ -23,12 +23,14 @@ Tipografía: **Martian Mono** (titulares y código, con eje de ancho animado) + 
 Español e inglés. El idioma inicial sale del navegador y se recuerda la elección.
 
 - Textos estáticos: el español vive en `index.html` (atributos `data-i18n`, `data-i18n-html`, `data-i18n-attr`); el inglés, en `i18n.js` → `en`.
-- Textos generados por JavaScript, servicios y equipo: `i18n.js` → `strings`, `services`, `team`.
+- Textos generados por JavaScript y servicios: `i18n.js` → `strings`, `services`. Equipo: `team.js`.
 - Para agregar un idioma, añade su bloque en esos objetos y una opción en el botón de idioma.
 
 ## Equipo
 
-Cada socio abre una tarjeta con foto, rol, bio y pestañas (perfil, enfoque, habilidades), navegación entre socios con flechas o deslizando, y el enlace a LinkedIn dentro de la tarjeta. Los datos están en `i18n.js` → `team`; los campos vacíos (por ejemplo `skills: []`) no se muestran.
+Cada socio abre una tarjeta con foto, especialidad, bio, frase y tres pestañas: **Perfil** (datos), **En CPP** (resumen, tareas y enfoque) y **Stack** (tecnologías por grupo). Se navega entre socios con flechas o deslizando, y LinkedIn queda como botón dentro de la tarjeta.
+
+Los datos están en `team.js`. **Los textos actuales son de ejemplo**: reemplázalos con la información real. Los campos o pestañas vacíos no se muestran.
 
 ## Movimiento y efectos
 

@@ -530,7 +530,7 @@ h3 { font-size: 19px; line-height: 1.25; font-weight: 600; letter-spacing: -.02e
 .member-card:hover .member-open, .member-card:focus-visible .member-open { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: rotate(90deg); }
 
 /* Tarjeta desplegada */
-.profile { width: min(880px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); padding: 0; border: 0; background: transparent; color: var(--text); overflow: visible; }
+.profile { width: min(940px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); padding: 0; border: 0; background: transparent; color: var(--text); overflow: visible; }
 .profile::backdrop { background: color-mix(in srgb, var(--bg-deep) 72%, transparent); backdrop-filter: blur(8px); animation: fadeIn .4s var(--ease); }
 .profile.is-closing::backdrop { animation: fadeOut .38s var(--ease) forwards; }
 @keyframes fadeIn { from { opacity: 0; } }
@@ -559,7 +559,22 @@ body.has-dialog { overflow: hidden; }
 .profile-tabs { display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--surface-2); align-self: flex-start; margin-top: 6px; }
 .profile-tabs button { border: 0; background: none; cursor: pointer; padding: 8px 14px; border-radius: 9px; font: 500 13px/1 var(--sans); color: var(--text-2); transition: background .3s, color .3s, box-shadow .3s; }
 .profile-tabs button[aria-selected="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 0 var(--line-hi), 0 6px 16px -10px color-mix(in srgb, var(--shade) 50%, transparent); }
-.profile-panel { min-height: 118px; }
+.profile-panel { min-height: 150px; }
+.profile-quote {
+  margin: 0 0 4px; padding: 2px 0 2px 16px; border-left: 2px solid var(--mc);
+  font: 400 13.5px/1.6 var(--mono); color: var(--text); font-variation-settings: "wdth" 90;
+}
+.profile-quote::before { content: "// "; color: var(--text-3); }
+.at-cpp { display: grid; gap: 12px; padding-top: 8px; }
+.at-summary { margin: 0; font-weight: 600; }
+.tasks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tasks li { position: relative; padding-left: 26px; color: var(--text-2); font-size: 15px; animation: chipIn .5s var(--ease) both; animation-delay: calc(var(--i) * 60ms); }
+.tasks li::before { content: "→"; position: absolute; left: 0; color: var(--mc); font-family: var(--mono); }
+.at-cpp .chips { margin-top: 2px; }
+.stack { display: grid; gap: 14px; padding-top: 8px; }
+.stack-label { margin: 0 0 6px; font: 500 11.5px/1 var(--mono); color: var(--text-3); }
+.stack .chips { margin: 0; }
+.stack .chips li { font: 500 12.5px/1 var(--mono); padding: 8px 12px; }
 .profile-panel.is-swap > * { animation: swap .5s var(--ease) both; }
 .facts { margin: 6px 0 0; display: grid; }
 .facts div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px dashed var(--line-hi); }

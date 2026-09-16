@@ -631,7 +631,7 @@ const buildGit = () => {
           <span class="member-module" aria-hidden="true">${t('team.module')} 0${m.module}</span>
           <span class="member-info">
             <strong>${m.name}</strong>
-            <span>${L.role}</span>
+            <span>${L.specialty}</span>
           </span>
           <span class="member-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
@@ -643,14 +643,32 @@ const buildGit = () => {
 
   const tabList = (L) => {
     const names = I18N.teamTabs[lang];
-    return [['profile', names.profile, L.facts?.length], ['focus', names.focus, L.focus?.length], ['skills', names.skills, L.skills?.length]].filter((x) => x[2]);
+    const hasCpp = L.atCpp && (L.atCpp.summary || L.atCpp.tasks?.length || L.atCpp.focus?.length);
+    return [['profile', names.profile, L.profile?.length], ['atCpp', names.atCpp, hasCpp], ['stack', names.stack, L.stack?.length]].filter((x) => x[2]);
   };
+
+  const chips = (items, offset = 0) => `<ul class="chips">${items.map((x, i) => `<li style="--i:${i + offset}">${x}</li>`).join('')}</ul>`;
 
   const renderPanel = (animate) => {
     const L = pick(TEAM[index]);
     let html = '';
-    if (tab === 'profile') html = `<dl class="facts">${L.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
-    else html = `<ul class="chips">${(tab === 'focus' ? L.focus : L.skills).map((x, i) => `<li style="--i:${i}">${x}</li>`).join('')}</ul>`;
+    if (tab === 'profile') {
+      html = `<dl class="facts">${L.profile.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
+    } else if (tab === 'atCpp') {
+      const c = L.atCpp;
+      html = `<div class="at-cpp">
+        ${c.summary ? `<p class="at-summary">${c.summary}</p>` : ''}
+        ${c.tasks?.length ? `<ul class="tasks">${c.tasks.map((x, i) => `<li style="--i:${i}">${x}</li>`).join('')}</ul>` : ''}
+        ${c.focus?.length ? chips(c.focus, c.tasks?.length || 0) : ''}
+      </div>`;
+    } else {
+      let n = 0;
+      html = `<div class="stack">${L.stack.map((g) => {
+        const block = `<div class="stack-group"><p class="stack-label">${g.group}</p>${chips(g.items, n)}</div>`;
+        n += g.items.length;
+        return block;
+      }).join('')}</div>`;
+    }
     panel.innerHTML = html;
     panel.setAttribute('aria-labelledby', `ptab-${tab}`);
     if (animate) { panel.classList.remove('is-swap'); void panel.offsetWidth; panel.classList.add('is-swap'); }
@@ -672,7 +690,9 @@ const buildGit = () => {
     $('[data-p-module]', dialog).textContent = `0${m.module}`;
     $('[data-p-kicker]', dialog).textContent = `${t('team.partner')} · ${t('team.module')} 0${m.module}`;
     $('[data-p-name]', dialog).textContent = m.name;
-    $('[data-p-role]', dialog).textContent = L.role;
+    $('[data-p-role]', dialog).textContent = L.specialty;
+    $('[data-p-quote]', dialog).textContent = L.quote || '';
+    $('[data-p-quote]', dialog).hidden = !L.quote;
     $('[data-p-bio]', dialog).textContent = L.bio || '';
     $('[data-p-bio]', dialog).hidden = !L.bio;
     const li = $('[data-p-linkedin]', dialog);
