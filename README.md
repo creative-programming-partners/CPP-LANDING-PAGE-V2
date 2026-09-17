@@ -57,5 +57,25 @@ npx http-server -p 5174 -c-1
 1. **Activa el formulario.** En `script.js`, completa `CONFIG.endpoint` (Formspree, Web3Forms o una función propia que reciba JSON) o `CONFIG.whatsapp` (número con código de país). Sin ninguno de los dos, el formulario valida pero avisa que el envío no está activo.
 2. Publica un correo o WhatsApp visible como canal alternativo.
 3. Revisa la política de privacidad (`privacy.html`) con asesoría adecuada.
-4. Actualiza la imagen Open Graph (`assets/brand/png/cpp-social-cover-1200x630.png`) a la nueva paleta.
-5. Sustituye los conceptos demostrativos por casos reales cuando existan.
+4. Sustituye los conceptos demostrativos por casos reales cuando existan.
+
+## Marca
+
+Los archivos de `assets/brand/` están en la paleta cobalto, con el mismo acento
+que usa la hoja de estilos: `#1d5ae0` sobre claro y `#5b8cff` sobre oscuro. El
+wordmark va en curvas, así que el logotipo se ve igual aunque el equipo no tenga
+instalada la tipografía.
+
+| Archivo | Para qué |
+|---|---|
+| `cpp-banner.svg` · `png/cpp-banner-1280x400.png` | Cabecera de README, portada de LinkedIn |
+| `cpp-logo-horizontal-{dark,light}.svg` | Firma completa |
+| `cpp-symbol-{dark,light}.svg` | Solo el símbolo |
+| `cpp-social-avatar.svg` | Perfil en redes |
+| `cpp-social-cover.svg` · `png/cpp-social-cover-1200x630.png` | Imagen Open Graph |
+
+Se regeneran con `scripts/generar-marca.py` (en la carpeta `CPP-Marca`): produce
+el SVG y el PNG de cada pieza desde la misma descripción, para que no diverjan.
+
+> El menta `--live` **no** es un resto de la paleta anterior: es el color de
+> confirmaciones y foco. No se toca.
