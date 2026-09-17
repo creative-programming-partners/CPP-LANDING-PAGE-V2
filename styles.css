@@ -205,7 +205,7 @@ kbd {
   font: 600 15px/1 var(--sans); text-decoration: none; cursor: pointer; border: 1px solid transparent;
   overflow: hidden; isolation: isolate;
   transform: translate(var(--mx), var(--my));
-  transition: transform .4s var(--ease), background .3s, border-color .3s, color .3s, box-shadow .4s;
+  transition: background .3s, border-color .3s, color .3s, box-shadow .4s;
 }
 .btn span { position: relative; z-index: 1; display: inline-block; transition: transform .4s var(--ease); }
 .btn::after {
@@ -259,7 +259,7 @@ h2 {
 h3 { font-size: 19px; line-height: 1.25; font-weight: 600; letter-spacing: -.02em; }
 .sec-head p { color: var(--text-2); max-width: 60ch; margin: 22px 0 0; font-size: 18px; }
 
-[data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
+[data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity 1.05s var(--ease), transform 1.15s var(--ease); transition-delay: var(--d, 0s); }
 [data-reveal].is-in { opacity: 1; transform: none; }
 
 /* ---------- HERO ---------- */
@@ -435,7 +435,7 @@ h3 { font-size: 19px; line-height: 1.25; font-weight: 600; letter-spacing: -.02e
   position: relative; border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
   background: var(--bg-deep);
   transform: perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));
-  transition: transform .6s var(--ease), border-color .4s;
+  transition: border-color .4s;
 }
 .win::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s;
@@ -501,7 +501,7 @@ h3 { font-size: 19px; line-height: 1.25; font-weight: 600; letter-spacing: -.02e
 
 /* ---------- Equipo ---------- */
 .team-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.member { --rx: 0deg; --ry: 0deg; transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)); transition: transform .6s var(--ease); }
+.member { --rx: 0deg; --ry: 0deg; transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)); }
 .member:nth-child(2) { margin-top: 60px; }
 .member-card { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 16px; color: inherit; }
 .portrait { position: relative; display: block; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
@@ -588,8 +588,23 @@ body.has-dialog { overflow: hidden; }
 .profile-nav { display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--line); font: 400 12px/1 var(--mono); color: var(--text-3); }
 .profile-nav button { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-hi); background: none; color: var(--text); cursor: pointer; display: grid; place-items: center; transition: background .3s, border-color .3s, color .3s; }
 .profile-nav button:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-.profile-card.slide-next .profile-body > *:not(.profile-nav), .profile-card.slide-next .profile-media img { animation: slideNext .55s var(--ease) both; }
-.profile-card.slide-prev .profile-body > *:not(.profile-nav), .profile-card.slide-prev .profile-media img { animation: slidePrev .55s var(--ease) both; }
+/* Índice de cada bloque del cuerpo, para escalonar su entrada. */
+.profile-body > *:nth-child(2) { --si: 1; }
+.profile-body > *:nth-child(3) { --si: 2; }
+.profile-body > *:nth-child(4) { --si: 3; }
+.profile-body > *:nth-child(5) { --si: 4; }
+.profile-body > *:nth-child(6) { --si: 5; }
+.profile-body > *:nth-child(7) { --si: 6; }
+.profile-body > *:nth-child(8) { --si: 7; }
+.profile-body > *:nth-child(9) { --si: 8; }
+
+/* Al cambiar de socio el cuerpo entraba en bloque. Ahora va en cascada. */
+.profile-card.slide-next .profile-body > *:not(.profile-nav), .profile-card.slide-next .profile-media img { animation: slideNext .58s var(--ease) both; animation-delay: calc(var(--si, 0) * .035s); }
+.profile-card.slide-prev .profile-body > *:not(.profile-nav), .profile-card.slide-prev .profile-media img { animation: slidePrev .58s var(--ease) both; animation-delay: calc(var(--si, 0) * .035s); }
+
+/* Al abrir, el contenido entra detrás del FLIP de la tarjeta en vez de estar
+   ya puesto desde el primer cuadro. */
+.profile-card.is-entering:not(.slide-next):not(.slide-prev) .profile-body > *:not(.profile-nav) { animation: swap .6s var(--ease) both; animation-delay: calc(.14s + var(--si, 0) * .04s); }
 @keyframes slideNext { from { opacity: 0; transform: translateX(28px); } }
 @keyframes slidePrev { from { opacity: 0; transform: translateX(-28px); } }
 @media (max-width: 760px) {

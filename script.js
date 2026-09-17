@@ -723,6 +723,12 @@ const buildGit = () => {
     render();
     dialog.showModal();
     document.body.classList.add('has-dialog');
+    /* Dispara la entrada en cascada del cuerpo, detrás del FLIP de la tarjeta. */
+    if (!reduced) {
+      card.classList.remove('is-entering');
+      void card.offsetWidth;
+      card.classList.add('is-entering');
+    }
     flip(from?.querySelector('.portrait') || from, false);
   };
 
@@ -735,6 +741,7 @@ const buildGit = () => {
     await flip(target?.querySelector('.portrait'), true);
     dialog.close();
     dialog.classList.remove('is-closing');
+    card.classList.remove('is-entering');
     document.body.classList.remove('has-dialog');
     closing = false;
     target?.focus({ preventScroll: true });
@@ -784,32 +791,112 @@ const buildGit = () => {
 /* ════════════════════════════════════════════════════════════
    Inclinación, luz, botones magnéticos y cursor
    ════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════
+   Motor de amortiguación para lo que sigue al puntero
+
+   El puntero entrega decenas de eventos por segundo. Escribir cada uno
+   directamente en una variable CSS que además tiene `transition` hace que cada
+   movimiento reinicie la transición anterior: la tarjeta nunca llega a destino
+   y se siente pastosa. Aquí el evento solo anota a dónde hay que llegar, y un
+   único bucle persigue ese destino con interpolación amortiguada, a la misma
+   velocidad en cualquier monitor. Se apaga solo cuando todo llegó.
+   ════════════════════════════════════════════════════════════ */
+const FRAME = 1000 / 144;
+const followers = new Set();
+let followFrame = 0, followLast = 0;
+
+function followTick(now) {
+  followFrame = 0;
+  const k = followLast ? Math.min(64, now - followLast) / FRAME : 1;
+  followLast = now;
+  let again = false;
+
+  followers.forEach((el) => {
+    const f = el._follow;
+    let moving = false;
+    const ease = 1 - Math.pow(f.damp, k);
+    for (const key in f.tgt) {
+      const gap = f.tgt[key] - f.cur[key];
+      if (Math.abs(gap) < f.eps) f.cur[key] = f.tgt[key];
+      else { f.cur[key] += gap * ease; moving = true; }
+    }
+    f.write(el, f.cur);
+    if (moving) again = true;
+    else followers.delete(el);
+  });
+
+  if (again) followFrame = requestAnimationFrame(followTick);
+  else followLast = 0;
+}
+const requestFollow = () => { if (!followFrame) followFrame = requestAnimationFrame(followTick); };
+const pushFollow = (el) => { followers.add(el); requestFollow(); };
+
 function bindTilt(scope = document) {
   if (!finePointer || reduced) return;
   $$('[data-tilt]', scope).forEach((el) => {
     if (el._tilt) return;
     el._tilt = true;
+    el._follow = {
+      damp: 0.87, eps: 0.02,
+      cur: { rx: 0, ry: 0, gx: 50, gy: 50 },
+      tgt: { rx: 0, ry: 0, gx: 50, gy: 50 },
+      write: (node, c) => {
+        node.style.setProperty('--rx', `${c.rx.toFixed(2)}deg`);
+        node.style.setProperty('--ry', `${c.ry.toFixed(2)}deg`);
+        node.style.setProperty('--gx', `${c.gx.toFixed(1)}%`);
+        node.style.setProperty('--gy', `${c.gy.toFixed(1)}%`);
+      }
+    };
+    el.addEventListener('pointerenter', (e) => {
+      /* La luz nace bajo el cursor: si no, se la ve venir desde el centro. */
+      const r = el.getBoundingClientRect();
+      const f = el._follow;
+      f.cur.gx = f.tgt.gx = ((e.clientX - r.left) / r.width) * 100;
+      f.cur.gy = f.tgt.gy = ((e.clientY - r.top) / r.height) * 100;
+    }, { passive: true });
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      el.style.setProperty('--ry', `${(x - 0.5) * 6}deg`);
-      el.style.setProperty('--rx', `${(0.5 - y) * 5}deg`);
-      el.style.setProperty('--gx', `${x * 100}%`);
-      el.style.setProperty('--gy', `${y * 100}%`);
-    });
-    el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+      const f = el._follow;
+      f.tgt.ry = (x - 0.5) * 6;
+      f.tgt.rx = (0.5 - y) * 5;
+      f.tgt.gx = x * 100;
+      f.tgt.gy = y * 100;
+      pushFollow(el);
+    }, { passive: true });
+    el.addEventListener('pointerleave', () => {
+      /* Volver al reposo va más lento que seguir al cursor: se ve asentarse. */
+      const f = el._follow;
+      f.damp = 0.93;
+      f.tgt.rx = 0; f.tgt.ry = 0;
+      pushFollow(el);
+      setTimeout(() => { f.damp = 0.87; }, 700);
+    }, { passive: true });
   });
 }
 
 if (finePointer && !reduced) {
   bindTilt();
   $$('[data-magnetic]').forEach((btn) => {
+    btn._follow = {
+      damp: 0.84, eps: 0.05,
+      cur: { mx: 0, my: 0 }, tgt: { mx: 0, my: 0 },
+      write: (node, c) => {
+        node.style.setProperty('--mx', `${c.mx.toFixed(1)}px`);
+        node.style.setProperty('--my', `${c.my.toFixed(1)}px`);
+      }
+    };
     btn.addEventListener('pointermove', (e) => {
       const r = btn.getBoundingClientRect();
-      btn.style.setProperty('--mx', `${(e.clientX - r.left - r.width / 2) * 0.22}px`);
-      btn.style.setProperty('--my', `${(e.clientY - r.top - r.height / 2) * 0.3}px`);
-    });
-    btn.addEventListener('pointerleave', () => { btn.style.setProperty('--mx', '0px'); btn.style.setProperty('--my', '0px'); });
+      btn._follow.tgt.mx = (e.clientX - r.left - r.width / 2) * 0.22;
+      btn._follow.tgt.my = (e.clientY - r.top - r.height / 2) * 0.3;
+      pushFollow(btn);
+    }, { passive: true });
+    btn.addEventListener('pointerleave', () => {
+      btn._follow.tgt.mx = 0;
+      btn._follow.tgt.my = 0;
+      pushFollow(btn);
+    }, { passive: true });
   });
 
   const cursor = $('[data-cursor]');
@@ -821,12 +908,20 @@ if (finePointer && !reduced) {
     cursor.style.visibility = e.target.closest('input, textarea, canvas, dialog') ? 'hidden' : 'visible';
   });
   document.addEventListener('pointerleave', () => cursor.classList.remove('is-on'));
-  const follow = () => {
-    cx = lerp(cx, tx, 0.22); cy = lerp(cy, ty, 0.22);
-    cursor.style.transform = `translate(${cx}px, ${cy}px)`;
-    requestAnimationFrame(follow);
+  let cursorFrame = 0, cursorLast = 0;
+  const follow = (now) => {
+    cursorFrame = 0;
+    const k = cursorLast ? Math.min(64, now - cursorLast) / FRAME : 1;
+    cursorLast = now;
+    const ease = 1 - Math.pow(0.80, k);
+    cx += (tx - cx) * ease; cy += (ty - cy) * ease;
+    cursor.style.transform = `translate(${cx.toFixed(1)}px, ${cy.toFixed(1)}px)`;
+    /* Se detiene al alcanzar al puntero en vez de girar en vacío. */
+    if (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.3) cursorFrame = requestAnimationFrame(follow);
+    else cursorLast = 0;
   };
-  requestAnimationFrame(follow);
+  const wakeCursor = () => { if (!cursorFrame) cursorFrame = requestAnimationFrame(follow); };
+  addEventListener('pointermove', wakeCursor, { passive: true });
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -859,7 +954,19 @@ const buildRail = () => {
   });
 };
 
-addEventListener('pointermove', (e) => { pointerCol = Math.floor(e.clientX / 9) + 1; }, { passive: true });
+/* La columna del puntero solo repinta ese texto. Antes cada movimiento del
+   ratón disparaba onScroll entero, que mide media página con
+   getBoundingClientRect: decenas de lecturas de layout por segundo sin motivo. */
+let statusFrame = 0;
+const paintStatus = () => {
+  statusFrame = 0;
+  statusLn.textContent = `Ln ${Math.floor(scrollY / 24) + 1}, Col ${pointerCol}`;
+};
+const requestStatus = () => { if (!statusFrame) statusFrame = requestAnimationFrame(paintStatus); };
+addEventListener('pointermove', (e) => {
+  pointerCol = Math.floor(e.clientX / 9) + 1;
+  requestStatus();
+}, { passive: true });
 if (footWord && finePointer && !reduced) {
   foot.addEventListener('pointermove', (e) => footWord.style.setProperty('--fw', (75 + (e.clientX / innerWidth) * 37.5).toFixed(1)));
 }
@@ -876,7 +983,19 @@ function onScroll() {
 
   if (railH) {
     const sigY = clamp(y + vh * 0.55, 0, railH - 90);
-    railSignal.style.transform = `translateY(${sigY}px)`;
+    if (reduced) {
+      railSignal.style.transform = `translateY(${sigY.toFixed(1)}px)`;
+    } else {
+      if (!railSignal._follow) {
+        railSignal._follow = {
+          damp: 0.8, eps: 0.1,
+          cur: { y: sigY }, tgt: { y: sigY },
+          write: (node, c) => { node.style.transform = `translateY(${c.y.toFixed(1)}px)`; }
+        };
+      }
+      railSignal._follow.tgt.y = sigY;
+      pushFollow(railSignal);
+    }
     railPads.forEach((p) => p.el.classList.toggle('is-lit', sigY + 90 > p.y));
   }
 
@@ -887,7 +1006,7 @@ function onScroll() {
     statusFile.textContent = currentFile;
     navLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === `#${active.id}`));
   }
-  statusLn.textContent = `Ln ${Math.floor(y / 24) + 1}, Col ${pointerCol}`;
+  paintStatus();
 
   if (manifestoWords.length && !reduced) {
     const r = manifesto.getBoundingClientRect();
@@ -911,7 +1030,6 @@ function onScroll() {
 }
 function requestScroll() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }
 addEventListener('scroll', requestScroll, { passive: true });
-addEventListener('pointermove', requestScroll, { passive: true });
 const layout = () => { buildRail(); buildGit(); onScroll(); };
 addEventListener('resize', layout);
 addEventListener('load', layout);
