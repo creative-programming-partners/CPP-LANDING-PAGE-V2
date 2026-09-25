@@ -754,7 +754,7 @@ const TRI = '<svg class="tri" viewBox="0 0 12 12" aria-hidden="true"><path d="M6
   let current = 0, priceRaf = 0, counted = false;
 
   const renderTabs = () => {
-    list.innerHTML = SERVICES.map((s, i) => `<button class="svc-tab" type="button" role="tab" id="tab-${s.key}" aria-controls="service-panel" aria-selected="${i === current}" tabindex="${i === current ? 0 : -1}"><span class="svc-dot" aria-hidden="true"></span><span>${staticText(`svc.${s.key}`)}</span><span class="svc-from">USD ${s.price.toLocaleString('en-US')}</span></button>`).join('');
+    list.innerHTML = SERVICES.map((s, i) => `<button class="svc-tab" type="button" role="tab" id="tab-${s.key}" aria-controls="service-panel" aria-selected="${i === current}" tabindex="${i === current ? 0 : -1}"><span class="svc-dot" aria-hidden="true"></span><span>${staticText(`svc.${s.key}`)}</span><span class="svc-from">S/ ${s.price.toLocaleString('en-US')}${s.plus ? '+' : ''}</span></button>`).join('');
   };
 
   const countPrice = (to) => {
@@ -781,6 +781,7 @@ const TRI = '<svg class="tri" viewBox="0 0 12 12" aria-hidden="true"><path d="M6
     $('[data-s-title]').textContent = L.title;
     $('[data-s-desc]').textContent = L.desc;
     $('[data-s-list]').innerHTML = L.list.map((x) => `<li>${TRI}<span>${x}</span></li>`).join('');
+    $('[data-s-plus]').hidden = !s.plus;
     $('[data-s-cta]').dataset.servicePick = s.key;
     if (animate && !reduced) { panel.classList.remove('is-swap'); void panel.offsetWidth; panel.classList.add('is-swap'); }
     countPrice(s.price);

@@ -475,6 +475,11 @@ main, .foot { position: relative; z-index: 1; }
   font-size: var(--text-heading-2xs); line-height: 1; letter-spacing: 0;
   color: var(--color-ash-gray);
 }
+.price-plus {
+  align-self: flex-end; padding-bottom: .15em;
+  font-size: var(--text-heading-2xs); line-height: 1; letter-spacing: 0;
+  color: var(--color-ash-gray);
+}
 .svc-panel .btn { margin-top: var(--spacing-36); }
 .svc-panel.is-swap > * { animation: swapIn .7s var(--ease) both; }
 .svc-panel.is-swap > :nth-child(2) { animation-delay: .04s; }
