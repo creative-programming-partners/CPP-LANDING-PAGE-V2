@@ -54,7 +54,7 @@ npx http-server -p 5174 -c-1
 
 ## Antes de publicar
 
-1. **Activa el formulario.** En `script.js`, completa `CONFIG.endpoint` (Formspree, Web3Forms o una función propia que reciba JSON) o `CONFIG.whatsapp` (número con código de país). Sin ninguno de los dos, el formulario valida pero avisa que el envío no está activo.
+1. **Formulario.** Hoy abre WhatsApp al +51 929 363 454 con la solicitud escrita (`CONFIG.whatsapp` en `script.js`). Si prefieres recibirlo por correo, completa `CONFIG.endpoint` (Formspree, Web3Forms o una función propia que reciba JSON): cuando hay endpoint, se usa en lugar de WhatsApp.
 2. Publica un correo o WhatsApp visible como canal alternativo.
 3. Revisa la política de privacidad (`privacy.html`) con asesoría adecuada.
 4. Sustituye los conceptos demostrativos por casos reales cuando existan.

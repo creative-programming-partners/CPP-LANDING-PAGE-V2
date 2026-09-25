@@ -6,7 +6,7 @@
    Si hay endpoint se usa; si no, se abre WhatsApp con la solicitud escrita. */
 const CONFIG = {
   endpoint: '',
-  whatsapp: ''
+  whatsapp: '51929363454'
 };
 
 const $ = (s, r = document) => r.querySelector(s);
