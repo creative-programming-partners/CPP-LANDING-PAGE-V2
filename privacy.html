@@ -4,36 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="color-scheme" content="dark" />
   <title>Política de privacidad | CPP</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("cpp-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,400;14..32,600;14..32,700&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=202609251200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=202609161520" />
   <style>
-    .legal { width: min(760px, 100% - 2 * var(--gutter)); margin: 0 auto; padding: 36px 0 var(--spacing-120); }
-    .legal .brand { margin-bottom: var(--spacing-96); }
-    .legal .label { margin-bottom: var(--spacing-18); }
-    .legal h1 { font-size: var(--fs-heading-lg); line-height: var(--leading-heading-lg); letter-spacing: var(--tracking-display); margin-bottom: var(--spacing-60); }
-    .legal h2 { font-size: var(--text-heading-2xs); line-height: var(--leading-heading-2xs); letter-spacing: var(--tracking-heading-2xs); margin: var(--spacing-60) 0 var(--spacing-12); }
-    .legal .body { color: var(--color-silver-mist); max-width: 68ch; }
-    .legal-note { color: var(--color-bone-white) !important; }
-    .legal-note strong { font-weight: var(--font-weight-regular); color: var(--color-saffron-spark); }
-    .legal .ghost { margin-top: var(--spacing-60); }
+    .legal { width: min(760px, 100% - 32px); margin: 0 auto; padding: 48px 0 120px; }
+    .legal .brand { margin-bottom: 72px; }
+    .legal h1 { font-size: clamp(32px, 6vw, 60px); line-height: 1.05; font-variation-settings: "wdth" 80; margin-bottom: 28px; }
+    .legal h2 { font-size: 22px; margin: 44px 0 10px; font-variation-settings: "wdth" 88; }
+    .legal p { color: var(--fog); max-width: 68ch; }
+    .legal-note { padding: 16px 18px; border: 1px dashed var(--gold); border-radius: 10px; color: var(--silk) !important; }
   </style>
 </head>
 <body>
-  <svg class="defs" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="cpp-grad" x1="20" y1="8" x2="108" y2="121" gradientUnits="userSpaceOnUse">
-        <stop offset="0" stop-color="#8052ff" />
-        <stop offset=".55" stop-color="#8052ff" />
-        <stop offset="1" stop-color="#15846e" />
-      </linearGradient>
-    </defs>
-  </svg>
   <main class="legal">
     <a class="brand" href="index.html" aria-label="CPP, volver al inicio">
       <svg class="brand-mark" viewBox="0 0 128 128" aria-hidden="true">
@@ -41,20 +28,19 @@
         <path class="m2" d="M20 34 42 47v36l22 13v25L20 95Z"/>
         <path class="m3" d="m64 96 22-13V60l22-13v49l-44 25Z"/>
       </svg>
-      <span class="brand-text">cpp</span>
+      <span class="brand-text">cpp<span class="brand-caret">_</span></span>
     </a>
-    <p class="label">Legal</p>
     <h1>Política de privacidad</h1>
-    <p class="body legal-note"><strong>Plantilla pendiente de revisión legal.</strong> Completa los datos de contacto, la jurisdicción y los plazos de conservación antes de publicar el sitio.</p>
+    <p class="legal-note"><strong>Plantilla pendiente de revisión legal.</strong> Completa los datos de contacto, la jurisdicción y los plazos de conservación antes de publicar el sitio.</p>
     <h2>Información que recibimos</h2>
-    <p class="body">Al usar el formulario de contacto podemos recibir tu nombre, empresa, correo electrónico, teléfono, servicio de interés, presupuesto aproximado y descripción del proyecto.</p>
+    <p>Al usar el formulario de contacto podemos recibir tu nombre, empresa, correo electrónico, teléfono, servicio de interés, presupuesto aproximado y descripción del proyecto.</p>
     <h2>Para qué usamos la información</h2>
-    <p class="body">Usamos estos datos únicamente para evaluar tu solicitud, preparar una propuesta y comunicarnos contigo sobre el proyecto.</p>
+    <p>Usamos estos datos únicamente para evaluar tu solicitud, preparar una propuesta y comunicarnos contigo sobre el proyecto.</p>
     <h2>Conservación y seguridad</h2>
-    <p class="body">CPP debe definir y documentar el tiempo de conservación, los proveedores que procesan el formulario y las medidas aplicables antes de activar la recepción de datos.</p>
+    <p>CPP debe definir y documentar el tiempo de conservación, los proveedores que procesan el formulario y las medidas aplicables antes de activar la recepción de datos.</p>
     <h2>Tus derechos</h2>
-    <p class="body">Puedes solicitar acceso, corrección o eliminación de tus datos mediante el canal de contacto oficial que CPP publique.</p>
-    <a class="ghost" href="index.html#contacto"><span>Volver al contacto</span></a>
+    <p>Puedes solicitar acceso, corrección o eliminación de tus datos mediante el canal de contacto oficial que CPP publique.</p>
+    <p><a class="link" href="index.html#contacto">Volver al contacto</a></p>
   </main>
 </body>
 </html>
