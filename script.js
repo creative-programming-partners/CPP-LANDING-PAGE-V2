@@ -3,10 +3,13 @@
 /* ── Configuración de contacto ──────────────────────────────
    endpoint: URL que recibe un POST JSON (Formspree, Web3Forms, función propia).
    whatsapp: número con código de país, sin "+" ni espacios (ej. "51987654321").
-   Si hay endpoint se usa; si no, se abre WhatsApp con la solicitud escrita. */
+   Si hay endpoint se usa; si no, se abre WhatsApp con la solicitud escrita.
+   gaId: ID de medición de Google Analytics 4 ("G-XXXXXXX"). Vacío = sin analítica.
+   Si lo activas, menciónalo en privacy.html. */
 const CONFIG = {
   endpoint: '',
-  whatsapp: '51929363454'
+  whatsapp: '51929363454',
+  gaId: ''
 };
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -139,50 +142,12 @@ function scramble(el, text = el.dataset.text || el.textContent, duration = 900) 
   el._scr = requestAnimationFrame(tick);
 }
 
-/* ── Arranque ── */
-const boot = $('[data-boot]');
+/* ── Inicio de la página ── */
 const startPage = () => {
-  document.body.classList.remove('is-booting');
   document.body.classList.add('is-ready');
   $('.status')?.classList.add('is-on');
   heroIntro();
 };
-
-function runBoot() {
-  let seen = false;
-  try { seen = sessionStorage.getItem('cpp-boot') === '1'; } catch {}
-  if (reduced || seen || !boot) { boot?.remove(); startPage(); return; }
-  try { sessionStorage.setItem('cpp-boot', '1'); } catch {}
-
-  document.body.classList.add('is-booting');
-  const log = $('[data-boot-log]');
-  const [loading, design, dev, auto, assembling, ready] = t('boot');
-  const lines = [
-    '<span class="hl">$</span> cpp boot --version 2.0.0',
-    `  ${loading.padEnd(28, '.')} <span class="ok">[ok]</span>`,
-    `  ├─ ${design}`,
-    `  ├─ ${dev}`,
-    `  └─ ${auto}`,
-    `  ${assembling.padEnd(28, '.')} <span class="ok">[ok]</span>`,
-    `<span class="ok">✓</span> ${ready}`
-  ];
-  let i = 0, done = false;
-  const finish = () => {
-    if (done) return;
-    done = true;
-    boot.classList.add('is-done');
-    startPage();
-    setTimeout(() => boot.remove(), 900);
-  };
-  const step = () => {
-    if (done) return;
-    if (i < lines.length) { log.innerHTML += lines[i++] + '\n'; setTimeout(step, 110 + Math.random() * 90); }
-    else setTimeout(finish, 380);
-  };
-  step();
-  addEventListener('keydown', finish, { once: true });
-  boot.addEventListener('pointerdown', finish, { once: true });
-}
 
 /* ── Hero ── */
 function heroIntro() {
@@ -436,8 +401,12 @@ const codeFor = (s) => {
   const priceEl = $('[data-s-price]');
   let typingRaf = 0, priceRaf = 0, current = -1, started = false;
 
-  files.innerHTML = SERVICES.map((s, i) => `<button class="file" type="button" role="tab" id="tab-${s.key}" aria-controls="service-panel" aria-selected="false" tabindex="-1" style="--c:${COLORS_BY_SERVICE[i]}"><span class="dot" aria-hidden="true"></span>${s.file}</button>`).join('');
-  const tabs = $$('.file', files);
+  const priceText = (s) => `S/ ${s.price.toLocaleString('en-US')}${s.plus ? '+' : ''}`;
+  const renderTabs = () => {
+    files.innerHTML = SERVICES.map((s, i) => `<button class="file" type="button" role="tab" id="tab-${s.key}" aria-controls="service-panel" aria-selected="${i === current}" tabindex="${i === current ? 0 : -1}" style="--c:${COLORS_BY_SERVICE[i]}"><span class="dot" aria-hidden="true"></span><span class="file-txt"><span class="file-name">${staticText(`svc.${s.key}`)}</span><span class="file-path">${s.file}</span></span><span class="file-price">${priceText(s)}</span></button>`).join('');
+  };
+  renderTabs();
+  let tabs = $$('.file', files);
 
   const renderCode = (lines, chars) => {
     let left = chars, html = '';
@@ -476,7 +445,7 @@ const codeFor = (s) => {
     const lines = codeFor(s);
     const total = lines.reduce((a, segs) => a + segs.reduce((b, [, txt]) => b + txt.length, 0), 0);
     cancelAnimationFrame(typingRaf); cancelAnimationFrame(priceRaf);
-    if (reduced) { renderCode(lines, total); priceEl.textContent = s.price.toLocaleString('en-US'); return; }
+    if (reduced || !started) { renderCode(lines, total); priceEl.textContent = s.price.toLocaleString('en-US'); return; }
     const t0 = performance.now();
     const typeTick = (now) => {
       const chars = Math.floor((now - t0) / 1000 * 520);
@@ -493,7 +462,10 @@ const codeFor = (s) => {
     priceRaf = requestAnimationFrame(priceTick);
   };
 
-  tabs.forEach((tab, i) => tab.addEventListener('click', () => select(i)));
+  files.addEventListener('click', (e) => {
+    const tab = e.target.closest('.file');
+    if (tab) select(tabs.indexOf(tab));
+  });
   files.addEventListener('keydown', (e) => {
     const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
     if (e.key in keys) { e.preventDefault(); select((current + keys[e.key] + SERVICES.length) % SERVICES.length, { focus: true }); }
@@ -501,8 +473,9 @@ const codeFor = (s) => {
     if (e.key === 'End') { e.preventDefault(); select(SERVICES.length - 1, { focus: true }); }
   });
 
-  const io = onVisible($('[data-ide]'), (vis) => { if (vis) { started = true; select(0); io.disconnect(); } }, { threshold: 0.3 });
-  onLang(() => { if (started) select(current, { force: true }); });
+  select(0);
+  const io = onVisible($('[data-ide]'), (vis) => { if (vis) { started = true; select(current, { force: true }); io.disconnect(); } }, { threshold: 0.3 });
+  onLang(() => { const i = Math.max(current, 0); current = -1; renderTabs(); tabs = $$('.file', files); select(i, { force: true }); });
 })();
 
 /* ── Elegir servicio desde cualquier enlace ── */
@@ -790,7 +763,7 @@ const buildGit = () => {
 })();
 
 /* ════════════════════════════════════════════════════════════
-   Inclinación, luz, botones magnéticos y cursor
+   Inclinación, luz y botones magnéticos
    ════════════════════════════════════════════════════════════ */
 /* ════════════════════════════════════════════════════════════
    Motor de amortiguación para lo que sigue al puntero
@@ -900,29 +873,6 @@ if (finePointer && !reduced) {
     }, { passive: true });
   });
 
-  const cursor = $('[data-cursor]');
-  let cx = -100, cy = -100, tx = -100, ty = -100;
-  addEventListener('pointermove', (e) => {
-    tx = e.clientX; ty = e.clientY;
-    cursor.classList.add('is-on');
-    cursor.classList.toggle('is-link', !!e.target.closest('a, button, summary, [role="tab"], label, select'));
-    cursor.style.visibility = e.target.closest('input, textarea, canvas, dialog') ? 'hidden' : 'visible';
-  });
-  document.addEventListener('pointerleave', () => cursor.classList.remove('is-on'));
-  let cursorFrame = 0, cursorLast = 0;
-  const follow = (now) => {
-    cursorFrame = 0;
-    const k = cursorLast ? Math.min(64, now - cursorLast) / FRAME : 1;
-    cursorLast = now;
-    const ease = 1 - Math.pow(0.80, k);
-    cx += (tx - cx) * ease; cy += (ty - cy) * ease;
-    cursor.style.transform = `translate(${cx.toFixed(1)}px, ${cy.toFixed(1)}px)`;
-    /* Se detiene al alcanzar al puntero en vez de girar en vacío. */
-    if (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.3) cursorFrame = requestAnimationFrame(follow);
-    else cursorLast = 0;
-  };
-  const wakeCursor = () => { if (!cursorFrame) cursorFrame = requestAnimationFrame(follow); };
-  addEventListener('pointermove', wakeCursor, { passive: true });
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -1099,6 +1049,7 @@ if (diff) {
     { label: t('palette.team'), hint: '#equipo', run: go('#equipo') },
     { label: t('palette.faq'), hint: '#preguntas', run: go('#preguntas') },
     { label: t('palette.quote'), hint: '#contacto', run: quote('') },
+    { label: t('palette.whatsapp'), hint: 'WhatsApp', run: () => openWhatsApp(t('wa.hello')(greeting()), 'palette') },
     { label: t('palette.theme'), hint: 'theme', run: () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark') },
     { label: t('palette.lang'), hint: 'lang', run: () => applyLang(lang === 'es' ? 'en' : 'es', { animate: true }) },
     ...SERVICES.map((s) => ({ label: `${t('palette.quoteFor')}: ${pick(s).title}`, hint: s.file, run: quote(s.key) }))
@@ -1115,6 +1066,7 @@ if (diff) {
   const close = () => { rootEl.hidden = true; opener?.focus?.(); };
   const run = (i) => { const c = filtered[i]; if (!c) return; close(); c.run(); };
 
+  if (/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) { const k = $('[data-palette-open] kbd'); if (k) k.textContent = '⌘'; }
   $$('[data-palette-open]').forEach((b) => b.addEventListener('click', open));
   addEventListener('keydown', (e) => {
     if ($('[data-profile]')?.open) return;
@@ -1151,6 +1103,32 @@ $$('[data-faq]').forEach((d) => {
   });
 });
 
+/* ── WhatsApp ── */
+const greeting = () => t('greet')(new Date().getHours());
+const waUrl = (text) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+function track(name, params = {}) { window.gtag?.('event', name, params); }
+function openWhatsApp(text, origin) {
+  const url = waUrl(text);
+  track('whatsapp_click', { origin });
+  /* Algunos navegadores internos (Instagram, Facebook) bloquean ventanas nuevas:
+     si no se abre, se navega a WhatsApp en la misma pestaña. */
+  const win = window.open(url, '_blank');
+  if (win) win.opener = null; else location.href = url;
+  return url;
+}
+$$('[data-wa]').forEach((a) => a.addEventListener('click', (e) => {
+  e.preventDefault();
+  openWhatsApp(t('wa.hello')(greeting()), a.classList.contains('wa-fab') ? 'boton_flotante' : 'pie');
+}));
+if (CONFIG.gaId) {
+  const ga = document.createElement('script');
+  ga.async = true; ga.src = `https://www.googletagmanager.com/gtag/js?id=${CONFIG.gaId}`;
+  document.head.appendChild(ga);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag('js', new Date()); gtag('config', CONFIG.gaId);
+}
+
 /* ── Formulario ── */
 (function form() {
   const form = $('[data-form]');
@@ -1175,6 +1153,7 @@ $$('[data-faq]').forEach((d) => {
     status.className = `form-status ${kind || ''}`;
     status.innerHTML = key ? t(key) : '';
   };
+  let lastWa = '';
 
   $$('[required]', form).forEach((f) => {
     f.addEventListener('blur', () => check(f));
@@ -1185,6 +1164,7 @@ $$('[data-faq]').forEach((d) => {
   onLang(() => {
     $$('[aria-invalid="true"]', form).forEach(check);
     if (statusKey) status.innerHTML = t(statusKey);
+    if (statusKey === 'form.whatsapp') status.innerHTML += ` <a class="link" href="${lastWa}" target="_blank" rel="noopener">${t('form.waRetry')}</a>`;
     if (state.dataset.state) state.textContent = t(state.dataset.state === 'dirty' ? 'form.dirty' : 'form.sent');
     if (!button.disabled) label.textContent = t('form.submit');
   });
@@ -1205,9 +1185,11 @@ $$('[data-faq]').forEach((d) => {
 
     if (!CONFIG.endpoint && CONFIG.whatsapp) {
       const svc = $('#service').selectedOptions[0]?.textContent, budget = $('#budget').selectedOptions[0]?.textContent;
-      const text = `${t('form.waIntro')(data.name, data.company, new Date().getHours())}\n${t('form.waService')}: ${svc}\n${t('form.waBudget')}: ${budget}\n\n${data.message}`;
-      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+      const text = `${t('form.waIntro')(greeting(), data.name, data.company)}\n${t('form.waService')}: ${svc}\n${t('form.waBudget')}: ${budget}\n\n${data.message}`;
+      lastWa = openWhatsApp(text, 'formulario');
+      track('generate_lead', { service: data.service, budget: data.budget });
       setStatus('form.whatsapp', 'success');
+      status.innerHTML += ` <a class="link" href="${lastWa}" target="_blank" rel="noopener">${t('form.waRetry')}</a>`;
       return;
     }
     if (!CONFIG.endpoint) {
@@ -1236,4 +1218,4 @@ $$('[data-faq]').forEach((d) => {
 /* ── Inicio ── */
 $('[data-year]').textContent = new Date().getFullYear();
 applyLang(lang);
-runBoot();
+startPage();

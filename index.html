@@ -6,11 +6,61 @@
   <title>CPP | Web, software y automatización para negocios</title>
   <meta name="description" content="CPP diseña y programa páginas web, tiendas online, sistemas a medida y automatizaciones para negocios que quieren vender y operar mejor." />
   <meta name="theme-color" content="#f7f8f8" />
-  <meta property="og:title" content="CPP | Creative Programming Partners" />
-  <meta property="og:description" content="Menos fricción. Más negocio. Web, software y automatización hechos a medida." />
+  <link rel="canonical" href="https://creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/" />
+  <!-- Vista previa al compartir: las URL deben ser absolutas. Si cambia el dominio, actualízalas aquí,
+       en el JSON-LD de abajo, en robots.txt y en sitemap.xml -->
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/brand/png/cpp-social-cover-1200x630.png" />
+  <meta property="og:site_name" content="CPP · Creative Programming Partners" />
+  <meta property="og:locale" content="es_PE" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:url" content="https://creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/" />
+  <meta property="og:title" content="CPP | Creative Programming Partners" />
+  <meta property="og:description" content="Menos fricción. Más negocio. Páginas web, tiendas online, sistemas y automatizaciones a medida, desde S/ 300." />
+  <meta property="og:image" content="https://creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/assets/brand/png/cpp-social-cover-1200x630.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="CPP · Creative Programming Partners" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CPP | Creative Programming Partners" />
+  <meta name="twitter:description" content="Menos fricción. Más negocio. Páginas web, tiendas online, sistemas y automatizaciones a medida, desde S/ 300." />
+  <meta name="twitter:image" content="https://creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/assets/brand/png/cpp-social-cover-1200x630.png" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/brand/png/apple-touch-icon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "CPP · Creative Programming Partners",
+    "alternateName": "CPP",
+    "url": "https://creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/",
+    "logo": "https://creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/assets/brand/png/cpp-avatar-512.png",
+    "image": "https://creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/assets/brand/png/cpp-social-cover-1200x630.png",
+    "description": "Diseñamos y programamos páginas web, tiendas online, sistemas a medida y automatizaciones para negocios.",
+    "telephone": "+51 929 363 454",
+    "address": { "@type": "PostalAddress", "addressCountry": "PE" },
+    "areaServed": { "@type": "Country", "name": "Perú" },
+    "currenciesAccepted": "PEN",
+    "priceRange": "S/ 300 – S/ 1,800+",
+    "founder": [
+      { "@type": "Person", "name": "José Santana" },
+      { "@type": "Person", "name": "Darnell Cuba" },
+      { "@type": "Person", "name": "Juan Flores" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing page" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 300, "priceCurrency": "PEN" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Página web corporativa" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 500, "priceCurrency": "PEN" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tienda e-commerce" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1100, "priceCurrency": "PEN" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aplicación web a medida" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1300, "priceCurrency": "PEN" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistema de reservas online" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1800, "priceCurrency": "PEN" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Catálogo digital" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 500, "priceCurrency": "PEN" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatización de procesos" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1600, "priceCurrency": "PEN" } }
+      ]
+    }
+  }
+  </script>
   <script>
     // Tema e idioma antes de pintar, para evitar parpadeos
     (function () {
@@ -20,22 +70,18 @@
       if (!lang) lang = (navigator.language || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
       d.dataset.theme = theme;
       d.lang = lang;
+      var tc = document.querySelector('meta[name="theme-color"]');
+      if (tc) tc.content = theme === 'dark' ? '#050f17' : '#f7f8f8';
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=202609251700" />
+  <link rel="stylesheet" href="styles.css?v=202609251900" />
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
 
-  <!-- Arranque -->
-  <div class="boot" data-boot aria-hidden="true">
-    <pre class="boot-log" data-boot-log></pre>
-  </div>
-
-  <div class="cursor" data-cursor aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="top" data-top>
@@ -126,18 +172,6 @@
       </figure>
     </section>
 
-    <!-- Cinta de código -->
-    <div class="tape" aria-hidden="true">
-      <div class="tape-track" data-tape>
-        <span><i class="k">import</i> { webDesign } <i class="k">from</i> <i class="s">"cpp"</i>;</span>
-        <span><i class="k">await</i> store.<i class="f">sell</i>();</span>
-        <span>bookings.<i class="f">confirm</i>({ <i class="n">24</i>/<i class="n">7</i> });</span>
-        <span><i class="k">const</i> manualTasks = <i class="n">0</i>;</span>
-        <span>system.<i class="f">scale</i>(<i class="s">"withYou"</i>);</span>
-        <span><i class="c" data-i18n="tape.comment">// menos fricción, más negocio</i></span>
-      </div>
-    </div>
-
     <!-- MANIFIESTO -->
     <section class="manifesto" data-section="principio.md">
       <p class="manifesto-text" data-words data-i18n="manifesto">La tecnología más valiosa no presume su complejidad. Hace que vender, atender y operar se sienta más simple.</p>
@@ -185,7 +219,7 @@
               <h3 data-s-title></h3>
               <p data-s-desc></p>
               <ul data-s-list></ul>
-              <p class="price"><span data-i18n="services.from">desde</span> <strong>S/ <b data-s-price>0</b></strong><span data-i18n="services.plus" data-s-plus hidden>a más</span></p>
+              <p class="price"><span data-i18n="services.from">desde</span> <strong>S/ <b data-s-price>300</b></strong><span data-i18n="services.plus" data-s-plus hidden>a más</span></p>
               <a class="btn btn-primary" href="#contacto" data-s-cta data-magnetic><span data-i18n="services.cta">Cotizar esta solución</span></a>
             </div>
           </div>
@@ -213,25 +247,25 @@
         <ol>
           <li class="commit" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 1 · <code>a1f3c9e</code></p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 1</p>
             <h3 data-i18n="process.s1t">Conversamos y entendemos el negocio</h3>
             <p data-i18n="process.s1d">Conocemos tus necesidades, tus usuarios y tus prioridades.</p>
           </li>
           <li class="commit" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 2 · <code>7c02be4</code></p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 2</p>
             <h3 data-i18n="process.s2t">Preparamos la propuesta</h3>
             <p data-i18n="process.s2d">Acordamos alcance, diseño, tiempos y entregables antes de empezar.</p>
           </li>
           <li class="commit" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 3 · <code>e94d1a0</code></p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 3</p>
             <h3 data-i18n="process.s3t">Desarrollamos y revisamos contigo</h3>
             <p data-i18n="process.s3d">Avanzamos por entregas para que valides cada parte.</p>
           </li>
           <li class="commit commit-head" data-commit>
             <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 4 · <code>HEAD → main</code></p>
+            <p class="hash"><span data-i18n="process.step">paso</span> 4</p>
             <h3 data-i18n="process.s4t">Publicamos y te acompañamos</h3>
             <p data-i18n="process.s4d">Ponemos todo en marcha y seguimos disponibles para soporte.</p>
           </li>
@@ -268,7 +302,7 @@
           <div class="win-body">
             <h3 data-i18n="work.p1t">Panel operativo modular</h3>
             <p data-i18n="work.p1d">Una interfaz central que convierte procesos dispersos en un flujo visible, ordenado y fácil de gestionar. Incluye panel, roles y automatizaciones.</p>
-            <a class="link" href="#contacto" data-service-pick="app" data-i18n="work.p1l">Quiero explorar algo así</a>
+            <a class="link" href="#contacto" data-service-pick="app" data-i18n="work.p1l">Cotizar algo así</a>
           </div>
         </article>
 
@@ -286,7 +320,7 @@
           <div class="win-body">
             <h3 data-i18n="work.p2t">Una tienda que guía la compra</h3>
             <p data-i18n="work.p2d">Catálogo claro, decisiones simples y un recorrido pensado para convertir interés en pedidos.</p>
-            <a class="link" href="#contacto" data-service-pick="store" data-i18n="work.p2l">Explorar e-commerce</a>
+            <a class="link" href="#contacto" data-service-pick="store" data-i18n="work.p2l">Cotizar una tienda así</a>
           </div>
         </article>
 
@@ -299,7 +333,7 @@
           <div class="win-body">
             <h3 data-i18n="work.p3t">Disponibilidad sin idas y vueltas</h3>
             <p data-i18n="work.p3d">Reservas, confirmaciones y gestión en un solo flujo, incluso cuando el negocio está cerrado.</p>
-            <a class="link" href="#contacto" data-service-pick="bookings" data-i18n="work.p3l">Explorar reservas</a>
+            <a class="link" href="#contacto" data-service-pick="bookings" data-i18n="work.p3l">Cotizar un sistema de reservas</a>
           </div>
         </article>
       </div>
@@ -348,6 +382,31 @@
       </dialog>
     </section>
 
+    <!-- FAQ -->
+    <section class="faq section" id="preguntas" data-section="preguntas.sh" aria-labelledby="faq-title">
+      <div class="sec-head">
+        <h2 id="faq-title" data-scramble-in data-i18n="faq.title">Preguntas antes de empezar.</h2>
+      </div>
+      <div class="term">
+        <details data-faq>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q1">¿Cuánto cuesta desarrollar mi proyecto?</span></summary>
+          <p data-i18n="faq.a1">Depende del tipo de solución, el diseño, las funcionalidades y el alcance. Cuando conozcamos tus necesidades te enviamos una cotización personalizada. Los precios "desde" de cada servicio te dan una referencia.</p>
+        </details>
+        <details data-faq>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q2">¿Cuánto tiempo tarda el desarrollo?</span></summary>
+          <p data-i18n="faq.a2">Varía según la complejidad. Antes de comenzar acordamos contigo un cronograma claro de trabajo y entregas.</p>
+        </details>
+        <details data-faq>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q3">¿Funcionará bien en celulares?</span></summary>
+          <p data-i18n="faq.a3">Sí. Todos nuestros proyectos se diseñan y prueban para computadoras, tabletas y celulares.</p>
+        </details>
+        <details data-faq>
+          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q4">¿Dan soporte después de entregar?</span></summary>
+          <p data-i18n="faq.a4">Sí. Ofrecemos soporte, mantenimiento y mejoras posteriores según lo que necesite tu proyecto.</p>
+        </details>
+      </div>
+    </section>
+
     <!-- CONTACTO -->
     <section class="contact section" id="contacto" data-section="contacto.form" aria-labelledby="contact-title">
       <div class="contact-copy">
@@ -362,7 +421,7 @@
       </div>
 
       <form class="editor-form" id="quote-form" novalidate data-form>
-        <div class="ef-bar" aria-hidden="true"><span data-i18n="form.file">nueva-solicitud.json</span><span data-form-state data-i18n="form.empty">vacío</span></div>
+        <div class="ef-bar" aria-hidden="true"><span data-i18n="form.file">tu solicitud</span><span data-form-state data-i18n="form.empty">por completar</span></div>
         <div class="ef-body">
           <div class="hp" aria-hidden="true">
             <label for="website">Website</label>
@@ -405,7 +464,7 @@
           </div>
           <div class="field field-full">
             <label for="message" data-i18n="form.message">Descripción del proyecto</label>
-            <textarea id="message" name="message" rows="5" minlength="20" required data-i18n-attr="placeholder:form.placeholder" placeholder="Qué vendes u ofreces, qué quieres lograr y cómo lo resuelves hoy."></textarea>
+            <textarea id="message" name="message" rows="5" minlength="10" required data-i18n-attr="placeholder:form.placeholder" placeholder="Qué vendes u ofreces, qué quieres lograr y cómo lo resuelves hoy."></textarea>
             <p class="err" id="message-error"></p>
           </div>
           <div class="field field-full check">
@@ -414,37 +473,13 @@
             <p class="err" id="privacy-error"></p>
           </div>
           <div class="field-full form-end">
-            <button class="btn btn-primary" type="submit" data-magnetic><span data-i18n="form.submit">Enviar solicitud</span></button>
+            <button class="btn btn-primary btn-wa" type="submit" data-magnetic><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span data-i18n="form.submit">Enviar por WhatsApp</span></button>
             <p class="form-status" role="status" data-status></p>
           </div>
         </div>
       </form>
     </section>
 
-    <!-- FAQ -->
-    <section class="faq section" id="preguntas" data-section="preguntas.sh" aria-labelledby="faq-title">
-      <div class="sec-head">
-        <h2 id="faq-title" data-scramble-in data-i18n="faq.title">Preguntas antes de empezar.</h2>
-      </div>
-      <div class="term">
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q1">¿Cuánto cuesta desarrollar mi proyecto?</span></summary>
-          <p data-i18n="faq.a1">Depende del tipo de solución, el diseño, las funcionalidades y el alcance. Cuando conozcamos tus necesidades te enviamos una cotización personalizada. Los precios "desde" de cada servicio te dan una referencia.</p>
-        </details>
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q2">¿Cuánto tiempo tarda el desarrollo?</span></summary>
-          <p data-i18n="faq.a2">Varía según la complejidad. Antes de comenzar acordamos contigo un cronograma claro de trabajo y entregas.</p>
-        </details>
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q3">¿Funcionará bien en celulares?</span></summary>
-          <p data-i18n="faq.a3">Sí. Todos nuestros proyectos se diseñan y prueban para computadoras, tabletas y celulares.</p>
-        </details>
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q4">¿Dan soporte después de entregar?</span></summary>
-          <p data-i18n="faq.a4">Sí. Ofrecemos soporte, mantenimiento y mejoras posteriores según lo que necesite tu proyecto.</p>
-        </details>
-      </div>
-    </section>
   </main>
 
   <footer class="foot" data-section="EOF">
@@ -453,6 +488,11 @@
       <a class="btn btn-primary" href="#contacto" data-magnetic><span data-i18n="cta.quote">Pedir cotización</span></a>
     </div>
     <p class="foot-word" data-foot-word aria-hidden="true">cpp</p>
+    <div class="foot-contact">
+      <a class="foot-wa" href="https://wa.me/51929363454" target="_blank" rel="noopener" data-wa><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span><small data-i18n="foot.waLabel">WhatsApp</small>+51 929 363 454</span></a>
+      <p><small data-i18n="foot.whereLabel">Dónde estamos</small><span data-i18n="foot.where">Perú · atendemos de forma remota</span></p>
+      <p><small data-i18n="foot.hoursLabel">Respuesta</small><span data-i18n="foot.hours">En menos de 24 horas hábiles</span></p>
+    </div>
     <div class="foot-row">
       <span>Creative Programming Partners © <span data-year>2026</span></span>
       <nav data-i18n-attr="aria-label:foot.nav" aria-label="Pie de página">
@@ -463,6 +503,9 @@
       <span class="eof" aria-hidden="true">// EOF</span>
     </div>
   </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa-fab" href="https://wa.me/51929363454" target="_blank" rel="noopener" data-wa data-i18n-attr="aria-label:wa.fab" aria-label="Escríbenos por WhatsApp"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span data-i18n="wa.fabText">Escríbenos</span></a>
 
   <!-- Barra de estado -->
   <div class="status" aria-hidden="true">
@@ -483,8 +526,8 @@
     </div>
   </div>
 
-  <script src="i18n.js?v=202609251700" defer></script>
-  <script src="team.js?v=202609251700" defer></script>
-  <script src="script.js?v=202609251700" defer></script>
+  <script src="i18n.js?v=202609251900" defer></script>
+  <script src="team.js?v=202609251900" defer></script>
+  <script src="script.js?v=202609251900" defer></script>
 </body>
 </html>
