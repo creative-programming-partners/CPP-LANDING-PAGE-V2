@@ -1205,7 +1205,7 @@ $$('[data-faq]').forEach((d) => {
 
     if (!CONFIG.endpoint && CONFIG.whatsapp) {
       const svc = $('#service').selectedOptions[0]?.textContent, budget = $('#budget').selectedOptions[0]?.textContent;
-      const text = `${t('form.waIntro')(data.name, data.company)}\n${t('form.waService')}: ${svc}\n${t('form.waBudget')}: ${budget}\n${t('form.waEmail')}: ${data.email}\n${t('form.waPhone')}: ${data.phone}\n\n${data.message}`;
+      const text = `${t('form.waIntro')(data.name, data.company, new Date().getHours())}\n${t('form.waService')}: ${svc}\n${t('form.waBudget')}: ${budget}\n\n${data.message}`;
       window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
       setStatus('form.whatsapp', 'success');
       return;

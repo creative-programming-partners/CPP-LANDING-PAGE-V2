@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=202609251600" />
+  <link rel="stylesheet" href="styles.css?v=202609251700" />
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
@@ -374,18 +374,9 @@
             <p class="err" id="name-error"></p>
           </div>
           <div class="field">
-            <label for="company"><span data-i18n="form.company">Empresa</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
-            <input id="company" name="company" type="text" autocomplete="organization" />
-          </div>
-          <div class="field">
-            <label for="email" data-i18n="form.email">Correo electrónico</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
-            <p class="err" id="email-error"></p>
-          </div>
-          <div class="field">
-            <label for="phone" data-i18n="form.phone">WhatsApp o teléfono</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" required />
-            <p class="err" id="phone-error"></p>
+            <label for="company" data-i18n="form.company">Empresa</label>
+            <input id="company" name="company" type="text" autocomplete="organization" required />
+            <p class="err" id="company-error"></p>
           </div>
           <div class="field">
             <label for="service" data-i18n="form.service">Servicio</label>
@@ -492,8 +483,8 @@
     </div>
   </div>
 
-  <script src="i18n.js?v=202609251600" defer></script>
-  <script src="team.js?v=202609251600" defer></script>
-  <script src="script.js?v=202609251600" defer></script>
+  <script src="i18n.js?v=202609251700" defer></script>
+  <script src="team.js?v=202609251700" defer></script>
+  <script src="script.js?v=202609251700" defer></script>
 </body>
 </html>

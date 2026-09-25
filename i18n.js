@@ -118,8 +118,6 @@ window.CPP_I18N = {
     'form.name': 'Name',
     'form.company': 'Company',
     'form.optional': '(optional)',
-    'form.email': 'Email',
-    'form.phone': 'WhatsApp or phone',
     'form.service': 'Service',
     'form.choose': 'Choose an option',
     'svc.landing': 'Landing page',
@@ -202,8 +200,7 @@ window.CPP_I18N = {
       'form.dirty': 'sin guardar',
       'form.sent': 'enviado',
       'form.err.name': 'Escribe tu nombre.',
-      'form.err.email': 'Escribe un correo válido, por ejemplo nombre@empresa.com.',
-      'form.err.phone': 'Escribe un teléfono o WhatsApp.',
+      'form.err.company': 'Escribe el nombre de tu empresa o negocio.',
       'form.err.service': 'Elige el servicio que necesitas.',
       'form.err.message': 'Cuéntanos un poco más: al menos 20 caracteres.',
       'form.err.privacy': 'Acepta la política de privacidad para enviar la solicitud.',
@@ -215,8 +212,8 @@ window.CPP_I18N = {
       'form.submit': 'Enviar solicitud',
       'form.ok': 'Solicitud enviada. Te respondemos en menos de 24 horas hábiles.',
       'form.fail': 'No se pudo enviar la solicitud. Revisa tu conexión e inténtalo otra vez.',
-      'form.waIntro': (name, company) => `Hola CPP, soy ${name}${company ? ` de ${company}` : ''}.`,
-      'form.waService': 'Servicio', 'form.waBudget': 'Presupuesto', 'form.waEmail': 'Correo', 'form.waPhone': 'Teléfono'
+      'form.waIntro': (name, company, hour) => `${hour < 5 || hour >= 19 ? 'Buenas noches' : hour < 12 ? 'Buenos días' : 'Buenas tardes'}, soy ${name} de ${company}.`,
+      'form.waService': 'Servicio', 'form.waBudget': 'Presupuesto'
     },
     en: {
       'meta.title': 'CPP | Web, software and automation for businesses',
@@ -253,8 +250,7 @@ window.CPP_I18N = {
       'form.dirty': 'unsaved',
       'form.sent': 'sent',
       'form.err.name': 'Enter your name.',
-      'form.err.email': 'Enter a valid email, for example name@company.com.',
-      'form.err.phone': 'Enter a phone or WhatsApp number.',
+      'form.err.company': 'Enter your company or business name.',
       'form.err.service': 'Choose the service you need.',
       'form.err.message': 'Tell us a bit more: at least 20 characters.',
       'form.err.privacy': 'Accept the privacy policy to send your request.',
@@ -266,8 +262,8 @@ window.CPP_I18N = {
       'form.submit': 'Send request',
       'form.ok': 'Request sent. We’ll reply within 24 business hours.',
       'form.fail': 'The request couldn’t be sent. Check your connection and try again.',
-      'form.waIntro': (name, company) => `Hi CPP, I’m ${name}${company ? ` from ${company}` : ''}.`,
-      'form.waService': 'Service', 'form.waBudget': 'Budget', 'form.waEmail': 'Email', 'form.waPhone': 'Phone'
+      'form.waIntro': (name, company, hour) => `Good ${hour < 5 || hour >= 18 ? 'evening' : hour < 12 ? 'morning' : 'afternoon'}, I’m ${name} from ${company}.`,
+      'form.waService': 'Service', 'form.waBudget': 'Budget'
     }
   },
 
