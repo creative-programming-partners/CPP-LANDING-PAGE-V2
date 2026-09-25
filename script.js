@@ -422,7 +422,7 @@ const codeFor = (s) => {
     [['', `  ${t('code.includes')}`], ['p', ': [']],
     ...L.list.map((item) => [['s', `    "${item}"`], ['p', ',']]),
     [['p', '  ],']],
-    [['', `  ${t('code.from')}`], ['p', ': '], ['n', s.price.toLocaleString('en-US').replace(',', '_')], ['p', ',']],
+    [['', `  ${t('code.from')}`], ['p', ': '], ['n', s.price.toLocaleString('en-US').replace(',', '_')], ['p', ','], ...(s.plus ? [['c', ` // ${t('code.plus')}`]] : [])],
     [['', `  ${t('code.support')}`], ['p', ': '], ['k', 'true'], ['p', ',']],
     [['p', '});']]
   ];
@@ -470,6 +470,7 @@ const codeFor = (s) => {
     $('[data-s-desc]').textContent = L.desc;
     $('[data-s-list]').innerHTML = L.list.map((x) => `<li>${x}</li>`).join('');
     $('[data-s-cta]').dataset.servicePick = s.key;
+    $('[data-s-plus]').hidden = !s.plus;
     panel.classList.remove('is-swap'); void panel.offsetWidth; panel.classList.add('is-swap');
 
     const lines = codeFor(s);
