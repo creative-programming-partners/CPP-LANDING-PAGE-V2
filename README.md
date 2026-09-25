@@ -4,19 +4,21 @@ Versión 2 de la landing de Creative Programming Partners. Sitio estático sin d
 
 ## Dirección visual
 
-Colores originales de CPP, con tema claro y oscuro (se respeta la preferencia del sistema y se recuerda la elección):
+"Constelación sobre terciopelo negro": negro puro como lienzo, tipografía monolítica y un único violeta para la acción. Sin paneles, bordes ni sombras; la jerarquía sale de la escala, el contraste y el espacio. Solo tema oscuro.
 
-| Token | Claro | Oscuro | Uso |
-|---|---|---|---|
-| `--bg` | `#F7F8F8` | `#050F17` | Fondo |
-| `--surface` | `#FFFFFF` | `#0B1A26` | Tarjetas y paneles |
-| `--text` | `#071521` | `#F4F7F5` | Texto principal |
-| `--text-2` | `#3E545F` | `#9AAFB9` | Texto secundario |
-| `--accent` | `#1D5AE0` | `#5B8CFF` | Acción principal (cobalto) |
-| `--steel` | `#607985` | `#9AAFB9` | Tercer módulo de la marca |
-| `--live` | `#0D7A63` | `#72F2D2` | Confirmaciones y foco |
+| Token | Valor | Uso |
+|---|---|---|
+| `--color-void` | `#000000` | Fondo de toda la página |
+| `--color-bone-white` | `#FFFFFF` | Titulares y texto principal |
+| `--color-ash-gray` | `#9A9A9A` | Navegación inactiva, textos secundarios |
+| `--color-silver-mist` | `#BDBDBD` | Texto de apoyo |
+| `--color-electric-iris` | `#8052FF` | Botón principal (uno por vista) y acentos de marca |
+| `--color-saffron-spark` | `#FFB829` | Etiquetas, enlaces y énfasis |
+| `--color-deep-verdant` | `#15846E` | Degradado del logo y partículas |
 
-Tipografía: **Martian Mono** (titulares y código, con eje de ancho animado) + **Instrument Sans** (lectura).
+Tipografía: **PPNeueMontreal** si está instalada, con **Inter** como sustituto. Titulares en peso 400 a 78–113px con tracking de -0.04em; cuerpo en peso 200 a 18px; navegación y etiquetas en 14px, peso 600, mayúsculas.
+
+La única línea visible de la página es la de los campos del formulario: sin ella no se ven.
 
 ## Idiomas
 
@@ -34,17 +36,12 @@ Los datos están en `team.js`. **Los textos actuales son de ejemplo**: reempláz
 
 ## Movimiento y efectos
 
-- Arranque tipo terminal (una vez por sesión; se salta con cualquier tecla o clic).
-- Símbolo CPP en 3D renderizado en ASCII en tiempo real (raymarching en canvas): los tres módulos se ensamblan, se gira arrastrando y la luz sigue al puntero. Se pausa fuera de pantalla.
-- Titular con eje de ancho variable que responde al puntero; titulares que se decodifican al aparecer.
-- Riel de señal que recorre la página con el scroll y enciende un pad por sección.
-- Manifiesto que se "ejecuta" palabra por palabra.
-- Beneficios como un `diff`, servicios como un editor con código que se escribe solo, proceso como un `git log` que se dibuja.
-- Proyectos con mini interfaces vivas (panel, tienda con carrito, calendario de reservas).
-- Retratos con trama de puntos que pasan a color al pasar el cursor.
-- Paleta de comandos (`Ctrl/⌘ + K` o `/`), que también cambia tema e idioma; barra de estado tipo IDE, cursor caret, botones magnéticos, tarjetas con inclinación y luz.
-- Cambio de tema con revelado circular desde el botón (View Transitions).
-- Todo respeta `prefers-reduced-motion`.
+- Hero: el símbolo CPP en 3D, formado por miles de triángulos delineados de colores. Los tres módulos se ensamblan al cargar, la figura se balancea alrededor de la vista del logo, se gira arrastrando y las partículas se apartan del puntero.
+- Proyectos: pictogramas de partículas que se mueven solos (barras que se reordenan, productos que caen en la bolsa, turnos que se confirman en un calendario).
+- Partículas de ambiente, pocas y tenues, en toda la página.
+- Manifiesto que se enciende palabra por palabra con el scroll; tachado que se dibuja sobre "lo que se quita"; pasos del proceso que se iluminan al llegar.
+- Equipo en carrusel con puntos; el perfil se abre a pantalla completa y el retrato viaja hasta su lugar.
+- Los lienzos se pausan fuera de pantalla y con la pestaña oculta. Todo respeta `prefers-reduced-motion`.
 
 ## Vista local
 
