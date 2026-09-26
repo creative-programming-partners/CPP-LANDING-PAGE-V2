@@ -502,39 +502,6 @@ const buildGit = () => {
   gitPath.style.strokeDasharray = gitLen;
 };
 
-/* ════════════════════════════════════════════════════════════
-   Mockups vivos
-   ════════════════════════════════════════════════════════════ */
-(function mocks() {
-  const every = (el, ms, fn) => {
-    let id = 0;
-    onVisible(el, (vis) => { clearInterval(id); if (vis && !reduced) { fn(); id = setInterval(fn, ms); } }, { threshold: 0.3 });
-  };
-
-  const shop = $('.mock-shop');
-  if (shop) {
-    const items = $$('.ms-item', shop), cart = $('[data-cart]', shop), fly = $('[data-fly]', shop);
-    let count = 0;
-    every(shop, 2400, () => {
-      const item = items[(Math.random() * items.length) | 0];
-      items.forEach((it) => it.classList.toggle('is-pick', it === item));
-      const sr = shop.getBoundingClientRect(), ir = item.getBoundingClientRect(), cr = cart.getBoundingClientRect();
-      const x0 = ir.left - sr.left + ir.width / 2, y0 = ir.top - sr.top + ir.height / 2;
-      const x1 = cr.left - sr.left + cr.width / 2, y1 = cr.top - sr.top + cr.height / 2;
-      fly.animate([
-        { opacity: 1, transform: `translate(${x0}px, ${y0}px) scale(1)` },
-        { opacity: 1, transform: `translate(${(x0 + x1) / 2}px, ${Math.min(y0, y1) - 40}px) scale(1.3)`, offset: 0.5 },
-        { opacity: 0, transform: `translate(${x1}px, ${y1}px) scale(.4)` }
-      ], { duration: 800, easing: 'cubic-bezier(.65,0,.35,1)' }).onfinish = () => {
-        count = count >= 9 ? 1 : count + 1;
-        cart.textContent = count;
-        cart.classList.remove('bump'); void cart.offsetWidth; cart.classList.add('bump');
-        setTimeout(() => item.classList.remove('is-pick'), 600);
-      };
-    });
-  }
-})();
-
 /* ── Proyectos: vistas de un mismo proyecto (web, panel…) ── */
 $$('[data-shots]').forEach((box) => {
   const views = $$('[data-shot]', box), tabs = $$('[data-shot-tab]', box);

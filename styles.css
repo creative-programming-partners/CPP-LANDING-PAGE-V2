@@ -449,25 +449,6 @@ h3 { font-size: 19px; line-height: 1.25; font-weight: 600; letter-spacing: -.02e
 /* Tarjetas medianas: imagen de la misma proporción y enlaces al pie, para que los textos se alineen */
 .win:not(.win-wide) { display: flex; flex-direction: column; }
 .win:not(.win-wide) > .win-body { flex: 1; }
-.win:not(.win-wide) > .mock { aspect-ratio: 16 / 10; min-height: 0; }
-
-.mock { position: relative; margin: 18px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; font-family: var(--mono); min-height: 240px; }
-@keyframes pulse { 50% { opacity: .45; } }
-
-.mock-shop { padding: 14px; display: flex; flex-direction: column; }
-.mock-shop .ms-grid { margin-block: auto; }
-.ms-head { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-2); margin-bottom: 12px; }
-.ms-cart b { display: inline-grid; place-items: center; min-width: 20px; height: 20px; border-radius: 10px; background: var(--accent); color: var(--bg); font-size: 11px; margin-left: 4px; }
-.ms-cart b.bump { animation: bump .5s var(--ease); }
-@keyframes bump { 40% { transform: scale(1.5); } }
-.ms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.ms-item { background: var(--bg-deep); border-radius: 8px; padding: 8px; display: grid; gap: 6px; transition: box-shadow .4s, transform .4s var(--ease); }
-.ms-item i { aspect-ratio: 1.35; border-radius: 6px; background: repeating-linear-gradient(135deg, var(--line) 0 6px, var(--surface-2) 6px 12px); }
-.ms-item:nth-child(2) i { background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--accent) 35%, transparent) 0 6px, var(--surface-2) 6px 12px); }
-.ms-item span { height: 6px; width: 70%; border-radius: 3px; background: var(--line-hi); }
-.ms-item b { font-size: 11px; color: var(--text); }
-.ms-item.is-pick { box-shadow: 0 0 0 1px var(--accent); transform: translateY(-4px); }
-.ms-fly { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); opacity: 0; pointer-events: none; }
 
 /* ---------- Equipo ---------- */
 .team-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -756,7 +737,7 @@ body:has(.mobile-menu.is-open) .wa-fab { display: none; }
   .member { scroll-snap-align: start; }
   .member:nth-child(2) { margin-top: 0; }
   .ide-code { display: none; }
-  .mock, .shot { margin: 12px; min-height: 0; }
+  .shot { margin: 12px; }
   /* En celular el teléfono ocupa la esquina inferior: el selector sube */
   .shot-tabs { top: 8px; bottom: auto; left: 8px; }
   .shot-tabs button { padding: 7px 8px; font-size: 10.5px; }
