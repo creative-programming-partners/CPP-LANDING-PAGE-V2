@@ -41,7 +41,7 @@ La estética de programador es la textura de la marca; donde el cliente decide (
 - Riel de señal que recorre la página con el scroll y enciende un pad por sección.
 - Manifiesto que se "ejecuta" palabra por palabra.
 - Beneficios como un `diff`, servicios como un editor con código que se escribe solo (cada servicio muestra su nombre y precio en la lista), proceso como un `git log` que se dibuja.
-- Proyectos con mini interfaces vivas (panel, tienda con carrito, calendario de reservas).
+- Proyectos publicados con capturas reales en `assets/work/`: Hotel Bahía de Cuba (landing, reservas en línea y panel; la tarjeta alterna entre la web y el panel, sin el correo del hotel) y Alma de Poeta (landing). Queda un concepto con mini interfaz viva: la tienda con carrito.
 - Retratos con trama de puntos que pasan a color al pasar el cursor (en pantallas táctiles se ven a color).
 - Paleta de comandos (`Ctrl/⌘ + K` o `/`), que también cambia tema e idioma y abre WhatsApp; barra de estado tipo IDE (solo en pantallas grandes), botones magnéticos, tarjetas con inclinación y luz.
 - Cambio de tema con revelado circular desde el botón (View Transitions).
@@ -68,7 +68,7 @@ npx http-server -p 5174 -c-1
 
 ## Pendientes que dependen de CPP
 
-1. Sustituir los conceptos demostrativos por proyectos reales (captura, enlace, qué se hizo y qué cambió) y sumar testimonios.
+1. Sustituir el concepto de tienda por un proyecto real cuando exista y sumar testimonios. Ya están Hotel Bahía de Cuba y Alma de Poeta.
 2. Cambiar los textos de ejemplo de `team.js` por los reales.
 3. Dominio propio (y luego actualizar las URL de arriba).
 4. Completar las preguntas frecuentes con datos del negocio: formas de pago, adelanto, dominio y hosting, propiedad del sitio, revisiones incluidas y plazos por servicio.

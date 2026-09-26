@@ -506,38 +506,10 @@ const buildGit = () => {
    Mockups vivos
    ════════════════════════════════════════════════════════════ */
 (function mocks() {
-  $$('[data-count]').forEach((el) => {
-    const io = onVisible(el, (vis) => {
-      if (!vis) return;
-      io.disconnect();
-      const end = Number(el.dataset.count), suffix = el.dataset.suffix || '', t0 = performance.now();
-      const tick = (now) => {
-        const p = reduced ? 1 : easeOut(clamp((now - t0) / 1600, 0, 1));
-        el.textContent = Math.round(end * p) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    });
-  });
-
-  const bars = $$('.md-chart i');
-  const shuffleBars = () => bars.forEach((b, i) => { b.style.setProperty('--h', `${25 + Math.random() * 70}%`); b.style.setProperty('--d', `${i * 0.06}s`); });
-  shuffleBars();
-
   const every = (el, ms, fn) => {
     let id = 0;
     onVisible(el, (vis) => { clearInterval(id); if (vis && !reduced) { fn(); id = setInterval(fn, ms); } }, { threshold: 0.3 });
   };
-
-  const dash = $('.mock-dash');
-  if (dash) {
-    const st = $$('.st', dash);
-    let order = [0, 1, 2];
-    const paint = () => st.forEach((s, i) => { s.textContent = t('work.states')[order[i]]; s.classList.toggle('is-busy', order[i] === 1); });
-    paint();
-    onLang(paint);
-    every(dash, 3200, () => { shuffleBars(); order = [order[2], order[0], order[1]]; paint(); });
-  }
 
   const shop = $('.mock-shop');
   if (shop) {
@@ -561,25 +533,16 @@ const buildGit = () => {
       };
     });
   }
-
-  const cal = $('[data-cal]');
-  if (cal) {
-    cal.innerHTML = Array.from({ length: 28 }, (_, i) => `<span>${i + 1}</span>`).join('');
-    const cells = $$('span', cal), toast = $('[data-toast]');
-    const seed = () => cells.forEach((c) => { c.className = Math.random() < 0.3 ? 'is-busy' : ''; });
-    seed();
-    every(cal.parentElement, 2600, () => {
-      const free = cells.filter((c) => !c.className);
-      if (free.length < 5) seed();
-      const cell = free[(Math.random() * free.length) | 0] || cells[0];
-      cell.className = 'is-new';
-      const time = `${9 + ((Math.random() * 11) | 0)}:${Math.random() < 0.5 ? '00' : '30'}`;
-      toast.innerHTML = `<span class="ok">✓</span> ${t('work.toast')(cell.textContent, time)}`;
-      toast.classList.add('is-show');
-      setTimeout(() => { toast.classList.remove('is-show'); cell.className = 'is-busy'; }, 1700);
-    });
-  }
 })();
+
+/* ── Proyectos: vistas de un mismo proyecto (web, panel…) ── */
+$$('[data-shots]').forEach((box) => {
+  const views = $$('[data-shot]', box), tabs = $$('[data-shot-tab]', box);
+  tabs.forEach((tab) => tab.addEventListener('click', () => {
+    views.forEach((v) => v.classList.toggle('is-on', v.dataset.shot === tab.dataset.shotTab));
+    tabs.forEach((b) => b.setAttribute('aria-pressed', String(b === tab)));
+  }));
+});
 
 /* ════════════════════════════════════════════════════════════
    Equipo: tarjetas que se despliegan

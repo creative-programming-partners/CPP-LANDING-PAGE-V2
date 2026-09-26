@@ -77,7 +77,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=202609251900" />
+  <link rel="stylesheet" href="styles.css?v=202609260300" />
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
@@ -277,32 +277,45 @@
     <section class="work section" id="proyectos" data-section="proyectos/" aria-labelledby="work-title">
       <div class="sec-head">
         <h2 id="work-title" data-scramble-in data-i18n="work.title">No mostramos humo. Mostramos lo que sabemos construir.</h2>
-        <p data-i18n="work.sub">Conceptos demostrativos de nuestras capacidades mientras documentamos los primeros casos públicos de CPP. Sin clientes ni resultados inventados.</p>
+        <p data-i18n="work.sub">Proyectos ya publicados y un concepto de lo que sabemos construir. Sin clientes ni resultados inventados.</p>
       </div>
 
       <div class="work-grid">
         <article class="win win-wide" data-tilt>
-          <div class="win-bar"><span data-i18n="work.bar1">panel-operativo</span><span class="win-tag" data-i18n="work.tag1">concepto · aplicación web</span></div>
-          <div class="mock mock-dash" aria-hidden="true">
-            <div class="md-side"><i></i><i></i><i></i><i></i></div>
-            <div class="md-main">
-              <div class="md-kpis">
-                <div><small data-i18n="work.kpi1">pedidos hoy</small><b data-count="128">0</b></div>
-                <div><small data-i18n="work.kpi2">pendientes</small><b data-count="9">0</b></div>
-                <div><small data-i18n="work.kpi3">automatizados</small><b data-count="87" data-suffix="%">0</b></div>
-              </div>
-              <div class="md-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <div class="md-rows">
-                <p><span data-i18n="work.row1">#1042 · Inventario</span><em class="st"></em></p>
-                <p><span data-i18n="work.row2">#1043 · Despacho</span><em class="st"></em></p>
-                <p><span data-i18n="work.row3">#1044 · Facturación</span><em class="st"></em></p>
-              </div>
+          <div class="win-bar"><span data-i18n="work.bar3">bahia-de-cuba</span><span class="win-tag win-live"><span class="led" aria-hidden="true"></span><span data-i18n="work.tag3">publicado · landing + reservas + panel</span></span></div>
+          <div class="shot" data-shots>
+            <img class="shot-desk shot-view is-on" data-shot="web" src="assets/work/bahia-de-cuba-1200.webp" srcset="assets/work/bahia-de-cuba-800.webp 800w, assets/work/bahia-de-cuba-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 680px" width="1200" height="750" data-i18n-attr="alt:work.p3aWeb" alt="Portada de la página web del hotel" loading="lazy" decoding="async" />
+            <img class="shot-desk shot-view" data-shot="panel" src="assets/work/bahia-de-cuba-panel-1200.webp" srcset="assets/work/bahia-de-cuba-panel-800.webp 800w, assets/work/bahia-de-cuba-panel-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 680px" width="1200" height="750" data-i18n-attr="alt:work.p3aPanel" alt="Panel administrativo del hotel con el resumen de reservas del año" loading="lazy" decoding="async" />
+            <img class="shot-phone" src="assets/work/bahia-de-cuba-reserva-movil.webp" width="300" height="624" data-i18n-attr="alt:work.p3aPhone" alt="Primer paso de la reserva en línea, en celular" loading="lazy" decoding="async" />
+            <div class="shot-tabs" data-i18n-attr="aria-label:work.p3views" role="group" aria-label="Partes del proyecto">
+              <button type="button" data-shot-tab="web" aria-pressed="true" data-i18n="work.p3tabWeb">Página web</button>
+              <button type="button" data-shot-tab="panel" aria-pressed="false" data-i18n="work.p3tabPanel">Panel administrativo</button>
             </div>
           </div>
           <div class="win-body">
-            <h3 data-i18n="work.p1t">Panel operativo modular</h3>
-            <p data-i18n="work.p1d">Una interfaz central que convierte procesos dispersos en un flujo visible, ordenado y fácil de gestionar. Incluye panel, roles y automatizaciones.</p>
-            <a class="link" href="#contacto" data-service-pick="app" data-i18n="work.p1l">Cotizar algo así</a>
+            <h3 data-i18n="work.p3t">Hotel Bahía de Cuba</h3>
+            <p data-i18n="work.p3d">Landing page, sistema de reservas en línea y panel administrativo para un eco hotel en Playa Tuquillo, Huarmey. Los huéspedes eligen habitación y fechas y reservan directo en cinco pasos, sin comisiones de intermediarios, y el hotel gestiona todo desde su panel.</p>
+            <div class="win-links">
+              <a class="link" href="https://bahia-de-cuba.github.io/Bahia-Cuba-Landing-Page/" target="_blank" rel="noopener"><span data-i18n="work.p3v">Ver el sitio en vivo</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+              <a class="link" href="https://bahia-cuba-app.netlify.app/es/reservar" target="_blank" rel="noopener"><span data-i18n="work.p3r">Ver la reserva en línea</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+              <a class="link" href="#contacto" data-service-pick="bookings" data-i18n="work.p3l">Cotizar un sistema de reservas</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="win" data-tilt>
+          <div class="win-bar"><span data-i18n="work.bar1">alma-de-poeta</span><span class="win-tag win-live"><span class="led" aria-hidden="true"></span><span data-i18n="work.tag1">publicado · landing page</span></span></div>
+          <a class="shot" href="https://creative-programming-partners.github.io/alma-de-poeta/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img class="shot-desk" src="assets/work/alma-de-poeta-1200.webp" srcset="assets/work/alma-de-poeta-800.webp 800w, assets/work/alma-de-poeta-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 560px" width="1200" height="750" alt="" loading="lazy" decoding="async" />
+            <img class="shot-phone" src="assets/work/alma-de-poeta-movil.webp" width="300" height="650" alt="" loading="lazy" decoding="async" />
+          </a>
+          <div class="win-body">
+            <h3 data-i18n="work.p1t">Alma de Poeta</h3>
+            <p data-i18n="work.p1d">Landing page para un café, librería y restaurante en Cercado de Lima. Reúne en una sola página la carta con precios, el horario, el mapa, las reseñas de Google y las reservas por WhatsApp, en español e inglés.</p>
+            <div class="win-links">
+              <a class="link" href="https://creative-programming-partners.github.io/alma-de-poeta/" target="_blank" rel="noopener"><span data-i18n="work.p1v">Ver el sitio en vivo</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+              <a class="link" href="#contacto" data-service-pick="landing" data-i18n="work.p1l">Cotizar una landing así</a>
+            </div>
           </div>
         </article>
 
@@ -321,19 +334,6 @@
             <h3 data-i18n="work.p2t">Una tienda que guía la compra</h3>
             <p data-i18n="work.p2d">Catálogo claro, decisiones simples y un recorrido pensado para convertir interés en pedidos.</p>
             <a class="link" href="#contacto" data-service-pick="store" data-i18n="work.p2l">Cotizar una tienda así</a>
-          </div>
-        </article>
-
-        <article class="win" data-tilt>
-          <div class="win-bar"><span data-i18n="work.bar3">reservas</span><span class="win-tag" data-i18n="work.tag3">concepto · reservas + automatización</span></div>
-          <div class="mock mock-cal" aria-hidden="true">
-            <div class="mc-grid" data-cal></div>
-            <div class="mc-toast" data-toast></div>
-          </div>
-          <div class="win-body">
-            <h3 data-i18n="work.p3t">Disponibilidad sin idas y vueltas</h3>
-            <p data-i18n="work.p3d">Reservas, confirmaciones y gestión en un solo flujo, incluso cuando el negocio está cerrado.</p>
-            <a class="link" href="#contacto" data-service-pick="bookings" data-i18n="work.p3l">Cotizar un sistema de reservas</a>
           </div>
         </article>
       </div>
@@ -526,8 +526,8 @@
     </div>
   </div>
 
-  <script src="i18n.js?v=202609251900" defer></script>
-  <script src="team.js?v=202609251900" defer></script>
-  <script src="script.js?v=202609251900" defer></script>
+  <script src="i18n.js?v=202609260300" defer></script>
+  <script src="team.js?v=202609260300" defer></script>
+  <script src="script.js?v=202609260300" defer></script>
 </body>
 </html>
