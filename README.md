@@ -62,7 +62,8 @@ npx http-server -p 5174 -c-1
 ## Compartir y buscadores
 
 - Vista previa (Open Graph y Twitter), `canonical`, datos estructurados (`ProfessionalService` con los servicios y precios), `robots.txt`, `sitemap.xml`, `apple-touch-icon` y `404.html`.
-- **Las URL son absolutas** y apuntan a `creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/`. Si pasas a un dominio propio, actualízalas en `index.html` (etiquetas `og:*`, `twitter:*`, `canonical` y el JSON-LD), `robots.txt` y `sitemap.xml`.
+- **Dominio:** el sitio se publica en `https://cppcstudio.com` (Cloudflare Pages, desde `main`). Las URL absolutas apuntan ahí: si cambia el dominio, actualízalas en `index.html` (etiquetas `og:*`, `twitter:*`, `canonical` y el JSON-LD), `robots.txt` y `sitemap.xml`.
+- La copia de GitHub Pages (`creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/`) redirige sola a la misma página en `cppcstudio.com`, para que los enlaces viejos sigan funcionando.
 - `robots.txt` solo cuenta en la raíz de un dominio: en github.io no se lee, con dominio propio sí.
 - Para medir visitas y envíos a WhatsApp, pon un ID de Google Analytics 4 en `CONFIG.gaId`. Se registran los eventos `whatsapp_click` y `generate_lead`. Si lo activas, menciónalo en `privacy.html`.
 
