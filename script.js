@@ -387,7 +387,7 @@ const codeFor = (s) => {
     [['', `  ${t('code.includes')}`], ['p', ': [']],
     ...L.list.map((item) => [['s', `    "${item}"`], ['p', ',']]),
     [['p', '  ],']],
-    [['', `  ${t('code.from')}`], ['p', ': '], ['n', s.price.toLocaleString('en-US').replace(',', '_')], ['p', ','], ...(s.plus ? [['c', ` // ${t('code.plus')}`]] : [])],
+    [['', `  ${t(s.from ? 'code.from' : 'code.price')}`], ['p', ': '], ['n', s.price.toLocaleString('en-US').replace(',', '_')], ['p', ','], ...(L.unit ? [['c', ` // ${L.unit}`]] : [])],
     [['', `  ${t('code.support')}`], ['p', ': '], ['k', 'true'], ['p', ',']],
     [['p', '});']]
   ];
@@ -401,7 +401,7 @@ const codeFor = (s) => {
   const priceEl = $('[data-s-price]');
   let typingRaf = 0, priceRaf = 0, current = -1, started = false;
 
-  const priceText = (s) => `S/ ${s.price.toLocaleString('en-US')}${s.plus ? '+' : ''}`;
+  const priceText = (s) => `S/ ${s.price.toLocaleString('en-US')}${s.from ? '+' : ''}`;
   const renderTabs = () => {
     files.innerHTML = SERVICES.map((s, i) => `<button class="file" type="button" role="tab" id="tab-${s.key}" aria-controls="service-panel" aria-selected="${i === current}" tabindex="${i === current ? 0 : -1}" style="--c:${COLORS_BY_SERVICE[i]}"><span class="dot" aria-hidden="true"></span><span class="file-txt"><span class="file-name">${staticText(`svc.${s.key}`)}</span><span class="file-path">${s.file}</span></span><span class="file-price">${priceText(s)}</span></button>`).join('');
   };
@@ -439,7 +439,10 @@ const codeFor = (s) => {
     $('[data-s-desc]').textContent = L.desc;
     $('[data-s-list]').innerHTML = L.list.map((x) => `<li>${x}</li>`).join('');
     $('[data-s-cta]').dataset.servicePick = s.key;
-    $('[data-s-plus]').hidden = !s.plus;
+    $('[data-s-from]').hidden = !s.from;
+    const unit = $('[data-s-unit]');
+    unit.textContent = L.unit || '';
+    unit.hidden = !L.unit;
     panel.classList.remove('is-swap'); void panel.offsetWidth; panel.classList.add('is-swap');
 
     const lines = codeFor(s);
