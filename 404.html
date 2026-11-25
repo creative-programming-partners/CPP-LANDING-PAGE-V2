@@ -8,30 +8,22 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%0A  %3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23050F17%22/%3E%0A  %3Cpath fill=%22%235B8CFF%22 d=%22M32 6 55 19.5 44.5 25.7 32 18.5 21.5 24.6 9 19.5Z%22/%3E%0A  %3Cpath fill=%22%23F4F7F5%22 d=%22M9 19.5 21.5 24.6v17.6L32 48.4v10.1L9 45Z%22/%3E%0A  %3Cpath fill=%22%239AAFB9%22 d=%22m32 48.4 10.5-6.2V31.4l12.5-7.3V45L32 58.5Z%22/%3E%0A%3C/svg%3E" type="image/svg+xml" />
   <!-- GitHub Pages sirve esta página en cualquier ruta que no existe, a cualquier profundidad.
        Por eso no usa rutas relativas: los estilos van aquí y el enlace al inicio se calcula. -->
-  <script>
-    (function () {
-      var d = document.documentElement, theme;
-      try { theme = localStorage.getItem('cpp-theme'); } catch (e) {}
-      d.dataset.theme = theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    })();
-  </script>
   <style>
-    :root { --bg: #f7f8f8; --text: #071521; --text-2: #3e545f; --accent: #1d5ae0; --accent-hi: #123fa8; --steel: #607985; --line: #dde3e6; }
-    :root[data-theme="dark"] { --bg: #050f17; --text: #f4f7f5; --text-2: #9aafb9; --accent: #5b8cff; --accent-hi: #82a8ff; --steel: #9aafb9; --line: #1a2d3b; }
+    :root { color-scheme: dark; --bg: #050f17; --text: #f4f7f5; --text-2: #9aafb9; --accent: #5b8cff; --accent-hi: #82a8ff; --steel: #9aafb9; --line: #1a2d3b; }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px 16px;
-      background: var(--bg); color: var(--text); font: 17px/1.6 system-ui, "Segoe UI", sans-serif;
+      background: radial-gradient(60% 45% at 50% -10%, rgba(29, 90, 224, 0.5), rgba(29, 90, 224, 0) 70%), var(--bg); color: var(--text); font: 17px/1.6 system-ui, "Segoe UI", sans-serif;
     }
     main { width: min(560px, 100%); }
     svg { display: block; width: 44px; height: 44px; margin-bottom: 40px; }
     .m1 { fill: var(--accent); } .m2 { fill: var(--text); } .m3 { fill: var(--steel); }
     code { display: block; font: 500 13px/1 ui-monospace, "Cascadia Code", Consolas, monospace; color: var(--text-2); }
-    h1 { margin: 14px 0 12px; font: 700 clamp(30px, 7vw, 48px)/1.08 ui-monospace, "Cascadia Code", Consolas, monospace; letter-spacing: -.04em; }
+    h1 { margin: 14px 0 12px; font: 400 clamp(38px, 8vw, 60px)/1 "Iowan Old Style", Georgia, serif; letter-spacing: -.02em; }
     p { margin: 0; color: var(--text-2); max-width: 44ch; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 10px; font-weight: 600; text-decoration: none; }
-    .primary { background: var(--accent); color: var(--bg); }
+    a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+    .primary { background: linear-gradient(180deg, var(--accent-hi), var(--accent)); color: var(--bg); }
     .primary:hover { background: var(--accent-hi); }
     .ghost { border: 1px solid var(--line); color: var(--text); }
     .ghost:hover { border-color: var(--accent); color: var(--accent); }

@@ -3,52 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
   <!-- La dirección oficial es cppcstudio.com: quien entre por la copia de github.io pasa a la misma página en el dominio -->
   <script>if(location.hostname.endsWith("github.io"))location.replace("https://cppcstudio.com/"+location.pathname.split("/").slice(2).join("/")+location.search+location.hash)</script>
   <title>Política de privacidad | CPP</title>
-  <meta name="description" content="Cómo usa CPP los datos que nos envías desde el formulario de contacto." />
+  <meta name="description" content="Cómo usa CPP los datos que nos envías desde este sitio." />
+  <meta name="theme-color" content="#050f17" />
+  <link rel="canonical" href="https://cppcstudio.com/privacy.html" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/brand/png/apple-touch-icon.png" />
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem("cpp-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=202609261300" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=202611250300" />
   <style>
-    .legal { width: min(760px, 100% - 32px); margin: 0 auto; padding: 48px 0 120px; }
-    .legal .brand { margin-bottom: 72px; }
-    .legal h1 { font-size: clamp(32px, 6vw, 60px); line-height: 1.05; font-variation-settings: "wdth" 80; margin-bottom: 18px; }
-    .legal h2 { font-size: 22px; margin: 44px 0 10px; font-variation-settings: "wdth" 88; }
-    .legal p, .legal li { color: var(--text-2); max-width: 68ch; }
-    .legal ul { padding-left: 1.2em; }
+    body { background: radial-gradient(60% 40% at 50% -10%, rgba(29, 90, 224, 0.45), rgba(29, 90, 224, 0) 70%), var(--night); }
+    .legal { width: min(100% - 2 * var(--gutter), 760px); margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(5rem, 10vw, 8rem); }
+    .legal-brand { display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none; font-weight: 700; color: var(--text); margin-bottom: clamp(3rem, 8vw, 5rem); min-height: 2.75rem; }
+    .legal-brand span.mark { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: 50%; background: var(--night); border: 1px solid rgba(130, 168, 255, 0.25); }
+    .legal-brand svg { width: 1.45rem; height: 1.45rem; }
+    .legal h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.6rem, 1.6rem + 4vw, 4.4rem); line-height: 1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .legal h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem); line-height: 1.1; margin: 2.8rem 0 0.7rem; }
+    .legal p, .legal li { color: var(--text-2); max-width: 66ch; }
+    .legal ul { list-style: disc; padding-left: 1.2em; display: grid; gap: 0.5rem; }
     .legal strong { color: var(--text); }
-    .legal .updated { font: 400 13px/1.4 var(--mono); color: var(--text-3); }
+    .legal .updated { color: var(--text-3); font-size: var(--text-sm); }
+    .legal a:not(.legal-brand) { color: var(--blue-hi); text-decoration-color: rgba(130, 168, 255, 0.45); }
+    .legal .back { margin-top: 3rem; }
   </style>
 </head>
 <body>
-  <!-- Antes de cambiar los plazos de conservación o activar analítica (CONFIG.gaId),
-       actualiza esta página. Conviene revisarla con asesoría legal. -->
+  <!-- Antes de cambiar los plazos de conservación o activar analítica, actualiza esta página.
+       Conviene revisarla con asesoría legal. -->
   <main class="legal">
-    <a class="brand" href="index.html" aria-label="CPP, volver al inicio">
-      <svg class="brand-mark" viewBox="0 0 128 128" aria-hidden="true">
-        <path class="m1" d="M64 8 112 36 90 49 64 34 42 47 20 34Z"/>
-        <path class="m2" d="M20 34 42 47v36l22 13v25L20 95Z"/>
-        <path class="m3" d="m64 96 22-13V60l22-13v49l-44 25Z"/>
-      </svg>
-      <span class="brand-text">cpp<span class="brand-caret">_</span></span>
+    <a class="legal-brand" href="index.html" aria-label="CPP, volver al inicio">
+      <span class="mark"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path fill="#5B8CFF" d="M32 6 55 19.5 44.5 25.7 32 18.5 21.5 24.6 9 19.5Z"/><path fill="#F4F7F5" d="M9 19.5 21.5 24.6v17.6L32 48.4v10.1L9 45Z"/><path fill="#9AAFB9" d="m32 48.4 10.5-6.2V31.4l12.5-7.3V45L32 58.5Z"/></svg></span>
+      <span>CPP</span>
     </a>
     <h1>Política de privacidad</h1>
-    <p class="updated">Última actualización: 25 de septiembre de 2026</p>
+    <p class="updated">Última actualización: 25 de noviembre de 2026</p>
 
     <h2>Quiénes somos</h2>
-    <p>CPP · Creative Programming Partners es responsable de los datos que nos envías desde este sitio. Para cualquier consulta sobre ellos, escríbenos por WhatsApp al <a class="link" href="https://wa.me/51929363454">+51 929 363 454</a>.</p>
+    <p>CPP · Creative Programming Partners es responsable de los datos que nos envías desde este sitio. Para cualquier consulta sobre ellos, escríbenos por WhatsApp al <a href="https://wa.me/51929363454">+51 929 363 454</a>.</p>
 
     <h2>Qué datos recibimos</h2>
-    <p>Si usas el formulario de contacto: tu nombre, tu empresa, el servicio que te interesa, tu presupuesto aproximado y la descripción de tu proyecto. Como la solicitud llega por WhatsApp, también recibimos tu número y tu nombre de perfil de WhatsApp.</p>
+    <p>Si usas el cotizador o el campo para cotizar: los servicios que marques, el nombre de tu negocio si lo escribes y lo que nos cuentes sobre tu proyecto. Como la solicitud llega por WhatsApp, también recibimos tu número y tu nombre de perfil de WhatsApp.</p>
 
     <h2>Cómo llegan a nosotros</h2>
-    <p>El formulario no guarda nada en este sitio: arma el mensaje y lo abre en WhatsApp para que tú decidas enviarlo. Ese envío lo procesa WhatsApp (Meta) según sus propias condiciones.</p>
+    <p>Este sitio no guarda nada: arma el mensaje y lo abre en WhatsApp para que tú decidas enviarlo. Ese envío lo procesa WhatsApp (Meta) según sus propias condiciones.</p>
 
     <h2>Para qué los usamos</h2>
     <p>Solo para responder tu solicitud, preparar una propuesta y conversar contigo sobre el proyecto. <strong>No vendemos tus datos ni los compartimos con terceros para publicidad.</strong></p>
@@ -58,15 +59,15 @@
 
     <h2>Qué más usa este sitio</h2>
     <ul>
-      <li>Tu navegador recuerda si elegiste tema claro u oscuro y el idioma. Esa preferencia se queda en tu dispositivo; no la recibimos.</li>
-      <li>Las tipografías se descargan de Google Fonts, así que Google recibe tu dirección IP al cargarlas.</li>
+      <li>Tu navegador recuerda el idioma que elegiste. Esa preferencia se queda en tu dispositivo; no la recibimos.</li>
+      <li>La tipografía de los títulos se descarga de Google Fonts y las animaciones, de cdnjs (Cloudflare), así que esos servicios reciben tu dirección IP al cargarlas.</li>
       <li>No usamos cookies de publicidad ni de seguimiento.</li>
     </ul>
 
     <h2>Tus derechos</h2>
     <p>De acuerdo con la Ley N.° 29733, Ley de Protección de Datos Personales, puedes pedir acceso, rectificación, cancelación u oposición al uso de tus datos. Escríbenos por WhatsApp y te respondemos. Si no quedas conforme, puedes acudir a la Autoridad Nacional de Protección de Datos Personales del Ministerio de Justicia y Derechos Humanos.</p>
 
-    <p><a class="link" href="index.html#contacto">Volver al contacto</a></p>
+    <p class="back"><a href="index.html#contacto">Volver al contacto</a></p>
   </main>
 </body>
 </html>

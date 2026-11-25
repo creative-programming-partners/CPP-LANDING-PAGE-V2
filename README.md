@@ -1,51 +1,55 @@
 # CPP Landing Page · v2
 
-Versión 2 de la landing de Creative Programming Partners. Sitio estático sin dependencias ni compilación: `index.html`, `styles.css`, `script.js` y `assets/`.
+Landing de Creative Programming Partners. Sitio estático sin compilación: `index.html`, `styles.css`, `script.js`, `team.js`, `assets/`, `media/` y `fonts/`.
 
-## Dirección visual
+## Dirección visual: Vitrina
 
-Colores originales de CPP, con tema claro y oscuro (se respeta la preferencia del sistema y se recuerda la elección):
+Noche azul con el cobalto de la marca. El trabajo real se muestra en video: un muro 3D con capturas de los sitios publicados de fondo, y un celular que reproduce una grabación de esos sitios.
 
-| Token | Claro | Oscuro | Uso |
-|---|---|---|---|
-| `--bg` | `#F7F8F8` | `#050F17` | Fondo |
-| `--surface` | `#FFFFFF` | `#0B1A26` | Tarjetas y paneles |
-| `--text` | `#071521` | `#F4F7F5` | Texto principal |
-| `--text-2` | `#3E545F` | `#9AAFB9` | Texto secundario |
-| `--accent` | `#1D5AE0` | `#5B8CFF` | Acción: botones y enlaces (cobalto) |
-| `--steel` | `#607985` | `#9AAFB9` | Tercer módulo de la marca |
-| `--live` | `#0D7A63` | `#72F2D2` | Confirmaciones y foco |
+| Token | Valor | Uso |
+|---|---|---|
+| `--night` | `#050F17` | Fondo |
+| `--surface` | `#0B1A26` | Paneles y tarjetas de vidrio |
+| `--cobalt` | `#1D5AE0` | Resplandor y tinte de los videos |
+| `--blue` | `#5B8CFF` | Acción: botones, pestañas, foco |
+| `--text` | `#F4F7F5` | Texto principal |
+| `--text-2` | `#9AAFB9` | Texto secundario |
 
-Tipografía: **Martian Mono** (titulares y código, con eje de ancho animado) + **Instrument Sans** (lectura).
+Tipografía: **Instrument Serif** (titulares, desde Google Fonts) + **Satoshi** (lectura, alojada en `fonts/`).
+
+## Secciones
+
+1. Hero: ventana con el video del muro, titular, campo para escribir lo que necesitas y botón a WhatsApp.
+2. Cinta con los términos reales (precio por escrito, 50/50, dominio .com, 2 rondas de cambios).
+3. Vitrina: celular con la grabación de los sitios y carrusel de capturas detrás.
+4. Trabajo: Hotel Bahía de Cuba (web, panel y reserva en celular) y dos ejemplos publicados, Pachanka (pachankarestaurant.com y carta.pachankarestaurant.com) y Alma de Poeta. **No se presentan como clientes.**
+5. Precios: cotizador con los siete servicios; calcula el total y el 50/50 y arma el mensaje de WhatsApp. Cada servicio tiene un botón **Ver ejemplo** que abre una ficha con un caso real (Pachanka, su carta, Bahía de Cuba), un prototipo (OdontoPlus VMT) o una demostración marcada como tal (automatización y tienda con pagos). Los datos están en `script.js` (`EXAMPLES`) y las capturas en `media/examples/`.
+6. Proceso, equipo (cada foto abre la ficha del socio), preguntas y cierre.
 
 ## Idiomas
 
 Español e inglés. El idioma inicial sale del navegador y se recuerda la elección.
 
-- Textos estáticos: el español vive en `index.html` (atributos `data-i18n`, `data-i18n-html`, `data-i18n-attr`); el inglés, en `i18n.js` → `en`.
-- Textos generados por JavaScript y servicios: `i18n.js` → `strings`, `services`. Equipo: `team.js`.
-- Para agregar un idioma, añade su bloque en esos objetos y una opción en el botón de idioma.
+- El español está en `index.html`; el inglés, en el atributo `data-en` de cada elemento (y `data-en-alt`, `data-en-aria-label`, `data-en-placeholder` para atributos).
+- Los nombres de servicios para el mensaje de WhatsApp están en `script.js` (`NAMES`).
 
 ## Equipo
 
-Cada socio abre una tarjeta con foto, especialidad, bio, frase y tres pestañas: **Perfil** (datos), **En CPP** (resumen, tareas y enfoque) y **Stack** (tecnologías por grupo). Se navega entre socios con flechas o deslizando, y LinkedIn queda como botón dentro de la tarjeta.
+Cada foto abre la ficha del socio con foto, especialidad, bio, frase y tres pestañas: **Perfil**, **En CPP** y **Stack**. Se navega con flechas y se cierra con Esc.
 
-Los datos están en `team.js`. **Los textos actuales son de ejemplo**: reemplázalos con la información real. Los campos o pestañas vacíos no se muestran.
+Los datos están en `team.js`. **Los textos actuales son de ejemplo**: reemplázalos con la información real.
 
-## Movimiento y efectos
+## Videos
 
-La estética de programador es la textura de la marca; donde el cliente decide (servicios, precios, proceso, formulario) se habla en lenguaje de negocio.
+- `media/cpp-muro.mp4`: muro 3D de capturas reales, con el tinte cobalto ya grabado (1080p, en bucle).
+- `media/cpp-trabajo-movil.mp4`: grabación en celular de Bahía de Cuba, su reserva, la carta de Pachanka y Alma de Poeta.
+- `media/work/`: capturas actuales de Bahía de Cuba.
 
-- Símbolo CPP en 3D renderizado en ASCII en tiempo real (raymarching en canvas): los tres módulos se ensamblan, se gira arrastrando y la luz sigue al puntero. Se pausa fuera de pantalla.
-- Titular con eje de ancho variable que responde al puntero; titulares que se decodifican al aparecer.
-- Riel de señal que recorre la página con el scroll y enciende un pad por sección.
-- Manifiesto que se "ejecuta" palabra por palabra.
-- Beneficios como un `diff`, servicios como un editor con código que se escribe solo (cada servicio muestra su nombre y precio en la lista), proceso como un `git log` que se dibuja.
-- Proyectos publicados con capturas reales en `assets/work/`: Hotel Bahía de Cuba (landing, reservas en línea y panel; la tarjeta alterna entre la web y el panel, sin el correo del hotel), Alma de Poeta (landing) y Pachanka Restaurant (landing y carta digital).
-- Retratos con trama de puntos que pasan a color al pasar el cursor (en pantallas táctiles se ven a color).
-- Paleta de comandos (`Ctrl/⌘ + K` o `/`), que también cambia tema e idioma y abre WhatsApp; barra de estado tipo IDE (solo en pantallas grandes), botones magnéticos, tarjetas con inclinación y luz.
-- Cambio de tema con revelado circular desde el botón (View Transitions).
-- Todo respeta `prefers-reduced-motion`.
+Los videos no se descargan hasta que la página termina de pintarse, y se pausan fuera de vista. El botón "Pausar movimiento" detiene videos y animaciones; con `prefers-reduced-motion` todo arranca quieto.
+
+## Movimiento
+
+GSAP 3.12.5 y ScrollTrigger desde cdnjs. Solo se animan `transform`, `opacity` y `clip-path`; lo que está debajo del hero se prepara cuando el navegador queda libre.
 
 ## Vista local
 
@@ -55,32 +59,24 @@ npx http-server -p 5174 -c-1
 
 ## Contacto y WhatsApp
 
-- El formulario abre WhatsApp al +51 929 363 454 con la solicitud escrita y un saludo según la hora (`CONFIG.whatsapp` en `script.js`). Si WhatsApp no se abre en una ventana nueva (navegadores internos de Instagram o Facebook), navega en la misma pestaña, y el mensaje de estado deja un enlace para reintentar.
-- Hay un botón flotante de WhatsApp y el número está en el pie.
-- Si prefieres recibir las solicitudes por correo, completa `CONFIG.endpoint` (Formspree, Web3Forms o una función propia que reciba JSON): cuando hay endpoint, se usa en lugar de WhatsApp.
+Todo termina en WhatsApp al +51 929 363 454 con el mensaje ya escrito: el campo del hero, el cotizador, la ficha del caso y el cierre.
 
 ## Compartir y buscadores
 
 - Vista previa (Open Graph y Twitter), `canonical`, datos estructurados (`ProfessionalService` con los servicios y precios), `robots.txt`, `sitemap.xml`, `apple-touch-icon` y `404.html`.
-- **Dominio:** el sitio se publica en `https://cppcstudio.com` (Cloudflare Pages, desde `main`). Las URL absolutas apuntan ahí: si cambia el dominio, actualízalas en `index.html` (etiquetas `og:*`, `twitter:*`, `canonical` y el JSON-LD), `robots.txt` y `sitemap.xml`.
-- La copia de GitHub Pages (`creative-programming-partners.github.io/CPP-LANDING-PAGE-V2/`) redirige sola a la misma página en `cppcstudio.com`, para que los enlaces viejos sigan funcionando.
-- `robots.txt` solo cuenta en la raíz de un dominio: en github.io no se lee, con dominio propio sí.
-- Para medir visitas y envíos a WhatsApp, pon un ID de Google Analytics 4 en `CONFIG.gaId`. Se registran los eventos `whatsapp_click` y `generate_lead`. Si lo activas, menciónalo en `privacy.html`.
+- **Dominio:** el sitio se publica en `https://cppcstudio.com` (Cloudflare, desde `main`; `publicar.mjs` copia a `dist/` los archivos del sitio, `assets/`, `media/` y `fonts/`). Si cambia el dominio, actualiza las URL absolutas en `index.html` (`og:*`, `twitter:*`, `canonical` y el JSON-LD), `robots.txt` y `sitemap.xml`.
+- La copia de GitHub Pages redirige sola a la misma página en `cppcstudio.com`.
 
 ## Pendientes que dependen de CPP
 
-1. Sumar testimonios de los clientes (nombre, negocio y una frase). Los proyectos publicados ya están.
+1. Sumar testimonios de los clientes (nombre, negocio y una frase).
 2. Cambiar los textos de ejemplo de `team.js` por los reales.
-3. Dominio propio (y luego actualizar las URL de arriba).
-4. Completar las preguntas frecuentes con datos del negocio: formas de pago, adelanto, dominio y hosting, propiedad del sitio, revisiones incluidas y plazos por servicio.
-5. Revisar `privacy.html` con asesoría legal.
+3. Captura nueva del panel de Bahía de Cuba (la actual es del diseño anterior).
+4. Revisar `privacy.html` con asesoría legal.
 
 ## Marca
 
-Los archivos de `assets/brand/` están en la paleta cobalto, con el mismo acento
-que usa la hoja de estilos: `#1d5ae0` sobre claro y `#5b8cff` sobre oscuro. El
-wordmark va en curvas, así que el logotipo se ve igual aunque el equipo no tenga
-instalada la tipografía.
+Los archivos de `assets/brand/` están en la paleta cobalto (`#1d5ae0` y `#5b8cff`). El wordmark va en curvas, así que el logotipo se ve igual aunque el equipo no tenga instalada la tipografía.
 
 | Archivo | Para qué |
 |---|---|
@@ -90,8 +86,4 @@ instalada la tipografía.
 | `cpp-social-avatar.svg` | Perfil en redes |
 | `cpp-social-cover.svg` · `png/cpp-social-cover-1200x630.png` | Imagen Open Graph |
 
-Se regeneran con `scripts/generar-marca.py` (en la carpeta `CPP-Marca`): produce
-el SVG y el PNG de cada pieza desde la misma descripción, para que no diverjan.
-
-> El menta `--live` **no** es un resto de la paleta anterior: es el color de
-> confirmaciones y foco. No se toca.
+Se regeneran con `scripts/generar-marca.py` (en la carpeta `CPP-Marca`).

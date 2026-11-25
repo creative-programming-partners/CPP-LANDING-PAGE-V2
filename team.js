@@ -12,6 +12,8 @@
      stack      [{ group, items[] }] de la pestaña "Stack"
    Los campos o pestañas vacíos no se muestran. */
 
+window.CPP_I18N = window.CPP_I18N || {};
+
 window.CPP_I18N.teamTabs = {
   es: { profile: 'Perfil', atCpp: 'En CPP', stack: 'Stack' },
   en: { profile: 'Profile', atCpp: 'At CPP', stack: 'Stack' }

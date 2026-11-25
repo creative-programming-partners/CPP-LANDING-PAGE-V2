@@ -6,4 +6,6 @@ rmSync('dist', { recursive: true, force: true });
 mkdirSync('dist');
 for (const f of readdirSync('.')) if (RAIZ.test(f) && !FUERA.has(f)) cpSync(f, `dist/${f}`);
 cpSync('assets', 'dist/assets', { recursive: true });
+cpSync('media', 'dist/media', { recursive: true });
+cpSync('fonts', 'dist/fonts', { recursive: true });
 console.log('dist/ listo:', readdirSync('dist').join(', '));

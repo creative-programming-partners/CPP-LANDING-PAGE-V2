@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- La dirección oficial es cppcstudio.com: quien entre por la copia de github.io pasa a la misma página en el dominio -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- La dirección oficial es cppcstudio.com: quien entre por la copia de github.io pasa a la misma página en el dominio -->
   <script>if(location.hostname.endsWith("github.io"))location.replace("https://cppcstudio.com/"+location.pathname.split("/").slice(2).join("/")+location.search+location.hash)</script>
-  <title>CPP | Web, software y automatización para negocios</title>
-  <meta name="description" content="CPP diseña y programa páginas web, tiendas online, sistemas a medida y automatizaciones para negocios que quieren vender y operar mejor." />
-  <meta name="theme-color" content="#f7f8f8" />
+  <title>CPP | Webs y sistemas a precio fijo para negocios</title>
+  <meta name="description" content="CPP diseña y programa páginas web, tiendas online, sistemas de reservas y automatizaciones en Lima, con el precio por escrito." data-en-content="CPP designs and builds websites, online stores, booking systems and automations in Lima, with the price in writing." />
+  <meta name="theme-color" content="#050f17" />
   <link rel="canonical" href="https://cppcstudio.com/" />
   <!-- Vista previa al compartir: las URL deben ser absolutas. Si cambia el dominio, actualízalas aquí,
        en el JSON-LD de abajo, en robots.txt y en sitemap.xml -->
@@ -17,14 +17,14 @@
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:url" content="https://cppcstudio.com/" />
   <meta property="og:title" content="CPP | Creative Programming Partners" />
-  <meta property="og:description" content="Menos fricción. Más negocio. Páginas web, tiendas online, sistemas y automatizaciones a medida, desde S/ 600." />
+  <meta property="og:description" content="Webs y sistemas a precio fijo: páginas, tiendas, reservas y automatizaciones, desde S/ 600." />
   <meta property="og:image" content="https://cppcstudio.com/assets/brand/png/cpp-social-cover-1200x630.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="CPP · Creative Programming Partners" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CPP | Creative Programming Partners" />
-  <meta name="twitter:description" content="Menos fricción. Más negocio. Páginas web, tiendas online, sistemas y automatizaciones a medida, desde S/ 600." />
+  <meta name="twitter:description" content="Webs y sistemas a precio fijo: páginas, tiendas, reservas y automatizaciones, desde S/ 600." />
   <meta name="twitter:image" content="https://cppcstudio.com/assets/brand/png/cpp-social-cover-1200x630.png" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/brand/png/apple-touch-icon.png" />
@@ -63,472 +63,417 @@
     }
   }
   </script>
-  <script>
-    // Tema e idioma antes de pintar, para evitar parpadeos
-    (function () {
-      var d = document.documentElement, theme, lang;
-      try { theme = localStorage.getItem('cpp-theme'); lang = localStorage.getItem('cpp-lang'); } catch (e) {}
-      if (!theme) theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      if (!lang) lang = (navigator.language || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
-      d.dataset.theme = theme;
-      d.lang = lang;
-      var tc = document.querySelector('meta[name="theme-color"]');
-      if (tc) tc.content = theme === 'dark' ? '#050f17' : '#f7f8f8';
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,300..800&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=202609261300" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" /></noscript>
+<link rel="preload" href="fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" as="image" href="media/cpp-muro-poster.jpg" />
+<link rel="stylesheet" href="styles.css?v=202611250300" />
+<script>
+  (function () {
+    var d = document.documentElement, lang;
+    d.classList.add('js');
+    try { lang = localStorage.getItem('cpp-lang'); } catch (e) {}
+    if (!lang) lang = (navigator.language || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
+    d.lang = lang;
+  })();
+</script>
 </head>
 <body>
-  <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+<a class="skip" href="#main" data-en="Skip to content">Saltar al contenido</a>
 
-  <div class="grain" aria-hidden="true"></div>
-
-  <header class="top" data-top>
-    <a class="brand" href="#inicio" data-i18n-attr="aria-label:brand.home" aria-label="CPP, ir al inicio">
-      <svg class="brand-mark" viewBox="0 0 128 128" aria-hidden="true">
-        <path class="m1" d="M64 8 112 36 90 49 64 34 42 47 20 34Z"/>
-        <path class="m2" d="M20 34 42 47v36l22 13v25L20 95Z"/>
-        <path class="m3" d="m64 96 22-13V60l22-13v49l-44 25Z"/>
-      </svg>
-      <span class="brand-text">cpp<span class="brand-caret">_</span></span>
+<header class="top">
+  <nav class="pill" id="pill" aria-label="Principal" data-en-aria-label="Main">
+    <a class="pill-link" href="#trabajo" data-en="Work">Trabajo</a>
+    <a class="pill-link" href="#precios" data-en="Prices">Precios</a>
+    <a class="pill-mark" href="#inicio" aria-label="CPP, ir al inicio" data-en-aria-label="CPP, go to top">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path fill="#5B8CFF" d="M32 6 55 19.5 44.5 25.7 32 18.5 21.5 24.6 9 19.5Z"/><path fill="#F4F7F5" d="M9 19.5 21.5 24.6v17.6L32 48.4v10.1L9 45Z"/><path fill="#9AAFB9" d="m32 48.4 10.5-6.2V31.4l12.5-7.3V45L32 58.5Z"/></svg>
     </a>
-    <nav class="nav" data-i18n-attr="aria-label:nav.label" aria-label="Principal">
-      <a href="#servicios" data-scramble data-i18n="nav.services">servicios</a>
-      <a href="#proceso" data-scramble data-i18n="nav.process">proceso</a>
-      <a href="#proyectos" data-scramble data-i18n="nav.work">proyectos</a>
-      <a href="#equipo" data-scramble data-i18n="nav.team">equipo</a>
-      <a href="#preguntas" data-scramble data-i18n="nav.faq">preguntas</a>
-    </nav>
-    <div class="top-actions">
-      <button class="kbd-hint" type="button" data-palette-open data-i18n-attr="aria-label:palette.open" aria-label="Abrir paleta de comandos">
-        <kbd>Ctrl</kbd><kbd>K</kbd>
-      </button>
-      <div class="toggles">
-        <button class="toggle lang-toggle" type="button" data-lang-toggle data-i18n-attr="aria-label:lang.switch" aria-label="Cambiar idioma a inglés">
-          <span data-lang-opt="es">ES</span><span data-lang-opt="en">EN</span>
-        </button>
-        <button class="toggle theme-toggle" type="button" data-theme-toggle data-i18n-attr="aria-label:theme.switch" aria-label="Cambiar tema">
-          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
-          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8Z"/></svg>
-        </button>
-      </div>
-      <a class="btn btn-primary btn-sm" href="#contacto" data-magnetic><span data-i18n="cta.quote">Pedir cotización</span></a>
-      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" data-i18n-attr="aria-label:menu.open" aria-label="Abrir menú">
-        <span></span><span></span>
-      </button>
-    </div>
-  </header>
+    <a class="pill-link" href="#proceso" data-en="Process">Proceso</a>
+    <a class="pill-link" href="#equipo" data-en="Team">Equipo</a>
+  </nav>
+  <button class="lang" type="button" id="lang" aria-label="Cambiar idioma a inglés" data-en-aria-label="Switch language to Spanish"><span data-l="es">ES</span><span data-l="en">EN</span></button>
+</header>
 
-  <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
-    <a href="#servicios" data-i18n="nav.services">servicios</a>
-    <a href="#proceso" data-i18n="nav.process">proceso</a>
-    <a href="#proyectos" data-i18n="nav.work">proyectos</a>
-    <a href="#equipo" data-i18n="nav.team">equipo</a>
-    <a href="#preguntas" data-i18n="nav.faq">preguntas</a>
-    <a href="#contacto" class="btn btn-primary"><span data-i18n="cta.quote">Pedir cotización</span></a>
-  </div>
-
-  <!-- Riel de señal -->
-  <div class="rail" data-rail aria-hidden="true">
-    <div class="rail-line"></div>
-    <div class="rail-signal" data-rail-signal></div>
-  </div>
-
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="inicio" data-section="inicio.tsx">
-      <div class="hero-copy">
-        <p class="hero-prompt" data-hero-item><span class="p-sign">$</span> cpp build <span class="p-flag" data-i18n="hero.flag">--para</span> <span class="p-str" data-i18n="hero.prompt">"tu negocio"</span></p>
-        <h1 class="hero-title" data-i18n-attr="aria-label:hero.title" aria-label="Menos fricción. Más negocio.">
-          <span class="ht-line" data-hero-line data-i18n="hero.line1">Menos fricción.</span>
-          <span class="ht-line" data-hero-line data-i18n="hero.line2">Más negocio.</span>
+<main id="main">
+  <section class="hero" id="inicio" aria-labelledby="h1">
+    <div class="side side-l" aria-hidden="true"><img src="media/cpp-muro-side.jpg" alt="" width="480" height="270" decoding="async" /></div>
+    <div class="side side-r" aria-hidden="true"><img src="media/cpp-muro-side.jpg" alt="" width="480" height="270" decoding="async" /></div>
+    <div class="window" id="window">
+      <video class="bg-video" id="bgVid" muted loop playsinline preload="none" poster="media/cpp-muro-poster.jpg" aria-hidden="true">
+        <source src="media/cpp-muro.mp4" type="video/mp4" />
+      </video>
+      <div class="tint" aria-hidden="true"></div>
+      <div class="sheen" aria-hidden="true"></div>
+      <div class="hero-copy" id="heroCopy">
+        <h1 id="h1" class="display">
+          <span class="h-line" data-split data-en="Websites and systems">Webs y sistemas</span>
+          <em class="h-line" data-split data-en="at a fixed price.">a precio fijo.</em>
         </h1>
-        <p class="hero-sub" data-hero-item data-i18n="hero.sub">Diseñamos y programamos páginas, tiendas y sistemas a medida para ayudarte a vender, ordenar tu operación y dejar atrás las tareas repetitivas.</p>
-        <div class="hero-cta" data-hero-item>
-          <a class="btn btn-primary" href="#contacto" data-magnetic><span data-i18n="hero.cta1">Cuéntanos tu proyecto</span></a>
-          <a class="btn btn-ghost" href="#servicios" data-magnetic><span data-i18n="hero.cta2">Ver servicios y precios</span></a>
-        </div>
-        <ul class="hero-checks" data-hero-item>
-          <li><span class="ok" aria-hidden="true">✓</span> <span data-i18n="hero.check1">Diseño y desarrollo en un mismo equipo</span></li>
-          <li><span class="ok" aria-hidden="true">✓</span> <span data-i18n="hero.check2">Alcance y precios explicados con claridad</span></li>
-          <li><span class="ok" aria-hidden="true">✓</span> <span data-i18n="hero.check3">Acompañamiento después del lanzamiento</span></li>
-        </ul>
+        <p class="lead" data-intro data-en="We design and build in Lima: websites, stores, booking systems and automations, with the price in writing.">Diseñamos y programamos en Lima: páginas, tiendas, reservas y automatizaciones, con el precio por escrito.</p>
+        <form class="ask" id="ask" data-intro novalidate>
+          <label class="sr" for="need" data-en="What do you need?">¿Qué necesitas?</label>
+          <input id="need" type="text" maxlength="80" autocomplete="off" placeholder="Ej.: una web para mi restaurante" data-en-placeholder="E.g. a website for my restaurant" />
+          <a class="btn btn-light" id="askGo" href="https://wa.me/51929363454?text=Hola%20CPP%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer"><span data-en="Quote on WhatsApp">Cotizar por WhatsApp</span></a>
+        </form>
       </div>
+      <button class="motion-toggle" type="button" id="motionToggle" aria-pressed="false" data-en="Pause motion">Pausar movimiento</button>
+    </div>
+  </section>
 
-      <figure class="chip" data-chip>
-        <div class="chip-pins chip-pins-top" aria-hidden="true"></div>
-        <div class="chip-pins chip-pins-bottom" aria-hidden="true"></div>
-        <div class="chip-body">
-          <div class="chip-head" aria-hidden="true">
-            <span>U1</span><span data-fps>ascii · 00 fps</span>
-          </div>
-          <canvas class="ascii" data-ascii role="img" data-i18n-attr="aria-label:hero.canvas" aria-label="El símbolo de CPP, tres módulos que se ensamblan, dibujado con caracteres de texto en 3D"></canvas>
-          <figcaption class="chip-foot">
-            <span data-i18n="hero.caption">Tres módulos. Un mismo sistema.</span>
-            <span class="chip-drag" aria-hidden="true" data-i18n="hero.drag">arrastra para girar</span>
-          </figcaption>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span data-en="Price in writing">Precio por escrito</span><span data-en="50% to start, 50% on delivery">50% al empezar, 50% al entregar</span><span data-en=".com domain for the first year">Dominio .com el primer año</span><span data-en="2 rounds of changes">2 rondas de cambios</span><span data-en="Landing page S/ 600">Landing page S/ 600</span><span data-en="Online bookings S/ 3,000">Reservas online S/ 3,000</span><span data-en="Design and code in one team">Diseño y código en un mismo equipo</span>
+      <span data-en="Price in writing">Precio por escrito</span><span data-en="50% to start, 50% on delivery">50% al empezar, 50% al entregar</span><span data-en=".com domain for the first year">Dominio .com el primer año</span><span data-en="2 rounds of changes">2 rondas de cambios</span><span data-en="Landing page S/ 600">Landing page S/ 600</span><span data-en="Online bookings S/ 3,000">Reservas online S/ 3,000</span><span data-en="Design and code in one team">Diseño y código en un mismo equipo</span>
+    </div>
+  </div>
+
+  <section class="sec showcase" id="vitrina" aria-labelledby="show-h">
+    <div class="wrap">
+      <header class="sec-head center">
+        <h2 id="show-h" class="h2" data-split data-en="This is how they look on a phone.">Así se ven en un celular.</h2>
+        <p class="sec-sub" data-rise data-en="A real recording of sites we have published: the hotel, its booking, a digital menu and a café.">Una grabación real de sitios que publicamos: el hotel, su reserva, una carta digital y un café.</p>
+      </header>
+    </div>
+    <div class="stage" id="stage">
+      <div class="reel" aria-hidden="true">
+        <div class="reel-track" id="reel">
+          <figure class="tile"><img src="media/work/bahia-web-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile tall"><img src="media/examples/carta-movil.webp" alt="" width="585" height="1266" loading="lazy" decoding="async" /></figure>
+          <figure class="tile"><img src="media/examples/pachanka-web-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile"><img src="assets/work/bahia-de-cuba-panel-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile tall"><img src="assets/work/alma-de-poeta-movil.webp" alt="" width="300" height="650" loading="lazy" decoding="async" /></figure>
+          <figure class="tile"><img src="assets/work/alma-de-poeta-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile tall"><img src="media/work/bahia-reserva-movil.webp" alt="" width="585" height="1266" loading="lazy" decoding="async" /></figure>
+          <!-- segunda vuelta para el bucle -->
+          <figure class="tile"><img src="media/work/bahia-web-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile tall"><img src="media/examples/carta-movil.webp" alt="" width="585" height="1266" loading="lazy" decoding="async" /></figure>
+          <figure class="tile"><img src="media/examples/pachanka-web-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile"><img src="assets/work/bahia-de-cuba-panel-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile tall"><img src="assets/work/alma-de-poeta-movil.webp" alt="" width="300" height="650" loading="lazy" decoding="async" /></figure>
+          <figure class="tile"><img src="assets/work/alma-de-poeta-800.webp" alt="" width="800" height="500" loading="lazy" decoding="async" /></figure>
+          <figure class="tile tall"><img src="media/work/bahia-reserva-movil.webp" alt="" width="585" height="1266" loading="lazy" decoding="async" /></figure>
         </div>
-      </figure>
-    </section>
-
-    <!-- MANIFIESTO -->
-    <section class="manifesto" data-section="principio.md">
-      <p class="manifesto-text" data-words data-i18n="manifesto">La tecnología más valiosa no presume su complejidad. Hace que vender, atender y operar se sienta más simple.</p>
-    </section>
-
-    <!-- DIFF -->
-    <section class="diff-sec section" data-section="lo-que-cambia.diff" aria-labelledby="diff-title">
-      <div class="sec-head">
-        <h2 id="diff-title" data-scramble-in data-i18n="diff.title">No hacemos páginas para decorar. Construimos herramientas para avanzar.</h2>
-        <p data-i18n="diff.sub">Cada decisión tiene una función: explicar mejor, convertir más visitas, reducir trabajo manual o simplificar la operación.</p>
       </div>
-      <div class="diff" data-diff>
-        <div class="diff-bar" aria-hidden="true">
-          <span data-i18n="diff.file">tu-negocio / web.diff</span><span class="diff-stat"><b class="add">+6</b> <b class="del">−1</b></span>
-        </div>
-        <ol class="diff-lines">
-          <li class="del"><span class="g" aria-hidden="true">−</span><span data-i18n-html="diff.del"><span class="sr-only">Quitamos:</span> Una página bonita que no convierte ni ahorra trabajo</span></li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a1"><strong>Diseño adaptable.</strong> Una experiencia clara en computadoras, tabletas y celulares.</span></li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a2"><strong>Soluciones propias.</strong> Cada decisión responde a tus objetivos, procesos y clientes.</span></li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a3"><strong>Código optimizado.</strong> Ligero, rápido y preparado para crecer contigo.</span></li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a4"><strong>Menos tareas manuales.</strong> Automatizamos pasos repetitivos para ahorrar tiempo y errores.</span></li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a5"><strong>Comunicación cercana.</strong> Avances claros y revisiones contigo durante todo el proyecto.</span></li>
-          <li class="add"><span class="g" aria-hidden="true">+</span><span data-i18n-html="diff.a6"><strong>Soporte posterior.</strong> Seguimos disponibles después de publicar.</span></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section class="services section" id="servicios" data-section="servicios.ts" aria-labelledby="services-title">
-      <div class="sec-head">
-        <h2 id="services-title" data-scramble-in data-i18n="services.title">La solución correcta para el momento de tu negocio.</h2>
-        <p data-i18n="services.sub">Elige una necesidad concreta. Nosotros definimos el alcance, la tecnología y el camino más eficiente.</p>
-      </div>
-
-      <div class="ide" data-ide>
-        <div class="ide-explorer">
-          <p class="ide-label" id="explorer-label" data-i18n="services.folder">servicios/</p>
-          <div class="ide-files" role="tablist" aria-labelledby="explorer-label" aria-orientation="vertical" data-files></div>
-        </div>
-        <div class="ide-main">
-          <div class="ide-tabs" aria-hidden="true"><span class="ide-tab" data-tab-name>landing.html</span></div>
-          <div class="ide-split">
-            <pre class="ide-code" aria-hidden="true"><code data-code></code></pre>
-            <div class="ide-preview" role="tabpanel" id="service-panel" data-panel aria-live="polite">
-              <h3 data-s-title></h3>
-              <p data-s-desc></p>
-              <ul data-s-list></ul>
-              <p class="price"><span data-i18n="services.from" data-s-from hidden>desde</span> <strong>S/ <b data-s-price>600</b></strong><span data-s-unit hidden></span></p>
-              <a class="btn btn-primary" href="#contacto" data-s-cta data-magnetic><span data-i18n="services.cta">Cotizar esta solución</span></a>
-            </div>
+      <div class="phone-wrap" id="phoneWrap">
+        <div class="phone" id="phone">
+          <div class="screen">
+            <video id="vid" muted loop playsinline preload="metadata" poster="media/cpp-trabajo-movil-poster.jpg"
+              aria-label="Grabación en un celular de los sitios publicados por CPP: Hotel Bahía de Cuba, su reserva en línea, la carta de Pachanka y Alma de Poeta"
+              data-en-aria-label="Phone recording of sites published by CPP: Hotel Bahía de Cuba, its online booking, the Pachanka menu and Alma de Poeta">
+              <source src="media/cpp-trabajo-movil.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="services-foot">
-        <div class="unsure">
-          <h3 data-i18n="services.unsureTitle">¿No sabes cuál elegir?</h3>
-          <p data-i18n="services.unsureText">Cuéntanos cómo trabajas hoy. Revisamos tu operación y te proponemos el punto de partida con mejor retorno.</p>
-          <a class="link" href="#contacto" data-service-pick="unsure" data-i18n="services.unsureLink">Hablemos de tu caso</a>
-        </div>
-        <p class="note" data-i18n="services.note">Precios finales por lo que incluye cada servicio. Pagas 50% al empezar y 50% al entregar, con dominio .com incluido el primer año y 2 rondas de cambios. Si el primer diseño no te convence, lo rehacemos una vez sin costo.</p>
-      </div>
-    </section>
+  <section class="sec work" id="trabajo" aria-labelledby="work-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="work-h" class="h2" data-split data-en="Real work, published and live.">Trabajo real, publicado y en línea.</h2>
+        <p class="sec-sub" data-rise data-en="One project built for a hotel and two published examples you can open today.">Un proyecto hecho para un hotel y dos ejemplos publicados que puedes abrir hoy.</p>
+      </header>
 
-    <!-- PROCESO -->
-    <section class="process section" id="proceso" data-section="proceso.git" aria-labelledby="process-title">
-      <div class="sec-head">
-        <h2 id="process-title" data-scramble-in data-i18n="process.title">Un proceso claro de principio a fin.</h2>
-        <p data-i18n="process.sub">Siempre sabrás qué estamos haciendo, qué necesitamos de ti y cuál es el siguiente avance.</p>
-      </div>
-      <div class="gitlog" data-gitlog>
-        <svg class="git-graph" aria-hidden="true" preserveAspectRatio="none"><path data-git-path /></svg>
-        <ol>
-          <li class="commit" data-commit>
-            <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 1</p>
-            <h3 data-i18n="process.s1t">Conversamos y entendemos el negocio</h3>
-            <p data-i18n="process.s1d">Conocemos tus necesidades, tus usuarios y tus prioridades.</p>
-          </li>
-          <li class="commit" data-commit>
-            <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 2</p>
-            <h3 data-i18n="process.s2t">Preparamos la propuesta</h3>
-            <p data-i18n="process.s2d">Acordamos alcance, diseño, tiempos y entregables antes de empezar.</p>
-          </li>
-          <li class="commit" data-commit>
-            <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 3</p>
-            <h3 data-i18n="process.s3t">Desarrollamos y revisamos contigo</h3>
-            <p data-i18n="process.s3d">Avanzamos por entregas para que valides cada parte.</p>
-          </li>
-          <li class="commit commit-head" data-commit>
-            <span class="node" aria-hidden="true"></span>
-            <p class="hash"><span data-i18n="process.step">paso</span> 4</p>
-            <h3 data-i18n="process.s4t">Publicamos y te acompañamos</h3>
-            <p data-i18n="process.s4d">Ponemos todo en marcha y seguimos disponibles para soporte.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- PROYECTOS -->
-    <section class="work section" id="proyectos" data-section="proyectos/" aria-labelledby="work-title">
-      <div class="sec-head">
-        <h2 id="work-title" data-scramble-in data-i18n="work.title">No mostramos humo. Mostramos lo que sabemos construir.</h2>
-        <p data-i18n="work.sub">Trabajo publicado para negocios reales. Sin clientes ni resultados inventados.</p>
-      </div>
-
-      <div class="work-grid">
-        <article class="win win-wide" data-tilt>
-          <div class="win-bar"><span data-i18n="work.bar3">bahia-de-cuba</span><span class="win-tag win-live"><span class="led" aria-hidden="true"></span><span data-i18n="work.tag3">publicado · landing + reservas + panel</span></span></div>
-          <div class="shot" data-shots>
-            <img class="shot-desk shot-view is-on" data-shot="web" src="assets/work/bahia-de-cuba-1200.webp" srcset="assets/work/bahia-de-cuba-800.webp 800w, assets/work/bahia-de-cuba-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 680px" width="1200" height="750" data-i18n-attr="alt:work.p3aWeb" alt="Portada de la página web del hotel" loading="lazy" decoding="async" />
-            <img class="shot-desk shot-view" data-shot="panel" src="assets/work/bahia-de-cuba-panel-1200.webp" srcset="assets/work/bahia-de-cuba-panel-800.webp 800w, assets/work/bahia-de-cuba-panel-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 680px" width="1200" height="750" data-i18n-attr="alt:work.p3aPanel" alt="Panel administrativo del hotel con el resumen de reservas del año" loading="lazy" decoding="async" />
-            <img class="shot-phone" src="assets/work/bahia-de-cuba-reserva-movil.webp" width="300" height="624" data-i18n-attr="alt:work.p3aPhone" alt="Primer paso de la reserva en línea, en celular" loading="lazy" decoding="async" />
-            <div class="shot-tabs" data-i18n-attr="aria-label:work.p3views" role="group" aria-label="Partes del proyecto">
-              <button type="button" data-shot-tab="web" aria-pressed="true" data-i18n="work.p3tabWeb">Página web</button>
-              <button type="button" data-shot-tab="panel" aria-pressed="false" data-i18n="work.p3tabPanel">Panel administrativo</button>
-            </div>
+      <article class="case glass">
+        <div class="case-media">
+          <div class="tabs" role="tablist" aria-label="Partes del proyecto" data-en-aria-label="Parts of the project">
+            <button class="tab" role="tab" id="t-web" aria-controls="p-web" aria-selected="true" type="button" data-en="Website">La web</button>
+            <button class="tab" role="tab" id="t-panel" aria-controls="p-panel" aria-selected="false" tabindex="-1" type="button" data-en="Admin panel">El panel</button>
+            <button class="tab" role="tab" id="t-movil" aria-controls="p-movil" aria-selected="false" tabindex="-1" type="button" data-en="Booking on a phone">Reserva en el celular</button>
           </div>
-          <div class="win-body">
-            <h3 data-i18n="work.p3t">Hotel Bahía de Cuba</h3>
-            <p data-i18n="work.p3d">Landing page, sistema de reservas en línea y panel administrativo para un eco hotel en Playa Tuquillo, Huarmey. Los huéspedes eligen habitación y fechas y reservan directo en cinco pasos, sin comisiones de intermediarios, y el hotel gestiona todo desde su panel.</p>
-            <div class="win-links">
-              <a class="link" href="https://bahia-de-cuba.github.io/Bahia-Cuba-Landing-Page/" target="_blank" rel="noopener"><span data-i18n="work.p3v">Ver el sitio en vivo</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-              <a class="link" href="https://bahia-cuba-app.bahiadecuba.workers.dev/es/reservar" target="_blank" rel="noopener"><span data-i18n="work.p3r">Ver la reserva en línea</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-              <a class="link" href="#contacto" data-service-pick="bookings" data-i18n="work.p3l">Cotizar un sistema de reservas</a>
-            </div>
+          <div class="frame">
+            <figure class="shot" id="p-web" role="tabpanel" aria-labelledby="t-web" data-on>
+              <img src="media/work/bahia-web-1280.webp" alt="Página de inicio del sitio del Hotel Bahía de Cuba" data-en-alt="Home page of the Hotel Bahía de Cuba website" width="1280" height="800" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="shot" id="p-panel" role="tabpanel" aria-labelledby="t-panel" aria-hidden="true" inert>
+              <img src="assets/work/bahia-de-cuba-panel-1200.webp" alt="Panel de administración del hotel con el resumen de reservas del año" data-en-alt="The hotel's admin panel with the year's booking summary" width="1200" height="750" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="shot phone-shot" id="p-movil" role="tabpanel" aria-labelledby="t-movil" aria-hidden="true" inert>
+              <img src="media/work/bahia-reserva-movil.webp" alt="Primer paso de la reserva en línea, en un celular" data-en-alt="First step of the online booking, on a phone" width="585" height="1266" loading="lazy" decoding="async" />
+            </figure>
+          </div>
+        </div>
+        <div class="case-text">
+          <h3 class="h3">Hotel Bahía de Cuba</h3>
+          <p class="meta" data-en="Real project for the hotel">Proyecto real para el hotel</p>
+          <p data-en="Website, online booking and admin panel for an eco hotel on Playa Tuquillo, Huarmey. Guests pick a room and dates and book directly in five steps, with no middleman fees.">Web, reservas en línea y panel de administración para un hotel ecológico en Playa Tuquillo, Huarmey. El huésped elige habitación y fechas y reserva directo en cinco pasos, sin comisiones de intermediarios.</p>
+          <ul class="case-links">
+            <li><a class="tlink" href="https://bahia-de-cuba.github.io/Bahia-Cuba-Landing-Page/" target="_blank" rel="noopener noreferrer" data-en="See the site">Ver el sitio</a></li>
+            <li><a class="tlink" href="https://bahia-cuba-app.bahiadecuba.workers.dev/es/reservar" target="_blank" rel="noopener noreferrer" data-en="Try the booking">Probar la reserva</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <div class="minis">
+        <article class="mini glass">
+          <div class="mini-img"><img src="media/examples/pachanka-web-800.webp" alt="Sitio de Pachanka Restaurant" data-en-alt="Pachanka Restaurant website" width="800" height="500" loading="lazy" decoding="async" /></div>
+          <div class="mini-body">
+            <h3 class="h4">Pachanka Restaurant</h3>
+            <p class="meta" data-en="Published example: landing and digital menu">Ejemplo publicado: landing y carta digital</p>
+            <p data-en="For a Creole restaurant in Jesús María. It leads to WhatsApp bookings or delivery, with a phone-first menu.">Para un restaurante criollo en Jesús María. Lleva a reservas o delivery por WhatsApp, con una carta pensada para el celular.</p>
+            <span class="mini-links"><a class="tlink" href="https://pachankarestaurant.com/" target="_blank" rel="noopener noreferrer" data-en="See the site">Ver el sitio</a> <a class="tlink" href="https://carta.pachankarestaurant.com/" target="_blank" rel="noopener noreferrer" data-en="See the menu">Ver la carta</a></span>
           </div>
         </article>
-
-        <article class="win" data-tilt>
-          <div class="win-bar"><span data-i18n="work.bar1">alma-de-poeta</span><span class="win-tag win-live"><span class="led" aria-hidden="true"></span><span data-i18n="work.tag1">publicado · landing page</span></span></div>
-          <a class="shot" href="https://creative-programming-partners.github.io/alma-de-poeta/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-            <img class="shot-desk" src="assets/work/alma-de-poeta-1200.webp" srcset="assets/work/alma-de-poeta-800.webp 800w, assets/work/alma-de-poeta-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 560px" width="1200" height="750" alt="" loading="lazy" decoding="async" />
-            <img class="shot-phone" src="assets/work/alma-de-poeta-movil.webp" width="300" height="650" alt="" loading="lazy" decoding="async" />
-          </a>
-          <div class="win-body">
-            <h3 data-i18n="work.p1t">Alma de Poeta</h3>
-            <p data-i18n="work.p1d">Landing page para un café, librería y restaurante en Cercado de Lima. Reúne en una sola página la carta con precios, el horario, el mapa, las reseñas de Google y las reservas por WhatsApp, en español e inglés.</p>
-            <div class="win-links">
-              <a class="link" href="https://creative-programming-partners.github.io/alma-de-poeta/" target="_blank" rel="noopener"><span data-i18n="work.p1v">Ver el sitio en vivo</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-              <a class="link" href="#contacto" data-service-pick="landing" data-i18n="work.p1l">Cotizar una landing así</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="win" data-tilt>
-          <div class="win-bar"><span data-i18n="work.bar2">pachanka</span><span class="win-tag win-live"><span class="led" aria-hidden="true"></span><span data-i18n="work.tag2">publicado · landing + carta digital</span></span></div>
-          <a class="shot" href="https://creative-programming-partners.github.io/pachanka-landing-v2/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-            <img class="shot-desk" src="assets/work/pachanka-1200.webp" srcset="assets/work/pachanka-800.webp 800w, assets/work/pachanka-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 560px" width="1200" height="750" alt="" loading="lazy" decoding="async" />
-            <img class="shot-phone" src="assets/work/pachanka-carta-movil.webp" width="300" height="650" alt="" loading="lazy" decoding="async" />
-          </a>
-          <div class="win-body">
-            <h3 data-i18n="work.p2t">Pachanka Restaurant</h3>
-            <p data-i18n="work.p2d">Landing page y carta digital para un restaurante criollo en Jesús María, Lima. La web cuenta cómo se vive un día en el restaurante y lleva a reservar por WhatsApp o pedir delivery; la carta, pensada para el celular, ordena los platos por categoría con buscador, fotos y precios.</p>
-            <div class="win-links">
-              <a class="link" href="https://creative-programming-partners.github.io/pachanka-landing-v2/" target="_blank" rel="noopener"><span data-i18n="work.p2v">Ver el sitio en vivo</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-              <a class="link" href="https://creative-programming-partners.github.io/pachanka-carta-digital/" target="_blank" rel="noopener"><span data-i18n="work.p2r">Ver la carta digital</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-              <a class="link" href="#contacto" data-service-pick="catalog" data-i18n="work.p2l">Cotizar una carta digital</a>
-            </div>
+        <article class="mini glass">
+          <div class="mini-img"><img src="assets/work/alma-de-poeta-800.webp" alt="Sitio de Alma de Poeta" data-en-alt="Alma de Poeta website" width="800" height="500" loading="lazy" decoding="async" /></div>
+          <div class="mini-body">
+            <h3 class="h4">Alma de Poeta</h3>
+            <p class="meta" data-en="Published example: landing page">Ejemplo publicado: landing page</p>
+            <p data-en="For a café, bookshop and restaurant in Cercado de Lima: priced menu, hours, map and WhatsApp bookings, in two languages.">Para un café, librería y restaurante en el Cercado de Lima: carta con precios, horarios, mapa y reservas por WhatsApp, en dos idiomas.</p>
+            <a class="tlink" href="https://creative-programming-partners.github.io/alma-de-poeta/" target="_blank" rel="noopener noreferrer" data-en="See the site">Ver el sitio</a>
           </div>
         </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EQUIPO -->
-    <section class="team section" id="equipo" data-section="equipo.json" aria-labelledby="team-title">
-      <div class="sec-head">
-        <h2 id="team-title" data-scramble-in data-i18n="team.title">Creatividad, estrategia y programación en el mismo equipo.</h2>
-        <p data-i18n="team.sub">Somos tres socios con una misma visión: entender bien el problema antes de escribir una sola línea de código. Toca una tarjeta para conocernos.</p>
-      </div>
-      <ul class="team-grid" data-team-grid></ul>
+  <section class="sec prices" id="precios" aria-labelledby="price-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="price-h" class="h2" data-split data-en="Pick what you need. See the price.">Elige lo que necesitas. Mira el precio.</h2>
+        <p class="sec-sub" data-rise data-en="Fixed prices for what each service includes. Your selection travels to WhatsApp already written.">Precios fijos por lo que incluye cada servicio. Lo que marques llega a WhatsApp ya escrito.</p>
+      </header>
 
-      <dialog class="profile" data-profile aria-labelledby="profile-name">
-        <div class="profile-card" data-profile-card>
-          <div class="profile-media">
-            <img data-p-photo src="assets/team/jose-480.webp" alt="" width="480" height="640" decoding="async" />
-            <span class="profile-module" data-p-module aria-hidden="true"></span>
-          </div>
-          <div class="profile-body">
-            <div class="profile-top">
-              <p class="profile-kicker" data-p-kicker></p>
-              <button class="profile-close" type="button" data-profile-close data-i18n-attr="aria-label:team.close" aria-label="Cerrar">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-              </button>
-            </div>
-            <h3 id="profile-name" data-p-name></h3>
-            <p class="profile-role" data-p-role></p>
-            <p class="profile-bio" data-p-bio></p>
-            <blockquote class="profile-quote" data-p-quote></blockquote>
+      <form class="quote" id="quote" novalidate onsubmit="return false">
+        <fieldset class="svc-list">
+          <legend class="sr" data-en="Services">Servicios</legend>
+          <label class="svc glass">
+            <input type="checkbox" name="svc" value="landing" data-price="600" checked />
+            <span class="svc-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.6"/></svg></span>
+            <span class="svc-name"><b data-en="Landing page">Landing page</b><small data-en="Up to 6 sections, WhatsApp button or form">Hasta 6 secciones, botón de WhatsApp o formulario</small></span>
+            <span class="svc-side"><span class="svc-price">S/ 600</span><button class="svc-ex" type="button" data-example="landing" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="See example">Ver ejemplo</span></button></span>
+          </label>
+          <label class="svc glass">
+            <input type="checkbox" name="svc" value="automation" data-price="800" />
+            <span class="svc-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.6"/></svg></span>
+            <span class="svc-name"><b data-en="Process automation">Automatización de procesos</b><small data-en="Per workflow, e.g. form to Google Sheet to email alert">Por flujo, ej.: formulario a hoja de Google a aviso por correo</small></span>
+            <span class="svc-side"><span class="svc-price">S/ 800</span><button class="svc-ex" type="button" data-example="automation" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="See example">Ver ejemplo</span></button></span>
+          </label>
+          <label class="svc glass">
+            <input type="checkbox" name="svc" value="catalog" data-price="900" />
+            <span class="svc-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.6"/></svg></span>
+            <span class="svc-name"><b data-en="WhatsApp store">Tienda por WhatsApp</b><small data-en="Up to 50 products, search, WhatsApp orders and QR">Hasta 50 productos, buscador, pedido por WhatsApp y QR</small></span>
+            <span class="svc-side"><span class="svc-price">S/ 900</span><button class="svc-ex" type="button" data-example="catalog" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="See example">Ver ejemplo</span></button></span>
+          </label>
+          <label class="svc glass">
+            <input type="checkbox" name="svc" value="corporate" data-price="1300" />
+            <span class="svc-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.6"/></svg></span>
+            <span class="svc-name"><b data-en="Corporate website">Web corporativa</b><small data-en="Up to 5 pages, ready for Google, contact form">Hasta 5 páginas, lista para Google, formulario de contacto</small></span>
+            <span class="svc-side"><span class="svc-price">S/ 1,300</span><button class="svc-ex" type="button" data-example="corporate" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="See example">Ver ejemplo</span></button></span>
+          </label>
+          <label class="svc glass">
+            <input type="checkbox" name="svc" value="store" data-price="2600" />
+            <span class="svc-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.6"/></svg></span>
+            <span class="svc-name"><b data-en="Online store with payments">Tienda online con pagos</b><small data-en="Up to 50 products and a cart, card or Yape payments">Hasta 50 productos y carrito, pago con tarjeta o Yape</small></span>
+            <span class="svc-side"><span class="svc-price">S/ 2,600</span><button class="svc-ex" type="button" data-example="store" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="See example">Ver ejemplo</span></button></span>
+          </label>
+          <label class="svc glass">
+            <input type="checkbox" name="svc" value="bookings" data-price="3000" />
+            <span class="svc-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.6"/></svg></span>
+            <span class="svc-name"><b data-en="Online booking system">Sistema de reservas online</b><small data-en="Availability calendar, dashboard, email confirmations">Calendario de disponibilidad, panel, confirmaciones por correo</small></span>
+            <span class="svc-side"><span class="svc-price">S/ 3,000</span><button class="svc-ex" type="button" data-example="bookings" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="See example">Ver ejemplo</span></button></span>
+          </label>
+          <label class="svc glass">
+            <input type="checkbox" name="svc" value="app" data-price="4000" data-from="1" />
+            <span class="svc-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.6"/></svg></span>
+            <span class="svc-name"><b data-en="Custom web application">Aplicación web a medida</b><small data-en="Built around your process, scope agreed in the proposal">Hecha a tu proceso, alcance definido en la propuesta</small></span>
+            <span class="svc-side"><span class="svc-price"><span class="from" data-en="from">desde</span> S/ 4,000</span><button class="svc-ex" type="button" data-example="app" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="See example">Ver ejemplo</span></button></span>
+          </label>
+        </fieldset>
 
-            <div class="profile-tabs" role="tablist" data-i18n-attr="aria-label:team.tabs" aria-label="Información del socio" data-p-tabs></div>
-            <div class="profile-panel" role="tabpanel" id="profile-panel" data-p-panel></div>
-
-            <div class="profile-actions">
-              <a class="btn btn-primary btn-sm" data-p-linkedin href="#" target="_blank" rel="noopener noreferrer"><span data-i18n="team.linkedin">Ver perfil en LinkedIn</span></a>
-              <a class="link" href="#contacto" data-profile-close data-i18n="team.work">Trabajar con el equipo</a>
-            </div>
-            <div class="profile-nav">
-              <button type="button" data-p-prev data-i18n-attr="aria-label:team.prev" aria-label="Socio anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-              <span data-p-count>1 / 3</span>
-              <button type="button" data-p-next data-i18n-attr="aria-label:team.next" aria-label="Socio siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-            </div>
+        <aside class="summary glass" aria-live="polite">
+          <p class="sum-title" data-en="Your quote">Tu cotización</p>
+          <p class="sum-total"><output id="t-total">S/ 600</output></p>
+          <div class="sum-rows">
+            <p><span data-en="To start (50%)">Al empezar (50%)</span><output id="t-half1">S/ 300</output></p>
+            <p><span data-en="On delivery (50%)">Al entregar (50%)</span><output id="t-half2">S/ 300</output></p>
           </div>
-        </div>
-      </dialog>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq section" id="preguntas" data-section="preguntas.sh" aria-labelledby="faq-title">
-      <div class="sec-head">
-        <h2 id="faq-title" data-scramble-in data-i18n="faq.title">Preguntas antes de empezar.</h2>
-      </div>
-      <div class="term">
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q1">¿Cuánto cuesta desarrollar mi proyecto?</span></summary>
-          <p data-i18n="faq.a1">Cada servicio tiene un precio fijo por lo que incluye, y lo ves en la sección de servicios. Si necesitas algo adicional, como más páginas o productos, te lo cotizamos antes de empezar. Las aplicaciones a medida se cotizan según el alcance, desde S/ 4,000.</p>
-        </details>
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q2">¿Cuánto tiempo tarda el desarrollo?</span></summary>
-          <p data-i18n="faq.a2">Varía según la complejidad. Antes de comenzar acordamos contigo un cronograma claro de trabajo y entregas.</p>
-        </details>
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q3">¿Funcionará bien en celulares?</span></summary>
-          <p data-i18n="faq.a3">Sí. Todos nuestros proyectos se diseñan y prueban para computadoras, tabletas y celulares.</p>
-        </details>
-        <details data-faq>
-          <summary><span class="p-sign" aria-hidden="true">$</span> <span data-i18n="faq.q4">¿Dan soporte después de entregar?</span></summary>
-          <p data-i18n="faq.a4">Sí. Tenemos planes mensuales de mantenimiento con renovación del dominio y hasta 2 cambios al mes: S/ 80 para landing pages, webs corporativas y tiendas por WhatsApp, y S/ 150 para tiendas online, reservas, aplicaciones y automatizaciones.</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="contact section" id="contacto" data-section="contacto.form" aria-labelledby="contact-title">
-      <div class="contact-copy">
-        <h2 id="contact-title" data-scramble-in data-i18n="contact.title">El mejor proyecto empieza con una conversación clara.</h2>
-        <p data-i18n="contact.sub">Cuéntanos lo esencial. Con ese contexto entendemos el alcance y te proponemos el siguiente paso.</p>
-        <ol class="next-steps">
-          <li data-i18n="contact.n1">Revisamos qué necesita resolver tu negocio.</li>
-          <li data-i18n="contact.n2">Te proponemos la solución con más sentido.</li>
-          <li data-i18n="contact.n3">Acordamos alcance, inversión y próximos pasos.</li>
-        </ol>
-        <p class="reply"><span class="led" aria-hidden="true"></span> <span data-i18n="contact.reply">Respondemos en menos de 24 horas hábiles.</span></p>
-      </div>
-
-      <form class="editor-form" id="quote-form" novalidate data-form>
-        <div class="ef-bar" aria-hidden="true"><span data-i18n="form.file">tu solicitud</span><span data-form-state data-i18n="form.empty">por completar</span></div>
-        <div class="ef-body">
-          <div class="hp" aria-hidden="true">
-            <label for="website">Website</label>
-            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
-          </div>
-          <div class="field">
-            <label for="name" data-i18n="form.name">Nombre</label>
-            <input id="name" name="name" type="text" autocomplete="name" required />
-            <p class="err" id="name-error"></p>
-          </div>
-          <div class="field">
-            <label for="company" data-i18n="form.company">Empresa</label>
-            <input id="company" name="company" type="text" autocomplete="organization" required />
-            <p class="err" id="company-error"></p>
-          </div>
-          <div class="field">
-            <label for="service" data-i18n="form.service">Servicio</label>
-            <select id="service" name="service" required>
-              <option value="" data-i18n="form.choose">Selecciona una opción</option>
-              <option value="landing" data-i18n="svc.landing">Landing page</option>
-              <option value="automation" data-i18n="svc.automation">Automatización de procesos</option>
-              <option value="catalog" data-i18n="svc.catalog">Tienda por WhatsApp</option>
-              <option value="corporate" data-i18n="svc.corporate">Página web corporativa</option>
-              <option value="store" data-i18n="svc.store">Tienda online con pagos</option>
-              <option value="bookings" data-i18n="svc.bookings">Sistema de reservas</option>
-              <option value="app" data-i18n="svc.app">Aplicación web a medida</option>
-              <option value="unsure" data-i18n="svc.unsure">No estoy seguro</option>
-            </select>
-            <p class="err" id="service-error"></p>
-          </div>
-          <div class="field">
-            <label for="budget"><span data-i18n="form.budget">Presupuesto aproximado</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
-            <select id="budget" name="budget">
-              <option value="talk" data-i18n="budget.talk">Prefiero conversarlo</option>
-              <option value="lt-1000" data-i18n="budget.b1">Menos de S/ 1,000</option>
-              <option value="1000-2500" data-i18n="budget.b2">S/ 1,000 a S/ 2,500</option>
-              <option value="2500-5000" data-i18n="budget.b3">S/ 2,500 a S/ 5,000</option>
-              <option value="gt-5000" data-i18n="budget.b4">Más de S/ 5,000</option>
-            </select>
-          </div>
-          <div class="field field-full">
-            <label for="message" data-i18n="form.message">Descripción del proyecto</label>
-            <textarea id="message" name="message" rows="5" minlength="10" required data-i18n-attr="placeholder:form.placeholder" placeholder="Qué vendes u ofreces, qué quieres lograr y cómo lo resuelves hoy."></textarea>
-            <p class="err" id="message-error"></p>
-          </div>
-          <div class="field field-full check">
-            <input id="privacy" name="privacy" type="checkbox" required />
-            <label for="privacy" data-i18n-html="form.privacy">Acepto la <a class="link" href="privacy.html">política de privacidad</a> y el uso de mis datos para responder esta solicitud.</label>
-            <p class="err" id="privacy-error"></p>
-          </div>
-          <div class="field-full form-end">
-            <button class="btn btn-primary btn-wa" type="submit" data-magnetic><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span data-i18n="form.submit">Enviar por WhatsApp</span></button>
-            <p class="form-status" role="status" data-status></p>
-          </div>
-        </div>
+          <label class="biz"><span data-en="Your business (optional)">Tu negocio (opcional)</span><input id="biz" type="text" autocomplete="organization" maxlength="60" /></label>
+          <a class="btn btn-primary btn-block" id="send" href="https://wa.me/51929363454" target="_blank" rel="noopener noreferrer"><span data-en="Send on WhatsApp">Enviar por WhatsApp</span></a>
+          <p class="sum-note" data-en="Includes a .com domain for the first year and 2 rounds of changes.">Incluye dominio .com el primer año y 2 rondas de cambios.</p>
+          <p class="sum-note" id="appnote" hidden data-en="Custom apps are quoted by scope, from S/ 4,000.">Las aplicaciones a medida se cotizan según el alcance, desde S/ 4,000.</p>
+        </aside>
       </form>
-    </section>
-
-  </main>
-
-  <footer class="foot" data-section="EOF">
-    <div class="foot-cta">
-      <p data-i18n="foot.cta">¿Tienes una idea o necesitas digitalizar tu negocio?</p>
-      <a class="btn btn-primary" href="#contacto" data-magnetic><span data-i18n="cta.quote">Pedir cotización</span></a>
     </div>
-    <p class="foot-word" data-foot-word aria-hidden="true">cpp</p>
-    <div class="foot-contact">
-      <a class="foot-wa" href="https://wa.me/51929363454" target="_blank" rel="noopener" data-wa><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span><small data-i18n="foot.waLabel">WhatsApp</small>+51 929 363 454</span></a>
-      <p><small data-i18n="foot.whereLabel">Dónde estamos</small><span data-i18n="foot.where">Perú · atendemos de forma remota</span></p>
-      <p><small data-i18n="foot.hoursLabel">Respuesta</small><span data-i18n="foot.hours">En menos de 24 horas hábiles</span></p>
-    </div>
-    <div class="foot-row">
-      <span>Creative Programming Partners © <span data-year>2026</span></span>
-      <nav data-i18n-attr="aria-label:foot.nav" aria-label="Pie de página">
-        <a href="#servicios" data-i18n="foot.services">Servicios</a>
-        <a href="#equipo" data-i18n="foot.team">Equipo</a>
-        <a href="privacy.html" data-i18n="foot.privacy">Privacidad</a>
-      </nav>
-      <span class="eof" aria-hidden="true">// EOF</span>
-    </div>
-  </footer>
+  </section>
 
-  <!-- WhatsApp flotante -->
-  <a class="wa-fab" href="https://wa.me/51929363454" target="_blank" rel="noopener" data-wa data-i18n-attr="aria-label:wa.fab" aria-label="Escríbenos por WhatsApp"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span data-i18n="wa.fabText">Escríbenos</span></a>
+  <section class="sec process" id="proceso" aria-labelledby="proc-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="proc-h" class="h2" data-split data-en="From the first chat to launch.">De la primera charla al lanzamiento.</h2>
+        <p class="sec-sub" data-rise data-en="You will always know what we are doing, what we need from you and what comes next.">Siempre sabrás qué estamos haciendo, qué necesitamos de ti y qué viene después.</p>
+      </header>
+      <div class="steps-wrap">
+        <div class="track" aria-hidden="true"><span class="track-fill" id="trackFill"></span></div>
+        <ol class="steps">
+          <li><span class="node" aria-hidden="true"></span><h3 class="h4" data-en="We talk and understand your business">Conversamos y entendemos tu negocio</h3><p data-en="Your needs, your customers and your priorities.">Tus necesidades, tus clientes y tus prioridades.</p></li>
+          <li><span class="node" aria-hidden="true"></span><h3 class="h4" data-en="We prepare the proposal">Preparamos la propuesta</h3><p data-en="Scope, design, timeline and price agreed before starting.">Alcance, diseño, tiempos y precio acordados antes de empezar.</p></li>
+          <li><span class="node" aria-hidden="true"></span><h3 class="h4" data-en="We build and review with you">Desarrollamos y revisamos contigo</h3><p data-en="We deliver in stages so you can validate each part.">Avanzamos por entregas para que valides cada parte.</p></li>
+          <li><span class="node" aria-hidden="true"></span><h3 class="h4" data-en="We launch and stay with you">Publicamos y te acompañamos</h3><p data-en="Everything goes live and we stay available for support.">Ponemos todo en línea y seguimos disponibles para soporte.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
 
-  <!-- Barra de estado -->
-  <div class="status" aria-hidden="true">
-    <span class="st-branch"><span class="led"></span> main</span>
-    <span data-status-file>inicio.tsx</span>
-    <span class="st-grow"></span>
-    <span data-status-ln>Ln 1, Col 1</span>
-    <span class="st-hide" data-status-lang>ES</span>
-    <span class="st-hide">UTF-8</span>
+  <section class="sec team" id="equipo" aria-labelledby="team-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <h2 id="team-h" class="h2" data-split data-en="Three partners, design and code in one team.">Tres socios, diseño y código en un mismo equipo.</h2>
+      </header>
+      <ul class="people">
+        <li class="person">
+          <button class="person-btn" type="button" data-member="jose" aria-haspopup="dialog" aria-label="Ver la ficha de José Santana" data-en-aria-label="Open José Santana’s card">
+            <span class="person-photo">
+              <img src="assets/team/jose-480.webp" alt="" width="480" height="640" loading="lazy" decoding="async" />
+              <span class="person-hint" aria-hidden="true" data-en="View profile">Ver perfil</span>
+            </span>
+            <span class="name">José Santana</span>
+            <span class="role" data-en="Frontend and user experience">Frontend y experiencia de usuario</span>
+          </button>
+        </li>
+        <li class="person">
+          <button class="person-btn" type="button" data-member="darnell" aria-haspopup="dialog" aria-label="Ver la ficha de Darnell Cuba" data-en-aria-label="Open Darnell Cuba’s card">
+            <span class="person-photo">
+              <img src="assets/team/darnell-480.webp" alt="" width="480" height="640" loading="lazy" decoding="async" />
+              <span class="person-hint" aria-hidden="true" data-en="View profile">Ver perfil</span>
+            </span>
+            <span class="name">Darnell Cuba</span>
+            <span class="role" data-en="Backend and architecture">Backend y arquitectura</span>
+          </button>
+        </li>
+        <li class="person">
+          <button class="person-btn" type="button" data-member="juan" aria-haspopup="dialog" aria-label="Ver la ficha de Juan Flores" data-en-aria-label="Open Juan Flores’s card">
+            <span class="person-photo">
+              <img src="assets/team/juan-480.webp" alt="" width="480" height="640" loading="lazy" decoding="async" />
+              <span class="person-hint" aria-hidden="true" data-en="View profile">Ver perfil</span>
+            </span>
+            <span class="name">Juan Flores</span>
+            <span class="role" data-en="Product and automation">Producto y automatización</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec faq" id="preguntas" aria-labelledby="faq-h">
+    <div class="wrap faq-grid">
+      <h2 id="faq-h" class="h2" data-split data-en="Questions before we start.">Preguntas antes de empezar.</h2>
+      <div class="qa">
+        <details>
+          <summary><span data-en="How much does my project cost?">¿Cuánto cuesta mi proyecto?</span></summary>
+          <p data-en="Each service has a fixed price for what it includes, the one in the quote above. If you need something extra, like more pages or products, we quote it before we start. Custom apps are quoted by scope, from S/ 4,000.">Cada servicio tiene un precio fijo por lo que incluye, el de la cotización de arriba. Si necesitas algo adicional, como más páginas o productos, te lo cotizamos antes de empezar. Las aplicaciones a medida se cotizan según el alcance, desde S/ 4,000.</p>
+        </details>
+        <details>
+          <summary><span data-en="How long does development take?">¿Cuánto tiempo tarda el desarrollo?</span></summary>
+          <p data-en="It depends on complexity. Before starting, we agree with you on a clear timeline for work and deliveries.">Varía según la complejidad. Antes de comenzar acordamos contigo un cronograma claro de trabajo y entregas.</p>
+        </details>
+        <details>
+          <summary><span data-en="Will it work well on phones?">¿Funcionará bien en celulares?</span></summary>
+          <p data-en="Yes. All our projects are designed and tested for desktops, tablets and phones.">Sí. Todos nuestros proyectos se diseñan y prueban para computadoras, tabletas y celulares.</p>
+        </details>
+        <details>
+          <summary><span data-en="Do you offer support after delivery?">¿Dan soporte después de entregar?</span></summary>
+          <p data-en="Yes. Monthly maintenance includes domain renewal and up to 2 changes a month: S/ 80 for landing pages, corporate websites and WhatsApp stores, and S/ 150 for online stores, booking systems, apps and automations.">Sí. El mantenimiento mensual incluye renovación del dominio y hasta 2 cambios al mes: S/ 80 para landing pages, webs corporativas y tiendas por WhatsApp, y S/ 150 para tiendas online, reservas, aplicaciones y automatizaciones.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contacto" aria-labelledby="cta-h">
+    <video class="cta-video" id="ctaVid" muted loop playsinline preload="none" poster="media/cpp-muro-poster.jpg" aria-hidden="true"><source src="media/cpp-muro.mp4" type="video/mp4" /></video>
+    <div class="tint" aria-hidden="true"></div>
+    <div class="wrap cta-in">
+      <h2 id="cta-h" class="display cta-h"><span class="h-line" data-split data-en="Tell us what">Cuéntanos qué</span> <em class="h-line" data-split data-en="you need.">necesitas.</em></h2>
+      <p class="lead" data-en="One sentence is enough. We reply within 24 business hours.">Con una frase nos basta. Te respondemos en menos de 24 horas hábiles.</p>
+      <a class="btn btn-primary" id="send2" href="https://wa.me/51929363454?text=Hola%20CPP%2C%20quiero%20cotizar%20un%20proyecto." data-wa-generic target="_blank" rel="noopener noreferrer"><span data-en="Write on WhatsApp">Escribir por WhatsApp</span></a>
+      <dl class="contact-facts">
+        <div><dt>WhatsApp</dt><dd>+51 929 363 454</dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/cppc_startup/" target="_blank" rel="noopener noreferrer">@cppc_startup</a></dd></div>
+        <div><dt data-en="Where">Dónde</dt><dd data-en="Lima, Peru. We work remotely.">Lima, Perú. Trabajamos de forma remota.</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+
+  <dialog class="profile example" id="example" aria-labelledby="exName">
+    <div class="profile-card">
+      <div class="ex-media" id="exMedia"></div>
+      <div class="profile-body">
+        <div class="profile-top">
+          <p class="ex-badge" id="exBadge"></p>
+          <button class="icon-btn" type="button" id="exClose" aria-label="Cerrar" data-en-aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <div class="profile-swap" id="exSwap">
+          <h3 class="profile-name" id="exName"></h3>
+          <p class="profile-role" id="exPrice"></p>
+          <p class="profile-bio" id="exWhat"></p>
+          <div class="ex-case">
+            <p class="ex-label" data-en="The example">El ejemplo</p>
+            <p id="exCase"></p>
+          </div>
+          <ul class="p-tasks" id="exIncludes"></ul>
+        </div>
+        <div class="profile-actions">
+          <button class="btn btn-primary btn-sm" type="button" id="exToggle"></button>
+          <a class="tlink" id="exLink" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+        <div class="profile-nav">
+          <button class="icon-btn" type="button" id="exPrev" aria-label="Servicio anterior" data-en-aria-label="Previous service"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <span id="exCount">1 / 7</span>
+          <button class="icon-btn" type="button" id="exNext" aria-label="Servicio siguiente" data-en-aria-label="Next service"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="profile" id="profile" aria-labelledby="pName">
+    <div class="profile-card">
+      <div class="profile-photo">
+        <img id="pPhoto" src="assets/team/jose-960.webp" alt="" width="960" height="1280" decoding="async" />
+        <span class="profile-num" id="pNum" aria-hidden="true">01</span>
+      </div>
+      <div class="profile-body" id="pBody">
+        <div class="profile-top">
+          <p class="profile-kicker" id="pKicker"></p>
+          <button class="icon-btn" type="button" id="pClose" aria-label="Cerrar" data-en-aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <div class="profile-swap" id="pSwap">
+          <h3 class="profile-name" id="pName"></h3>
+          <p class="profile-role" id="pRole"></p>
+          <p class="profile-bio" id="pBio"></p>
+          <blockquote class="profile-quote" id="pQuote"></blockquote>
+          <div class="profile-tabs" role="tablist" id="pTabs" aria-label="Información del socio" data-en-aria-label="Partner information"></div>
+          <div class="profile-panel" role="tabpanel" id="pPanel" tabindex="0"></div>
+        </div>
+        <div class="profile-actions">
+          <a class="btn btn-primary btn-sm" id="pLinkedin" href="#" target="_blank" rel="noopener noreferrer"><span data-en="View LinkedIn profile">Ver perfil en LinkedIn</span></a>
+          <a class="tlink" id="pWork" href="#contacto" data-en="Work with the team">Trabajar con el equipo</a>
+        </div>
+        <div class="profile-nav">
+          <button class="icon-btn" type="button" id="pPrev" aria-label="Socio anterior" data-en-aria-label="Previous partner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <span id="pCount">1 / 3</span>
+          <button class="icon-btn" type="button" id="pNext" aria-label="Socio siguiente" data-en-aria-label="Next partner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>CPP, Creative Programming Partners</p>
+    <a href="privacy.html" data-en="Privacy">Privacidad</a>
   </div>
+</footer>
 
-  <!-- Paleta de comandos -->
-  <div class="palette" data-palette hidden>
-    <div class="palette-box" role="dialog" aria-modal="true" data-i18n-attr="aria-label:palette.label" aria-label="Paleta de comandos">
-      <input type="text" data-palette-input data-i18n-attr="placeholder:palette.placeholder;aria-label:palette.search" placeholder="Escribe a dónde quieres ir…" aria-label="Buscar comando" autocomplete="off" />
-      <ul data-palette-list role="listbox"></ul>
-      <p class="palette-hint"><kbd>↑</kbd><kbd>↓</kbd> <span data-i18n="palette.choose">elegir</span> <kbd>Enter</kbd> <span data-i18n="palette.go">ir</span> <kbd>Esc</kbd> <span data-i18n="palette.close">cerrar</span></p>
-    </div>
-  </div>
-
-  <script src="i18n.js?v=202609261300" defer></script>
-  <script src="team.js?v=202609261300" defer></script>
-  <script src="script.js?v=202609261300" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="team.js?v=202611250300" defer></script>
+<script src="script.js?v=202611250300" defer></script>
 </body>
 </html>
